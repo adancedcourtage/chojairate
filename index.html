@@ -1,0 +1,1362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chojairate Naturel</title>
+<meta name="description" content="Chojairate Naturel — soins cosmétiques 100 % naturels nés d'un arbuste : argan, rose, encens, lavande.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Figtree:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+/* ---------- tokens : jardin nocturne (single committed theme) ---------- */
+:root{
+  /* thème clair « atelier de marbre » : sable chaud des photos produits, encre vert forêt, or profond.
+     Les noms de tokens sont historiques : --ground = fond (clair), --ivory = texte (encre). */
+  --ground:#EDE4D4;
+  --ground-2:#F6F0E5;
+  --ground-3:#E3D8C3;
+  --ivory:#17352A;
+  --ivory-70:rgba(23,53,42,.76);
+  --ivory-45:rgba(23,53,42,.7);
+  --gold:#A67C2E;
+  --gold-2:#7A5A1C;
+  --gold-soft:#D9BC6E;
+  --rose:#B9657F;
+  --sage:#4A6853;
+  --line:rgba(166,124,46,.30);
+  --glass:rgba(246,240,229,.72);
+  --glass-2:rgba(246,240,229,.82);
+  --halo:rgba(237,228,212,.92);
+  --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-ar:'Amiri','Tajawal',serif;
+  --ease:cubic-bezier(.22,.8,.26,1);
+  --radius:20px;
+  color-scheme:light;
+}
+:root[lang="ar"]{
+  --font-display:'Amiri','Tajawal',serif;
+  --font-body:'Tajawal','Amiri',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ivory);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+:root[lang="ar"] body{font-size:18px;line-height:1.8}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100%);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+
+/* ---------- ambient ---------- */
+.glow{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(60vmax 60vmax at var(--gx,70%) var(--gy,20%),rgba(255,248,230,.22),transparent 60%),
+    radial-gradient(50vmax 50vmax at 15% 90%,rgba(185,101,127,.08),transparent 60%);
+}
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.10;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+main,header,footer{position:relative;z-index:2}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:linear-gradient(to bottom,rgba(237,228,212,.9),rgba(237,228,212,.6));
+  border-bottom:1px solid var(--line);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.brand .latin{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;letter-spacing:.02em}
+.brand .arab{font-family:var(--font-ar);color:var(--gold-2);font-size:1.25rem}
+.nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-size:.92rem;letter-spacing:.04em;color:var(--ivory-70);transition:color .2s}
+.nav-links a:hover{color:var(--gold-2)}
+.lang{
+  border:1px solid var(--line);background:transparent;border-radius:999px;
+  padding:8px 14px;min-height:44px;font-size:.85rem;letter-spacing:.08em;
+  display:flex;gap:8px;align-items:center;transition:border-color .2s,color .2s
+}
+.lang:hover{border-color:var(--gold)}
+.lang span{opacity:.5}
+.lang span.on{opacity:1;color:var(--gold-2)}
+@media (max-width:720px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  min-height:min(88svh,900px);
+  display:grid;align-items:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hero-inner{position:relative;z-index:2;padding-block:clamp(56px,10vh,120px)}
+.hero-copy{max-width:600px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);
+}
+:root[lang="ar"] .eyebrow{letter-spacing:0;text-transform:none;font-size:.95rem}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+.hero h1{
+  font-size:clamp(2.6rem,7.2vw,5.6rem);
+  margin-top:20px;
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+}
+.hero h1 em{font-style:italic;color:var(--gold-2);font-weight:300}
+:root[lang="ar"] .hero h1{font-size:clamp(2.4rem,6.5vw,4.8rem);line-height:1.25}
+.hero-sub{margin-top:24px;max-width:48ch;color:var(--ivory-70);font-size:1.05rem}
+.hero-sub .arab{font-family:var(--font-ar);color:var(--gold-2);font-size:1.15em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  min-height:48px;padding:12px 24px;border-radius:999px;
+  text-decoration:none;font-weight:500;font-size:.98rem;
+  border:1px solid transparent;
+  transition:transform .25s var(--ease),background .25s,border-color .25s,color .25s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-gold{background:linear-gradient(135deg,var(--gold-soft),var(--gold));color:#1a1408;box-shadow:0 10px 24px -12px rgba(166,124,46,.6)}
+.btn-ghost{border-color:var(--line);color:var(--ivory)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-2)}
+.btn svg{width:18px;height:18px;flex:none}
+/* bandeau 3 soins vedettes */
+.hero-stage{display:none}
+.hero-strip{
+  display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:52px;padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.hero-strip-label{flex-basis:100%;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory-45);margin-bottom:8px}
+:root[lang="ar"] .hero-strip-label{letter-spacing:0;text-transform:none;font-size:.9rem}
+.mini{
+  display:flex;align-items:center;gap:12px;
+  background:transparent;border:0;padding:6px 0;text-align:start;
+  color:var(--ivory-70);transition:color .25s;
+}
+.mini:hover{color:var(--ivory)}
+.mini .arch{width:48px;height:60px;aspect-ratio:auto;border-radius:999px 999px 10px 10px;flex:none;border-color:rgba(201,162,74,.5)}
+.mini img{transform:scale(1.15)}
+.mini:hover img{transform:scale(1.25)}
+.mini b{display:block;font-weight:500;color:var(--ivory);font-size:.95rem;line-height:1.2}
+.mini small{font-size:.78rem;color:var(--ivory-45)}
+/* anneau + vignette */
+.hero-ring{
+  position:absolute;z-index:0;pointer-events:none;visibility:hidden;
+  inset-inline-end:4%;top:50%;
+  width:min(62vh,44vw);aspect-ratio:1;max-width:100%;
+  transform:translateY(-48%);opacity:.55;
+}
+.hero-ring svg{width:100%;height:100%;overflow:visible}
+.hero-ring .r1{animation:spin 140s linear infinite;transform-origin:50% 50%}
+.hero-ring .r2{animation:spin 90s linear infinite reverse;transform-origin:50% 50%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-vignette{display:none}
+.hero-scroll{
+  position:absolute;bottom:22px;inset-inline-start:clamp(16px,4vw,40px);z-index:1;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ivory-45);
+  display:flex;align-items:center;gap:12px;
+}
+:root[lang="ar"] .hero-scroll{letter-spacing:0;text-transform:none;font-size:.9rem}
+.hero-scroll i{display:block;width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:drip 2.2s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-fallback{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(50vmax 50vmax at 74% 60%,rgba(95,128,104,.07),transparent 65%);
+}
+@media (max-width:820px){
+  .hero{min-height:auto}
+  .hero-inner{padding-block:40px 36px}
+  .hero-stage{display:block;height:clamp(240px,82vw,340px);margin-top:20px}
+  .hero-strip{margin-top:20px}
+  .hero-scroll{display:none}
+  .hero-ring{inset-inline-end:auto;left:50%;top:auto;bottom:-6%;width:min(80vw,420px);transform:translateX(-50%);opacity:.35}
+  .hero-strip{gap:4px 18px}
+  .mini .arch{width:40px;height:50px}
+}
+
+/* ---------- marquee ---------- */
+.marquee{
+  border-block:1px solid var(--line);
+  overflow:hidden;white-space:nowrap;
+  padding-block:14px;
+  font-family:var(--font-display);font-size:1.05rem;color:var(--ivory-70);
+  font-variation-settings:"opsz" 30;
+}
+.marquee-track{display:inline-flex;animation:slide 48s linear infinite;will-change:transform}
+@keyframes slide{to{transform:translateX(-50%)}}
+:root[lang="ar"] .marquee-track{animation-name:slide-rtl}
+@keyframes slide-rtl{to{transform:translateX(50%)}}
+.marquee span{padding-inline:22px}
+.marquee span::after{content:"·";color:var(--gold);margin-inline-start:22px}
+
+/* ---------- sections ---------- */
+.section{padding-block:clamp(72px,11vh,140px)}
+.manifeste,.rituel{background:linear-gradient(to bottom,transparent,rgba(227,216,195,.45) 18%,rgba(227,216,195,.45) 82%,transparent)}
+.section-head{position:relative;text-shadow:0 1px 18px var(--halo)}
+.section-head::before{content:"";position:absolute;inset:-28px -40px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 25% 50%,rgba(237,228,212,.9),rgba(237,228,212,.45) 55%,transparent 80%);filter:blur(10px)}
+.filters{position:relative;z-index:1}
+.lead{text-shadow:0 1px 12px var(--halo)}
+.section-head{display:grid;gap:18px;max-width:720px;margin-bottom:clamp(36px,6vh,64px)}
+.section h2{font-size:clamp(2rem,4.6vw,3.6rem);font-variation-settings:"opsz" 96,"SOFT" 40}
+.section h2 em{font-style:italic;color:var(--gold-2);font-weight:300}
+.lead{color:var(--ivory-70);font-size:1.08rem;max-width:58ch}
+
+/* manifeste */
+.manifeste{position:relative;overflow:hidden}
+.ghost{
+  position:absolute;inset-inline-end:-2vw;top:50%;transform:translateY(-50%);
+  font-family:'Amiri',serif;font-size:clamp(9rem,26vw,24rem);line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(166,124,46,.22);
+  pointer-events:none;user-select:none;z-index:0;
+  direction:rtl;
+}
+.manifeste .wrap{position:relative;z-index:1}
+.roots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--line);box-shadow:0 24px 48px -32px rgba(23,53,42,.35)}
+.root{background:var(--glass-2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:30px 28px 34px;display:grid;gap:14px;align-content:start;transition:background .35s}
+.root:hover{background:var(--ground-2)}
+.root svg{width:38px;height:38px;color:var(--gold-2)}
+.root h3{font-size:1.5rem}
+.root h3 span{display:block}
+.root h3 span + span{font-family:var(--font-ar);color:var(--gold-2);font-size:1.15rem;margin-top:2px}
+:root[lang="ar"] .root h3 span + span{font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ivory-70);font-size:1.05rem}
+.root p{color:var(--ivory-70);font-size:.98rem}
+
+/* gamme */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.chip{
+  border:1px solid var(--line);background:transparent;border-radius:999px;
+  padding:9px 16px;min-height:44px;font-size:.9rem;color:var(--ivory-70);
+  transition:all .25s var(--ease);
+}
+.chip:hover{border-color:var(--gold);color:var(--ivory)}
+.chip[aria-pressed="true"]{background:var(--ivory);border-color:var(--ivory);color:var(--ground-2);font-weight:500}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));
+  gap:clamp(12px,2vw,24px);
+}
+@media (min-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* carte = un seul objet : surface, hairline, arche, corps */
+.card{
+  display:grid;grid-template-rows:auto 1fr;gap:16px;align-content:start;min-width:0;
+  text-align:start;padding:12px 12px 18px;
+  background:var(--glass-2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:26px 26px 20px 20px;
+  transform:translateY(0);
+  transition:transform .35s var(--ease),border-color .35s,background .35s;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(201,162,74,.55);background:var(--ground-3)}
+.card:active{transform:translateY(-1px)}
+.arch{
+  position:relative;aspect-ratio:1/1.08;max-width:100%;
+  border-radius:999px 999px 14px 14px;
+  overflow:hidden;
+  border:1px solid rgba(201,162,74,.3);
+  background:#e9dfcf;box-shadow:0 18px 40px -22px rgba(23,53,42,.45);
+}
+.arch img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.04);transition:transform .7s var(--ease);
+}
+.card-body{display:grid;grid-template-rows:auto auto 1fr auto;gap:6px;padding-inline:4px}
+.card-meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 10px;min-height:20px}
+.card-meta .cat{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);white-space:nowrap}
+:root[lang="ar"] .card-meta .cat{letter-spacing:0;text-transform:none;font-size:.82rem}
+.card-meta .ar-name{font-family:var(--font-ar);color:var(--ivory-45);font-size:1rem;line-height:1;text-align:end}
+:root[lang="ar"] .card-meta .ar-name{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.85rem}
+.card h3{font-size:1.15rem;line-height:1.25}
+.card .desc{
+  color:var(--ivory-70);font-size:.9rem;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-cta{display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--gold-2);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+:root[lang="ar"] .card-cta{letter-spacing:0;text-transform:none;font-size:.95rem}
+.card-cta svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.card:hover .card-cta svg{transform:translateX(4px)}
+:root[lang="ar"] .card-cta svg{transform:scaleX(-1)}
+:root[lang="ar"] .card:hover .card-cta svg{transform:translateX(-4px) scaleX(-1)}
+@media (max-width:600px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card{padding:8px 8px 14px;gap:12px;border-radius:22px 22px 16px 16px}
+  .card .desc{display:none}
+  .card h3{font-size:1rem}
+  .card-meta .ar-name{font-size:.9rem}
+  .card-cta{font-size:.72rem;margin-top:4px}
+}
+.empty{color:var(--ivory-45);padding:40px 0;text-align:center}
+
+/* rituel */
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,40px);counter-reset:step}
+.step{
+  position:relative;padding:32px 28px 30px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--glass-2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  display:grid;gap:12px;align-content:start;
+  transition:transform .4s var(--ease),border-color .4s;
+}
+.step:hover{transform:translateY(-6px);border-color:var(--gold)}
+.step,.card,.commande .panel{box-shadow:0 24px 48px -32px rgba(23,53,42,.35)}
+.step::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  font-family:'Fraunces',serif;font-style:italic;font-size:2.4rem;color:var(--gold-2);line-height:1;
+  font-variation-settings:"opsz" 144;
+}
+.step h3{font-size:1.45rem}
+.step .when{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+:root[lang="ar"] .step .when{letter-spacing:0;text-transform:none;font-size:.95rem}
+.step ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--ivory-70)}
+.step li{display:flex;gap:10px;align-items:baseline}
+.step li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none;transform:translateY(-2px)}
+
+/* commande */
+.commande .panel{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,72px);
+  border:1px solid var(--line);border-radius:28px;
+  padding:clamp(28px,5vw,64px);
+  background:
+    radial-gradient(40% 60% at 100% 0%,rgba(232,160,180,.12),transparent),
+    radial-gradient(50% 70% at 0% 100%,rgba(201,162,74,.12),transparent),
+    var(--glass-2);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.commande h2{font-size:clamp(2rem,4vw,3.2rem);margin-block:16px 28px}
+.how{display:grid;gap:18px;margin-top:8px}
+.how div{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;color:var(--ivory-70)}
+.how b{color:var(--ivory);font-weight:500;display:block}
+.how svg{width:26px;height:26px;color:var(--gold-2);margin-top:2px}
+.commande .cta{display:grid;gap:14px;align-content:center}
+.note{font-size:.82rem;color:var(--ivory-45)}
+@media (max-width:820px){.commande .panel{grid-template-columns:1fr}}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ivory-45);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer .brand .latin{font-size:1.1rem}
+
+/* modal */
+dialog{
+  border:1px solid var(--line);border-radius:28px;padding:0;
+  background:var(--ground-2);color:var(--ivory);
+  width:min(920px,calc(100% - 32px));max-height:calc(100dvh - 32px);
+  overflow:auto;
+}
+dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
+.modal{display:grid;grid-template-columns:1fr 1.1fr}
+.modal .arch{border-radius:0;border:0;aspect-ratio:auto;min-height:320px}
+.modal-body{padding:clamp(24px,4vw,48px);display:grid;gap:16px;align-content:start}
+.modal h3{font-size:clamp(1.7rem,3vw,2.4rem)}
+.modal .ar-name{font-family:var(--font-ar);color:var(--gold-2);font-size:1.3rem}
+:root[lang="ar"] .modal .ar-name{font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ivory-70);font-size:1rem}
+.modal .desc{color:var(--ivory-70)}
+.modal .usage{display:grid;gap:6px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;font-size:.95rem}
+.modal .usage b{color:var(--gold-2);font-weight:500;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+:root[lang="ar"] .modal .usage b{letter-spacing:0;text-transform:none;font-size:.95rem}
+.modal-close{
+  position:absolute;top:14px;inset-inline-end:14px;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  background:var(--glass-2);display:grid;place-items:center;z-index:5;
+}
+.modal-close svg{width:18px;height:18px}
+@media (max-width:720px){.modal{grid-template-columns:1fr}.modal .arch{min-height:260px;max-height:46dvh}}
+
+
+/* ---------- motion layer ---------- */
+.sap{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,var(--gold-soft),var(--gold));transform-origin:0 50%;transform:scaleX(0)}
+:root[lang="ar"] .sap{transform-origin:100% 50%}
+/* mots qui montent */
+.split .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.02em .08em .12em;margin:-.02em -.08em -.12em}
+.split .w>span{display:inline-block;transform:translateY(115%);transition:transform .9s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
+.split.in .w>span{transform:none}
+/* parallaxe image dans l’arche */
+.card .arch img{transform:translateY(var(--py,0px)) scale(var(--s,1.08))}
+.card:hover .arch img{--s:1.14}
+.magnet{transition:transform .5s var(--ease)}
+.magnet.on{transition:transform .12s linear}
+@media (prefers-reduced-motion:reduce){
+  .split .w>span{transform:none;transition:none}
+  .card .arch img{--py:0px}
+}
+
+/* reveal */
+.js .reveal{transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .reveal:not(.in){opacity:0;transform:translateY(22px)}
+.js .reveal.d1{transition-delay:.08s}.js .reveal.d2{transition-delay:.16s}.js .reveal.d3{transition-delay:.24s}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee-track,.hero-scroll i{animation:none}
+  .js .reveal:not(.in){opacity:1;transform:none}
+  .card,.btn,.step{transition:none}
+}
+</style>
+
+</head>
+<body>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Chojairate Naturel">
+      <span class="latin">Chojairate</span>
+      <span class="arab" dir="rtl">شجيرات</span>
+    </a>
+    <nav aria-label="Navigation">
+      <ul class="nav-links">
+        <li><a href="#manifeste" data-fr="Le nom" data-ar="الاسم">Le nom</a></li>
+        <li><a href="#gamme" data-fr="La gamme" data-ar="المجموعة">La gamme</a></li>
+        <li><a href="#rituel" data-fr="Le rituel" data-ar="الطقس">Le rituel</a></li>
+        <li><a href="#commande" data-fr="Commander" data-ar="اطلبي">Commander</a></li>
+      </ul>
+    </nav>
+    <button class="lang" id="lang" type="button" aria-label="Changer de langue / تغيير اللغة">
+      <span class="on" data-l="fr">FR</span><span data-l="ar">AR</span>
+    </button>
+  </div>
+  <div class="sap" id="sap" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-fallback" aria-hidden="true"></div>
+  <div class="hero-ring" aria-hidden="true">
+    <svg viewBox="0 0 400 400" fill="none">
+      <circle class="r1" cx="200" cy="200" r="192" stroke="#C9A24A" stroke-width=".8" stroke-dasharray="2 9" opacity=".9"/>
+      <circle cx="200" cy="200" r="160" stroke="#C9A24A" stroke-width=".6" opacity=".55"/>
+      <g class="r2">
+        <circle cx="200" cy="200" r="122" stroke="#E8A0B4" stroke-width=".6" stroke-dasharray="60 240" opacity=".7"/>
+        <circle cx="322" cy="200" r="3" fill="#E6C77A"/>
+      </g>
+      <circle cx="200" cy="8" r="2.2" fill="#E6C77A"/>
+    </svg>
+  </div>
+  <div class="hero-vignette" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow" data-fr="Cosmétique naturelle · Argan, rose, encens" data-ar="مستحضرات طبيعية · أركان، ورد، لبان">Cosmétique naturelle · Argan, rose, encens</p>
+      <h1 id="hero-title" data-html-fr="Née d’un <em>arbuste.</em><br>Portée par l’Atlas." data-html-ar="وُلدت من <em>شجيرة.</em><br>وحملها الأطلس.">Née d’un <em>arbuste.</em><br>Portée par l’Atlas.</h1>
+      <p class="hero-sub" data-html-fr="<span class='arab' dir='rtl'>شجيرات</span> — Chojairate — veut dire « petit arbuste ». Chaque soin naît d’une seule plante : argan, rose, encens, lavande. Rien d’autre." data-html-ar="شجيرات تعني الشجيرة الصغيرة. كل عناية تولد من نبتة واحدة: أركان، ورد، لبان، لافندر. لا شيء آخر.">
+        <span class="arab" dir="rtl">شجيرات</span> — Chojairate — veut dire « petit arbuste ». Chaque soin naît d’une seule plante : argan, rose, encens, lavande. Rien d’autre.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-gold magnet" href="#gamme">
+          <span data-fr="Découvrir la gamme" data-ar="اكتشفي المجموعة">Découvrir la gamme</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+        <a class="btn btn-ghost wa-link" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+          <span data-fr="Commander sur WhatsApp" data-ar="اطلبي عبر واتساب">Commander sur WhatsApp</span>
+        </a>
+      </div>
+      <div class="hero-stage" id="hero-stage" aria-hidden="true"></div>
+      <div class="hero-strip" id="hero-strip">
+        <span class="hero-strip-label" data-fr="Trois soins pour commencer" data-ar="ثلاث منتجات للبداية">Trois soins pour commencer</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"><i></i><span data-fr="Laissez pousser" data-ar="دعيها تنمو">Laissez pousser</span></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee"></div>
+</div>
+
+<section class="section manifeste" id="manifeste" aria-labelledby="manifeste-title">
+  <div class="ghost" aria-hidden="true">شجيرات</div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-fr="Le nom" data-ar="الاسم">Le nom</p>
+      <h2 id="manifeste-title" data-html-fr="Un nom, <em>une racine.</em>" data-html-ar="اسم واحد، <em>جذر واحد.</em>">Un nom, <em>une racine.</em></h2>
+      <p class="lead" data-fr="En arabe, chojairate désigne les petits arbustes qui tiennent sur la roche sèche de l’Atlas. Ils donnent peu, mais ils donnent l’essentiel. Trois d’entre eux portent toute la gamme." data-ar="في العربية، الشجيرات هي النباتات الصغيرة التي تصمد على صخور الأطلس الجافة. تعطي القليل، لكنها تعطي الجوهر. ثلاث منها تحمل المجموعة كلها.">En arabe, chojairate désigne les petits arbustes qui tiennent sur la roche sèche de l’Atlas. Ils donnent peu, mais ils donnent l’essentiel. Trois d’entre eux portent toute la gamme.</p>
+    </div>
+    <div class="roots">
+      <article class="root reveal">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M24 44V22"/><path d="M24 22c-6-2-12-9-12-16 8 0 12 5 12 16Z"/><path d="M24 22c6-2 12-9 12-16-8 0-12 5-12 16Z"/><path d="M24 34c-4-1-8-5-8-10 5 0 8 4 8 10Z"/><path d="M24 34c4-1 8-5 8-10-5 0-8 4-8 10Z"/></svg>
+        <h3><span data-fr="L’argan" data-ar="الأركان">L’argan</span><span data-fr="شجرة الأركان" data-ar="l’arganier">شجرة الأركان</span></h3>
+        <p data-fr="L’arbre qui pousse là où rien ne pousse. Son huile, pressée à froid, nourrit crèmes, sérum, gommage et lait." data-ar="الشجرة التي تنمو حيث لا ينمو شيء. زيتها المعصور على البارد يغذي الكريمات والسيروم والمقشر والحليب.">L’arbre qui pousse là où rien ne pousse. Son huile, pressée à froid, nourrit crèmes, sérum, gommage et lait.</p>
+      </article>
+      <article class="root reveal d1">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="20" r="4"/><path d="M24 12c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8Z"/><path d="M24 6c8 0 14 6 14 14s-6 14-14 14-14-6-14-14S16 6 24 6Z"/><path d="M24 34v10M24 40c-3 0-6-2-6-5M24 42c3 0 6-2 6-5"/></svg>
+        <h3><span data-fr="La rose" data-ar="الورد">La rose</span><span data-fr="ورد قلعة مكونة" data-ar="rose de Kelaat M’Gouna">ورد قلعة مكونة</span></h3>
+        <p data-fr="Cueillie à l’aube dans la vallée des roses. Distillée en eau, macérée en huile, concentrée en essence." data-ar="تُقطف عند الفجر في وادي الورود. تُقطّر ماءً وتُنقع زيتاً وتُركّز عطراً.">Cueillie à l’aube dans la vallée des roses. Distillée en eau, macérée en huile, concentrée en essence.</p>
+      </article>
+      <article class="root reveal d2">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 30l6-12 6 12-6 6-6-6Z"/><path d="M12 36l12-24 12 24"/><path d="M24 6c2 3 2 6 0 8-2-2-2-5 0-8Z"/><path d="M14 42h20"/></svg>
+        <h3><span data-fr="L’encens" data-ar="اللبان">L’encens</span><span data-fr="اللبان — louban" data-ar="louban">اللبان — louban</span></h3>
+        <p data-fr="Larme de résine récoltée sur l’écorce. Raffermit la peau, lisse le grain, parfume la crème et le sérum." data-ar="دمعة راتنج تُجمع من اللحاء. تشد البشرة وتنعم ملمسها وتعطر الكريم والسيروم.">Larme de résine récoltée sur l’écorce. Raffermit la peau, lisse le grain, parfume la crème et le sérum.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gamme" aria-labelledby="gamme-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-fr="La gamme" data-ar="المجموعة">La gamme</p>
+      <h2 id="gamme-title" data-html-fr="Seize soins, <em>suspendus.</em>" data-html-ar="ستة عشر عناية، <em>معلّقة.</em>">Seize soins, <em>suspendus.</em></h2>
+      <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
+    </div>
+    <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="section rituel" id="rituel" aria-labelledby="rituel-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-fr="Le rituel" data-ar="الطقس">Le rituel</p>
+      <h2 id="rituel-title" data-html-fr="Trois gestes, <em>dans l’ordre.</em>" data-html-ar="ثلاث خطوات، <em>بالترتيب.</em>">Trois gestes, <em>dans l’ordre.</em></h2>
+      <p class="lead" data-fr="Un ordre simple pour que chaque soin fasse son travail : l’eau ouvre, l’huile scelle, le gommage renouvelle." data-ar="ترتيب بسيط ليقوم كل منتج بعمله: الماء يفتح، الزيت يغلق، والمقشر يجدد.">Un ordre simple pour que chaque soin fasse son travail : l’eau ouvre, l’huile scelle, le gommage renouvelle.</p>
+    </div>
+    <div class="steps" id="steps">
+      <article class="step reveal">
+        <p class="when" data-fr="Matin" data-ar="الصباح">Matin</p>
+        <h3 data-fr="Réveiller" data-ar="الإيقاظ">Réveiller</h3>
+        <ul>
+          <li data-fr="Eau de rose distillée, en brume" data-ar="ماء الورد المقطر، رذاذاً">Eau de rose distillée, en brume</li>
+          <li data-fr="Sérum encens & argan, 3 gouttes" data-ar="سيروم اللبان والأركان، 3 قطرات">Sérum encens & argan, 3 gouttes</li>
+          <li data-fr="Crème d’argan ou crème à l’encens" data-ar="كريم الأركان أو كريم اللبان">Crème d’argan ou crème à l’encens</li>
+        </ul>
+      </article>
+      <article class="step reveal d1">
+        <p class="when" data-fr="Soir" data-ar="المساء">Soir</p>
+        <h3 data-fr="Défaire" data-ar="التنظيف">Défaire</h3>
+        <ul>
+          <li data-fr="Lait démaquillant, sur coton" data-ar="حليب مزيل المكياج، على قطن">Lait démaquillant, sur coton</li>
+          <li data-fr="Huile de rose ou huile de graine noire" data-ar="زيت الورد أو زيت الحبة السوداء">Huile de rose ou huile de graine noire</li>
+          <li data-fr="Lait pour le corps, après la douche" data-ar="حليب الجسم، بعد الاستحمام">Lait pour le corps, après la douche</li>
+        </ul>
+      </article>
+      <article class="step reveal d2">
+        <p class="when" data-fr="Une fois par semaine" data-ar="مرة في الأسبوع">Une fois par semaine</p>
+        <h3 data-fr="Renouveler" data-ar="التجديد">Renouveler</h3>
+        <ul>
+          <li data-fr="Gommage à l’argan, mouvements circulaires" data-ar="مقشر الأركان، بحركات دائرية">Gommage à l’argan, mouvements circulaires</li>
+          <li data-fr="Masque argan & rose, 10 minutes" data-ar="قناع الأركان والورد، 10 دقائق">Masque argan & rose, 10 minutes</li>
+          <li data-fr="Extrait d’herbes sur le cuir chevelu" data-ar="مستخلص الأعشاب على فروة الرأس">Extrait d’herbes sur le cuir chevelu</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section commande" id="commande" aria-labelledby="commande-title">
+  <div class="wrap">
+    <div class="panel reveal">
+      <div>
+        <p class="eyebrow" data-fr="Commander" data-ar="الطلب">Commander</p>
+        <h2 id="commande-title" data-html-fr="Un message, <em>et c’est parti.</em>" data-html-ar="رسالة واحدة، <em>وينطلق الطلب.</em>">Un message, <em>et c’est parti.</em></h2>
+        <div class="how">
+          <div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            <p><b data-fr="Choisissez vos soins" data-ar="اختاري منتجاتك">Choisissez vos soins</b><span data-fr="Depuis chaque fiche, le bouton pré-remplit le message." data-ar="من كل بطاقة، يملأ الزر الرسالة مسبقاً.">Depuis chaque fiche, le bouton pré-remplit le message.</span></p>
+          </div>
+          <div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>
+            <p><b data-fr="Envoyez sur WhatsApp" data-ar="أرسلي عبر واتساب">Envoyez sur WhatsApp</b><span data-fr="On confirme la disponibilité et le total dans la journée." data-ar="نؤكد التوفر والمجموع في نفس اليوم.">On confirme la disponibilité et le total dans la journée.</span></p>
+          </div>
+          <div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+            <p><b data-fr="Livraison et paiement à la réception" data-ar="التوصيل والدفع عند الاستلام">Livraison et paiement à la réception</b><span data-fr="Partout au Maroc. Vous payez le livreur, rien avant." data-ar="في جميع أنحاء المغرب. تدفعين للموزع، لا شيء قبل ذلك.">Partout au Maroc. Vous payez le livreur, rien avant.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn btn-gold wa-link magnet" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+          <span data-fr="Ouvrir WhatsApp" data-ar="فتح واتساب">Ouvrir WhatsApp</span>
+        </a>
+        <a class="btn btn-ghost" href="#gamme"><span data-fr="Revoir la gamme" data-ar="العودة إلى المجموعة">Revoir la gamme</span></a>
+        <p class="note" data-fr="Réponse en général sous 24 h, du lundi au samedi." data-ar="الرد عادة خلال 24 ساعة، من الاثنين إلى السبت.">Réponse en général sous 24 h, du lundi au samedi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="latin">Chojairate Naturel</span><span class="arab" dir="rtl">شجيرات</span></a>
+    <p data-fr="© 2026 Chojairate Naturel · Cosmétique naturelle · Maroc" data-ar="© 2026 شجيرات الطبيعية · مستحضرات طبيعية · المغرب">© 2026 Chojairate Naturel · Cosmétique naturelle · Maroc</p>
+  </div>
+</footer>
+
+<dialog id="modal" aria-labelledby="modal-title">
+  <button class="modal-close" id="modal-close" type="button" aria-label="Fermer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="modal">
+    <div class="arch"><img id="modal-img" src="" alt=""></div>
+    <div class="modal-body">
+      <p class="eyebrow" id="modal-cat"></p>
+      <h3 id="modal-title"></h3>
+      <p class="ar-name" id="modal-ar"></p>
+      <p class="desc" id="modal-desc"></p>
+      <div class="usage"><b data-fr="Utilisation" data-ar="طريقة الاستعمال">Utilisation</b><span id="modal-usage"></span></div>
+      <a class="btn btn-gold" id="modal-wa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+        <span data-fr="Commander ce soin" data-ar="اطلبي هذا المنتج">Commander ce soin</span>
+      </a>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+/* ====================== CONFIG ====================== */
+var WHATSAPP = '212600000000'; // numéro de la cliente, format international sans +
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var root = document.documentElement;
+root.classList.add('js');
+
+/* ====================== DATA ====================== */
+var CATS = {
+  all:   {fr:'Tout',                ar:'الكل'},
+  he:    {fr:'Huiles essentielles', ar:'زيوت عطرية'},
+  hv:    {fr:'Huiles végétales',    ar:'زيوت نباتية'},
+  visage:{fr:'Visage',              ar:'الوجه'},
+  corps: {fr:'Corps',               ar:'الجسم'},
+  eaux:  {fr:'Eaux & extraits',     ar:'مياه ومستخلصات'}
+};
+var P = [
+ {id:'creme-argan',cat:'visage',fr:'Crème d’argan',ar:'كريم أركان',
+  dfr:'Crème riche à l’huile d’argan pressée à froid. Nourrit, apaise et redonne souplesse aux peaux sèches.',
+  dar:'كريم غني بزيت الأركان المعصور على البارد. يغذي ويهدئ ويعيد المرونة للبشرة الجافة.',
+  ufr:'Matin et soir, sur peau propre, en massage léger.',uar:'صباحاً ومساءً على بشرة نظيفة، بتدليك خفيف.'},
+ {id:'creme-encens',cat:'visage',fr:'Crème à l’encens',ar:'كريم اللبان',
+  dfr:'Résine d’encens et beurres végétaux. Raffermit, lisse les ridules et unifie le teint.',
+  dar:'راتنج اللبان وزبدات نباتية. يشد البشرة ويخفف التجاعيد الدقيقة ويوحد لون البشرة.',
+  ufr:'Le soir, après le sérum, sur visage et cou.',uar:'مساءً بعد السيروم، على الوجه والعنق.'},
+ {id:'serum-cutane-a-l-encens-et-argan',cat:'visage',fr:'Sérum encens & argan',ar:'سيروم اللبان والأركان',
+  dfr:'Concentré anti-âge : encens raffermissant, argan nourrissant, absorption rapide.',
+  dar:'مركّز مضاد للشيخوخة: لبان مشدود، أركان مغذٍ، امتصاص سريع.',
+  ufr:'3 gouttes, matin et soir, avant la crème.',uar:'3 قطرات صباحاً ومساءً قبل الكريم.'},
+ {id:'masque-argan-rose',cat:'visage',fr:'Masque argan & rose',ar:'قناع الأركان والورد',
+  dfr:'Argile, huile d’argan et pétales de rose. Dix minutes pour un teint reposé.',
+  dar:'طين وزيت أركان وبتلات الورد. عشر دقائق لبشرة مرتاحة.',
+  ufr:'Une fois par semaine, 10 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، 10 دقائق، ثم يُشطف بماء فاتر.'},
+ {id:'lait-demaquillant',cat:'visage',fr:'Lait démaquillant',ar:'حليب مزيل المكياج',
+  dfr:'Démaquille sans agresser. Argan et eau de rose, pour toutes les peaux.',
+  dar:'يزيل المكياج دون تهيج. أركان وماء الورد، لجميع أنواع البشرة.',
+  ufr:'Le soir, sur coton, puis brume d’eau de rose.',uar:'مساءً على قطن، ثم رذاذ ماء الورد.'},
+ {id:'gommage-a-l-argan-chojairate',cat:'visage',fr:'Gommage à l’argan',ar:'مقشر الأركان',
+  dfr:'Coques d’argan finement broyées et huile d’argan. Exfolie en douceur, révèle l’éclat.',
+  dar:'قشور الأركان المطحونة بدقة مع زيت الأركان. يقشر بلطف ويكشف الإشراق.',
+  ufr:'Une fois par semaine, sur peau humide, en cercles.',uar:'مرة في الأسبوع على بشرة رطبة، بحركات دائرية.'},
+ {id:'lait-pour-le-corps',cat:'corps',fr:'Lait pour le corps',ar:'حليب الجسم',
+  dfr:'Texture légère, hydratation longue durée. Peau douce, parfum de rose et d’encens.',
+  dar:'قوام خفيف وترطيب طويل الأمد. بشرة ناعمة وعطر الورد واللبان.',
+  ufr:'Après la douche, sur peau encore tiède.',uar:'بعد الاستحمام، على بشرة لا تزال دافئة.'},
+ {id:'eau-de-rose',cat:'eaux',fr:'Eau de rose distillée',ar:'ماء الورد المقطر',
+  dfr:'Hydrolat de rose de Kelaat M’Gouna. Tonifie, rafraîchit, resserre les pores.',
+  dar:'ماء ورد مقطر من قلعة مكونة. ينشط وينعش ويشد المسام.',
+  ufr:'En brume, matin et soir, ou pour fixer le maquillage.',uar:'رذاذاً صباحاً ومساءً، أو لتثبيت المكياج.'},
+ {id:'extrait-herbes',cat:'eaux',fr:'Extrait d’herbes',ar:'مستخلص الأعشاب',
+  dfr:'Macérat de plantes de l’Atlas. Purifie le cuir chevelu et calme les irritations.',
+  dar:'منقوع أعشاب من الأطلس. ينقي فروة الرأس ويهدئ التهيج.',
+  ufr:'Sur cuir chevelu sec, laisser poser 20 minutes avant le shampoing.',uar:'على فروة رأس جافة، يُترك 20 دقيقة قبل الشامبو.'},
+ {id:'huile-de-rose',cat:'hv',fr:'Huile de rose',ar:'زيت الورد',
+  dfr:'Pétales de rose macérés dans une huile végétale. Adoucit, illumine, parfume délicatement.',
+  dar:'بتلات الورد منقوعة في زيت نباتي. ينعم ويضيء ويعطر بلطف.',
+  ufr:'Quelques gouttes le soir, visage ou décolleté.',uar:'بضع قطرات مساءً على الوجه أو الصدر.'},
+ {id:'huile-de-graine-noire',cat:'hv',fr:'Huile de graine noire',ar:'زيت الحبة السوداء',
+  dfr:'Nigelle pressée à froid. Apaise rougeurs et eczéma, fortifie cheveux et ongles.',
+  dar:'حبة سوداء معصورة على البارد. تهدئ الاحمرار والأكزيما وتقوي الشعر والأظافر.',
+  ufr:'Sur les zones sèches, ou en bain d’huile capillaire.',uar:'على المناطق الجافة، أو كحمام زيت للشعر.'},
+ {id:'huile-essentiele-de-rose',cat:'he',fr:'Huile essentielle de rose',ar:'زيت الورد العطري',
+  dfr:'Précieuse et régénérante. Quelques gouttes dans votre crème pour les peaux matures.',
+  dar:'ثمين ومجدد. بضع قطرات في كريمك للبشرة الناضجة.',
+  ufr:'2 gouttes diluées dans une crème ou une huile végétale. Jamais pure.',uar:'قطرتان مخففتان في كريم أو زيت نباتي. لا يُستعمل نقياً.'},
+ {id:'huile-essentielle-de-lavande',cat:'he',fr:'Huile essentielle de lavande',ar:'زيت اللافندر',
+  dfr:'Apaise, aide la peau à cicatriser, favorise le sommeil.',
+  dar:'يهدئ ويساعد البشرة على الالتئام ويحسن النوم.',
+  ufr:'2 gouttes sur l’oreiller, ou diluée dans le bain.',uar:'قطرتان على الوسادة، أو مخففاً في الحمام.'},
+ {id:'huile-menthe',cat:'he',fr:'Huile essentielle de menthe',ar:'زيت النعناع',
+  dfr:'Fraîcheur immédiate. Soulage tensions et maux de tête, rafraîchit le cuir chevelu.',
+  dar:'انتعاش فوري. يخفف التوتر والصداع وينعش فروة الرأس.',
+  ufr:'1 goutte diluée sur les tempes. Éviter le contour des yeux.',uar:'قطرة مخففة على الصدغين. يُتجنب محيط العينين.'},
+ {id:'huile-d-arbre-a-the',cat:'he',fr:'Huile essentielle d’arbre à thé',ar:'زيت شجرة الشاي',
+  dfr:'Purifiante et assainissante. Cible imperfections et boutons.',
+  dar:'منقٍّ ومطهر. يستهدف الشوائب والبثور.',
+  ufr:'1 goutte localement, sur coton-tige, matin et soir.',uar:'قطرة موضعياً بعود قطن، صباحاً ومساءً.'},
+ {id:'huile-de-romarain',cat:'he',fr:'Huile essentielle de romarin',ar:'زيت إكليل الجبل',
+  dfr:'Stimule la pousse des cheveux et tonifie le cuir chevelu.',
+  dar:'يحفز نمو الشعر وينشط فروة الرأس.',
+  ufr:'5 gouttes dans une huile végétale, en massage du cuir chevelu.',uar:'5 قطرات في زيت نباتي، بتدليك فروة الرأس.'}
+];
+var UI = {
+  order:{fr:'Voir la fiche',ar:'عرض البطاقة'},
+  empty:{fr:'Aucun soin dans cette catégorie.',ar:'لا توجد منتجات في هذه الفئة.'},
+  waHello:{fr:'Bonjour Chojairate, je souhaite commander : ',ar:'مرحباً شجيرات، أود طلب: '},
+  waGeneric:{fr:'Bonjour Chojairate, je souhaite passer une commande.',ar:'مرحباً شجيرات، أود تقديم طلب.'},
+  close:{fr:'Fermer',ar:'إغلاق'},
+  marquee:{fr:['Argan','Rose','Encens','Lavande','Nigelle','Menthe','Romarin','Arbre à thé','Kelaat M’Gouna','Atlas'],
+           ar:['أركان','ورد','لبان','لافندر','حبة سوداء','نعناع','إكليل الجبل','شجرة الشاي','قلعة مكونة','الأطلس']}
+};
+
+/* ====================== I18N ====================== */
+var lang = 'fr';
+try{ var saved = localStorage.getItem('chj-lang'); if(saved==='ar'||saved==='fr') lang = saved; }catch(e){}
+var filter = 'all';
+
+function wa(text){ return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(text); }
+
+function applyLang(){
+  root.setAttribute('lang', lang);
+  root.setAttribute('dir', lang==='ar' ? 'rtl' : 'ltr');
+  document.querySelectorAll('[data-fr]').forEach(function(el){ el.textContent = el.getAttribute('data-'+lang); });
+  document.querySelectorAll('[data-html-fr]').forEach(function(el){ el.innerHTML = el.getAttribute('data-html-'+lang); });
+  document.querySelectorAll('#lang span').forEach(function(s){ s.classList.toggle('on', s.getAttribute('data-l')===lang); });
+  document.querySelectorAll('.wa-link').forEach(function(a){ a.href = wa(UI.waGeneric[lang]); });
+  document.getElementById('modal-close').setAttribute('aria-label', UI.close[lang]);
+  renderMarquee(); renderFilters(); renderGrid(); renderStrip();
+  if(window.splitHeadings) window.splitHeadings();
+  try{ localStorage.setItem('chj-lang', lang); }catch(e){}
+}
+
+/* 3 soins vedettes dans le hero */
+var FEATURED = ['creme-argan','huile-de-rose','serum-cutane-a-l-encens-et-argan'];
+function renderStrip(){
+  var box = document.getElementById('hero-strip');
+  box.querySelectorAll('.mini').forEach(function(n){ n.remove(); });
+  FEATURED.forEach(function(id){
+    var p = P.filter(function(x){ return x.id===id; })[0]; if(!p) return;
+    var b = document.createElement('button');
+    b.type='button'; b.className='mini';
+    b.innerHTML = '<span class="arch"><img src="img/'+p.id+'.webp" width="900" height="900" alt=""></span>'+
+      '<span><b>'+(lang==='ar'?p.ar:p.fr)+'</b><small>'+CATS[p.cat][lang]+'</small></span>';
+    b.addEventListener('click', function(){ openModal(p); });
+    box.appendChild(b);
+  });
+}
+document.getElementById('lang').addEventListener('click', function(){ lang = lang==='fr'?'ar':'fr'; applyLang(); });
+
+function renderMarquee(){
+  var words = UI.marquee[lang], html='';
+  for(var r=0;r<2;r++) words.forEach(function(w){ html += '<span>'+w+'</span>'; });
+  document.getElementById('marquee').innerHTML = html;
+}
+
+/* ====================== GAMME ====================== */
+function renderFilters(){
+  var box = document.getElementById('filters'); box.innerHTML='';
+  Object.keys(CATS).forEach(function(k){
+    var b = document.createElement('button');
+    b.type='button'; b.className='chip'; b.textContent = CATS[k][lang];
+    b.setAttribute('aria-pressed', String(filter===k));
+    b.addEventListener('click', function(){ filter=k; renderFilters(); renderGrid(); });
+    box.appendChild(b);
+  });
+}
+var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+function renderGrid(){
+  var grid = document.getElementById('grid'); grid.innerHTML=''; visibleCards.clear();
+  var list = P.filter(function(p){ return filter==='all' || p.cat===filter; });
+  if(!list.length){ grid.innerHTML = '<p class="empty">'+UI.empty[lang]+'</p>'; return; }
+  list.forEach(function(p,i){
+    var b = document.createElement('button');
+    b.type='button'; b.className='card reveal'; b.setAttribute('data-id', p.id);
+    b.innerHTML =
+      '<div class="arch"><img loading="lazy" width="900" height="900" src="img/'+p.id+'.webp" alt="'+(lang==='ar'?p.ar:p.fr)+'"></div>'+
+      '<div class="card-body">'+
+      '<div class="card-meta"><span class="cat">'+CATS[p.cat][lang]+'</span><bdi class="ar-name">'+(lang==='ar'?p.fr:p.ar)+'</bdi></div>'+
+      '<h3>'+(lang==='ar'?p.ar:p.fr)+'</h3>'+
+      '<p class="desc">'+(lang==='ar'?p.dar:p.dfr)+'</p>'+
+      '<span class="card-cta">'+UI.order[lang]+arrow+'</span></div>';
+    b.style.transitionDelay = ((i%8)*40)+'ms'; /* entrée décalée */
+    b.addEventListener('click', function(){ openModal(p); });
+    attachTilt(b);
+    grid.appendChild(b);
+    observeReveal(b); if(cardIO) cardIO.observe(b);
+  });
+}
+
+/* tilt */
+var canHover = window.matchMedia('(hover:hover)').matches && !reduced;
+var canTilt = canHover && window.matchMedia('(min-width:1024px)').matches;
+function attachTilt(card){
+  if(!canTilt) return;
+  card.addEventListener('pointermove', function(e){
+    var r = card.getBoundingClientRect();
+    var x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+    card.style.transform = 'perspective(900px) rotateX('+(-y*4)+'deg) rotateY('+(x*4)+'deg) translateY(-4px)';
+  });
+  card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+}
+
+/* modal */
+var modal = document.getElementById('modal');
+function openModal(p){
+  var img = document.getElementById('modal-img');
+  img.src = 'img/'+p.id+'.webp'; img.alt = lang==='ar'?p.ar:p.fr;
+  document.getElementById('modal-cat').textContent = CATS[p.cat][lang];
+  document.getElementById('modal-title').textContent = lang==='ar'?p.ar:p.fr;
+  var arEl = document.getElementById('modal-ar');
+  arEl.textContent = lang==='ar'?p.fr:p.ar; arEl.setAttribute('dir', lang==='ar'?'ltr':'rtl');
+  document.getElementById('modal-desc').textContent = lang==='ar'?p.dar:p.dfr;
+  document.getElementById('modal-usage').textContent = lang==='ar'?p.uar:p.ufr;
+  document.getElementById('modal-wa').href = wa(UI.waHello[lang] + (lang==='ar'?p.ar:p.fr) + ' ('+(lang==='ar'?p.fr:p.ar)+')');
+  if(typeof modal.showModal==='function') modal.showModal(); else modal.setAttribute('open','');
+}
+document.getElementById('modal-close').addEventListener('click', function(){ modal.close(); });
+modal.addEventListener('click', function(e){ if(e.target===modal) modal.close(); });
+
+/* reveal */
+var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+  entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+},{rootMargin:'0px 0px -8% 0px',threshold:.08}) : null;
+function observeReveal(el){ if(io) io.observe(el); else el.classList.add('in'); }
+window.observeReveal = observeReveal;
+var visibleCards = new Set();
+var cardIO = ('IntersectionObserver' in window) ? new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting) visibleCards.add(e.target); else visibleCards.delete(e.target); }); }) : null;
+window.visibleCards = visibleCards;
+document.querySelectorAll('.reveal').forEach(observeReveal);
+
+/* cursor glow */
+if(canHover){
+  var glow = document.getElementById('glow'), gx=70, gy=20, tx=70, ty=20;
+  window.addEventListener('pointermove', function(e){ tx = e.clientX/window.innerWidth*100; ty = e.clientY/window.innerHeight*100; },{passive:true});
+  (function loopGlow(){ gx += (tx-gx)*.06; gy += (ty-gy)*.06; glow.style.setProperty('--gx',gx+'%'); glow.style.setProperty('--gy',gy+'%'); requestAnimationFrame(loopGlow); })();
+}
+
+applyLang();
+
+
+/* ====================== MOTION : titres, progression, parallaxes ====================== */
+(function motion(){
+  var winH = window.innerHeight;
+  var sap = document.getElementById('sap');
+  var ghost = document.querySelector('.ghost'), manif = document.getElementById('manifeste');
+  var hoverable = window.matchMedia('(hover:hover)').matches;
+
+  /* --- mots qui montent --- */
+  var splitIO = ('IntersectionObserver' in window) ? new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); splitIO.unobserve(e.target); } });
+  },{threshold:.3}) : null;
+  function splitWords(el){
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function(t){
+            if(!t) return;
+            if(/^\s+$/.test(t)){ frag.appendChild(document.createTextNode(t)); return; }
+            var w = document.createElement('span'); w.className='w';
+            var i = document.createElement('span'); i.textContent=t; w.appendChild(i); frag.appendChild(w);
+          });
+          node.replaceChild(frag, n);
+        }else if(n.nodeType===1 && n.tagName!=='BR'){ walk(n); }
+      });
+    }
+    walk(el);
+    el.querySelectorAll('.w > span').forEach(function(sp,i){ sp.style.setProperty('--i', i); });
+    el.classList.add('split');
+  }
+  window.splitHeadings = function(){
+    document.querySelectorAll('.hero h1, .section h2').forEach(function(h){
+      if(h.classList.contains('split')) return;
+      splitWords(h);
+      if(h.closest('.hero')){ requestAnimationFrame(function(){ h.classList.add('in'); }); setTimeout(function(){ h.classList.add('in'); }, 400); }
+      else if(splitIO) splitIO.observe(h); else h.classList.add('in');
+    });
+  };
+  window.splitHeadings();
+
+  /* --- boutons magnétiques --- */
+  var magnets = Array.prototype.slice.call(document.querySelectorAll('.magnet'));
+  var px = -1, py = -1;
+  window.addEventListener('pointermove', function(e){ px = e.clientX; py = e.clientY; },{passive:true});
+  function magnetize(){
+    if(!hoverable) return;
+    magnets.forEach(function(b){
+      var r = b.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height/2;
+      var dx = px - cx, dy = py - cy, dist = Math.hypot(dx, dy), reach = Math.max(r.width, r.height)*.9;
+      if(px >= 0 && dist < reach){ b.classList.add('on'); b.style.transform = 'translate('+(dx*.28)+'px,'+(dy*.28)+'px)'; }
+      else if(b.classList.contains('on')){ b.classList.remove('on'); b.style.transform = ''; }
+    });
+  }
+
+  var running = false;
+  function loop(){
+    if(!running) return;
+    requestAnimationFrame(loop);
+    var y = window.scrollY || 0;
+    var max = document.documentElement.scrollHeight - winH;
+    sap.style.transform = 'scaleX('+(max > 0 ? Math.min(1, y/max) : 0)+')';
+    if(ghost && manif){ var r = manif.getBoundingClientRect(); if(r.bottom > 0 && r.top < winH){ var p = (winH - r.top)/(winH + r.height); ghost.style.transform = 'translateY(calc(-50% + '+((p-.5)*-160).toFixed(1)+'px)) rotate('+((p-.5)*5).toFixed(2)+'deg)'; } }
+    if(window.visibleCards) window.visibleCards.forEach(function(c){ var cr = c.getBoundingClientRect(); var cp = (winH - cr.top)/(winH + cr.height); c.style.setProperty('--py', ((cp-.5)*-22).toFixed(1)+'px'); });
+    magnetize();
+  }
+  function start(){ if(!running){ running = true; loop(); } }
+  function stop(){ running = false; }
+  window.addEventListener('resize', function(){ winH = window.innerHeight; });
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+  if(reduced){ var upd = function(){ var m = document.documentElement.scrollHeight - winH; sap.style.transform='scaleX('+(m>0?window.scrollY/m:0)+')'; }; upd(); window.addEventListener('scroll', upd, {passive:true}); }
+  else start();
+})();
+
+/* ====================== THREE.JS : L’ARBUSTE ====================== */
+(function shrub(){
+  if(!window.THREE) return;
+  var canvas = document.getElementById('scene');
+  var hero = document.querySelector('.hero');
+  var renderer;
+  try{ renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true, powerPreference:'high-performance'}); }
+  catch(e){ return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 820 ? 1.5 : 1.75));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0xe4d9c4, 0.03);
+  var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
+  camera.position.set(0, 0.6, 10.5);
+
+  /* éclairage photo : ciel chaud, key haut-gauche, fill froid, rim rose, rebond or */
+  scene.add(new THREE.HemisphereLight(0xfff4dc, 0xcdbf9f, 0.75));
+  var key = new THREE.DirectionalLight(0xffe2b0, 3.2); key.position.set(-4, 7, 5); scene.add(key); scene.add(key.target);
+  key.castShadow = true; key.shadow.mapSize.set(window.innerWidth < 820 ? 1024 : 1536, window.innerWidth < 820 ? 1024 : 1536); key.shadow.bias = -0.0006; key.shadow.normalBias = .02; key.shadow.radius = 3;
+  key.shadow.camera.near = 1; key.shadow.camera.far = 30; key.shadow.camera.left = key.shadow.camera.bottom = -4.2; key.shadow.camera.right = key.shadow.camera.top = 4.2;
+  /* environnement HDR procédural : ciel chaud, sol vert sombre, soleil bas => reflets crédibles sur feuilles et écorce */
+  (function env(){
+    var es = new THREE.Scene();
+    var sky = new THREE.Mesh(new THREE.SphereGeometry(50, 32, 16), new THREE.ShaderMaterial({side:THREE.BackSide,
+      uniforms:{}, vertexShader:'varying vec3 vP; void main(){ vP = position; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+      fragmentShader:'varying vec3 vP; void main(){ float h = normalize(vP).y; vec3 top = vec3(0.95,0.82,0.58); vec3 mid = vec3(0.35,0.42,0.30); vec3 bot = vec3(0.03,0.08,0.05); vec3 c = h > 0.0 ? mix(mid, top, pow(h, 0.6)) : mix(mid, bot, pow(-h, 0.5)); gl_FragColor = vec4(c*1.6, 1.0); }'}));
+    es.add(sky);
+    var sun = new THREE.Mesh(new THREE.SphereGeometry(4, 16, 16), new THREE.MeshBasicMaterial({color:0xffffff})); sun.material.color.setRGB(14, 12, 8); sun.position.set(-18, 24, 20); es.add(sun);
+    var rimS = new THREE.Mesh(new THREE.SphereGeometry(3, 16, 16), new THREE.MeshBasicMaterial({color:0xffffff})); rimS.material.color.setRGB(4, 2.2, 3); rimS.position.set(20, 10, -22); es.add(rimS);
+    var pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(es, .04).texture; pm.dispose();
+  })();
+  var fill = new THREE.DirectionalLight(0x8fb09a, 0.55); fill.position.set(5, 2, -2); scene.add(fill);
+  var rim = new THREE.PointLight(0xe8a0b4, 30, 16, 2); rim.position.set(3.5, 3.5, -3); scene.add(rim);
+  var bounce = new THREE.PointLight(0xc9a24a, 7, 7, 2); bounce.position.set(0, -1.4, 2.2); scene.add(bounce);
+
+  var group = new THREE.Group(); scene.add(group);
+  var mobile = window.innerWidth < 820;
+  window.__chj = {renderer:renderer, scene:scene, camera:camera, group:group};
+  var LERP = /instant/.test(location.search) ? 1 : .07; /* ?instant = audit des positions clés sans lissage */
+  var BASE_Y = -1.75;
+
+  /* ---- textures procédurales ---- */
+  function leafTexture(){
+    /* feuille d’arganier : spatulée (étroite à la base, large aux 2/3), vert olive mat, marbrures fines */
+    var c = document.createElement('canvas'); c.width = 256; c.height = 512; var g = c.getContext('2d');
+    function outline(){ g.beginPath(); g.moveTo(128,506); g.bezierCurveTo(150,430,236,300,232,190); g.bezierCurveTo(228,90,170,20,128,6); g.bezierCurveTo(86,20,28,90,24,190); g.bezierCurveTo(20,300,106,430,128,506); g.closePath(); }
+    outline();
+    var grad = g.createLinearGradient(0,0,0,512);
+    grad.addColorStop(0,'#8ea27a'); grad.addColorStop(.45,'#6f8a63'); grad.addColorStop(1,'#4f6a4a');
+    g.fillStyle = grad; g.fill();
+    g.save(); outline(); g.clip();
+    /* marbrures */
+    for(var i=0;i<260;i++){ var x=Math.random()*256, y=Math.random()*512, r=3+Math.random()*9; g.fillStyle = Math.random()<.5 ? 'rgba(180,200,150,'+(Math.random()*.14)+')' : 'rgba(40,70,40,'+(Math.random()*.16)+')'; g.beginPath(); g.ellipse(x,y,r,r*.5,Math.random()*3,0,Math.PI*2); g.fill(); }
+    /* moitié gauche légèrement plus sombre (relief) */
+    var sh = g.createLinearGradient(0,0,256,0); sh.addColorStop(0,'rgba(20,40,25,.30)'); sh.addColorStop(.5,'rgba(20,40,25,0)'); sh.addColorStop(1,'rgba(255,255,240,.10)'); g.fillStyle = sh; g.fillRect(0,0,256,512);
+    /* nervures */
+    g.strokeStyle = 'rgba(214,222,190,.55)'; g.lineWidth = 3; g.beginPath(); g.moveTo(128,500); g.quadraticCurveTo(126,260,128,14); g.stroke();
+    g.strokeStyle = 'rgba(214,222,190,.22)'; g.lineWidth = 1.2;
+    for(var y=70; y<470; y+=34){ g.beginPath(); g.moveTo(128,y); g.quadraticCurveTo(90,y-14,40,y-58); g.moveTo(128,y); g.quadraticCurveTo(166,y-14,216,y-58); g.stroke(); }
+    /* bord légèrement plus clair */
+    g.strokeStyle = 'rgba(200,215,170,.35)'; g.lineWidth = 2; outline(); g.stroke();
+    g.restore();
+    var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+  }
+  function barkTexture(){
+    var c = document.createElement('canvas'); c.width = 256; c.height = 512; var g = c.getContext('2d');
+    g.fillStyle = '#5a4230'; g.fillRect(0,0,256,512);
+    for(var i=0;i<900;i++){ /* grain */
+      var x = Math.random()*256, y = Math.random()*512, h = 8+Math.random()*90;
+      g.strokeStyle = Math.random()<.55 ? 'rgba(25,14,8,'+(.12+Math.random()*.35)+')' : 'rgba(170,135,100,'+(.06+Math.random()*.16)+')';
+      g.lineWidth = .5+Math.random()*2.2; g.beginPath(); g.moveTo(x,y); g.lineTo(x+(Math.random()-.5)*6, y+h); g.stroke();
+    }
+    for(var k=0;k<26;k++){ /* crevasses */
+      var x0 = Math.random()*256, y0 = Math.random()*512; g.strokeStyle = 'rgba(18,10,6,.7)'; g.lineWidth = 1.5+Math.random()*2.5;
+      g.beginPath(); g.moveTo(x0,y0); for(var j=0;j<6;j++){ x0 += (Math.random()-.5)*16; y0 += 25+Math.random()*30; g.lineTo(x0,y0); } g.stroke();
+    }
+    var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1,3); t.anisotropy = 4; return t;
+  }
+  function shadowTexture(){
+    var c = document.createElement('canvas'); c.width = c.height = 256; var g = c.getContext('2d');
+    var r = g.createRadialGradient(128,128,10,128,128,128); r.addColorStop(0,'rgba(0,0,0,.75)'); r.addColorStop(.5,'rgba(0,0,0,.28)'); r.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle = r; g.fillRect(0,0,256,256); return new THREE.CanvasTexture(c);
+  }
+
+  /* ---- branches : tubes coniques fusionnés en une seule géométrie ---- */
+  /* textures photo CC0 (ambientCG Bark012 / LeafSet001) */
+  var TL = new THREE.TextureLoader();
+  function tex(url, srgb, rep){ var t = TL.load(url); if(srgb) t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; if(rep){ t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep[0], rep[1]); } return t; }
+  var barkC = tex('tex/bark-color.webp', true, [1,3]), barkN = tex('tex/bark-normal.webp', false, [1,3]), barkR = tex('tex/bark-rough.webp', false, [1,3]);
+  var branchMat = new THREE.MeshStandardMaterial({map:barkC, normalMap:barkN, normalScale:new THREE.Vector2(.9,.9), roughnessMap:barkR, roughness:1, metalness:0, color:0xb9a894, envMapIntensity:.3});
+  var leafSlots = [], budSlots = [], resinSlots = [], parts = [];
+  var UP = new THREE.Vector3(0,1,0);
+  function taperedTube(pts, r0, r1){
+    var curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal', .6);
+    var tub = 7, rad = 6;
+    var geo = new THREE.TubeGeometry(curve, tub, r0, rad, false);
+    var pos = geo.attributes.position, v = new THREE.Vector3(), cpt = new THREE.Vector3();
+    for(var i=0;i<=tub;i++){
+      var t = i/tub, k = (r0 + (r1-r0)*t)/r0;
+      curve.getPointAt(t, cpt);
+      for(var j=0;j<=rad;j++){
+        var idx = i*(rad+1)+j; v.fromBufferAttribute(pos, idx); v.sub(cpt).multiplyScalar(k).add(cpt); pos.setXYZ(idx, v.x, v.y, v.z);
+      }
+    }
+    geo.computeVertexNormals();
+    parts.push(geo.toNonIndexed());
+  }
+  function grow(start, dir, len, r0, depth, maxDepth){
+    var pts=[], p=start.clone(), d=dir.clone().normalize(), segs=5;
+    for(var i=0;i<=segs;i++){
+      pts.push(p.clone());
+      d.x += (Math.random()-.5)*.32; d.z += (Math.random()-.5)*.32; d.y += depth<2 ? .10 : (depth<3 ? .04 : .0); d.normalize();
+      p.addScaledVector(d, len/segs);
+      if(depth>=2 && i>=1){
+        var side = new THREE.Vector3().crossVectors(d, UP).normalize();
+        for(var s=-1;s<=1;s+=2){ for(var rep2=0; rep2<(depth>=3?2:1); rep2++){
+          var out = side.clone().multiplyScalar(s).add(d.clone().multiplyScalar(.35)).add(new THREE.Vector3((Math.random()-.5)*.6, .35+Math.random()*.5, (Math.random()-.5)*.6)).normalize();
+          leafSlots.push({p:p.clone().addScaledVector(side, s*Math.random()*.05), d:out});
+        } }
+      }
+    }
+    var r1 = depth===maxDepth ? r0*.3 : r0*.64;
+    taperedTube(pts, r0, r1);
+    var end = pts[pts.length-1];
+    if(depth<maxDepth){
+      var n = depth===0 ? 3 : (depth===1 ? 3 : 2);
+      for(var k=0;k<n;k++){
+        var nd = d.clone();
+        var axis = new THREE.Vector3(Math.random()-.5, Math.random()*.2, Math.random()-.5).normalize();
+        nd.applyAxisAngle(axis, (0.45 + Math.random()*.45)).normalize();
+        if(nd.y < .05) nd.y = .05 + Math.random()*.2;
+        grow(end, nd, len*.72, r1, depth+1, maxDepth);
+      }
+    }else{
+      var c = mobile ? 7 : 11;
+      for(var j=0;j<c;j++){
+        /* réparties le long du dernier tronçon (pas en boule au bout) */
+        var along = pts[Math.max(0, pts.length-1-Math.floor(Math.random()*3))].clone().lerp(end, Math.random());
+        var out2 = new THREE.Vector3((Math.random()-.5)*1.2, .25+Math.random()*.8, (Math.random()-.5)*1.2).normalize();
+        var q = along.addScaledVector(out2, .03 + Math.random()*.09);
+        leafSlots.push({p:q, d:out2});
+        if(j===0 && Math.random()<.3){ var nf = 1 + Math.floor(Math.random()*3); for(var f=0; f<nf; f++){ budSlots.push({p:end.clone().add(new THREE.Vector3((Math.random()-.5)*.14, -.05 - Math.random()*.05, (Math.random()-.5)*.14)), d:new THREE.Vector3((Math.random()-.5)*.35, -1, (Math.random()-.5)*.35).normalize()}); } }
+      }
+      if(Math.random()<.35) resinSlots.push(end.clone());
+    }
+  }
+  /* trois tiges depuis le sol, comme un vrai arbuste */
+  var stems = 4;
+  for(var s=0;s<stems;s++){
+    var a = (s/stems)*Math.PI*2 + Math.random()*.7;
+    var dir0 = new THREE.Vector3(Math.cos(a)*.7, 1, Math.sin(a)*.7).normalize();
+    grow(new THREE.Vector3(Math.cos(a)*.1, BASE_Y, Math.sin(a)*.1), dir0, 1.0, .075, 0, 4);
+  }
+  /* fusion manuelle (pas de BufferGeometryUtils en build UMD) */
+  (function mergeParts(){
+    var total = 0; parts.forEach(function(g){ total += g.attributes.position.count; });
+    var P3 = new Float32Array(total*3), N3 = new Float32Array(total*3), U2 = new Float32Array(total*2), o=0;
+    parts.forEach(function(g){
+      P3.set(g.attributes.position.array, o*3); N3.set(g.attributes.normal.array, o*3); U2.set(g.attributes.uv.array, o*2);
+      o += g.attributes.position.count; g.dispose();
+    });
+    var merged = new THREE.BufferGeometry();
+    merged.setAttribute('position', new THREE.BufferAttribute(P3,3));
+    merged.setAttribute('normal', new THREE.BufferAttribute(N3,3));
+    merged.setAttribute('uv', new THREE.BufferAttribute(U2,2));
+    var bm = new THREE.Mesh(merged, branchMat); bm.castShadow = true; bm.receiveShadow = true; group.add(bm);
+  })();
+
+  /* ---- croissance + vent (hook shader) ---- */
+  var uniforms = { uTime:{value:0}, uGrow:{value: reduced ? 1 : 0} };
+  function growable(mat, sway){
+    mat.onBeforeCompile = function(sh){
+      sh.uniforms.uTime = uniforms.uTime; sh.uniforms.uGrow = uniforms.uGrow;
+      sh.vertexShader = 'uniform float uTime; uniform float uGrow; attribute float aRand;\n' + sh.vertexShader;
+      sh.vertexShader = sh.vertexShader.replace('#include <begin_vertex>',
+        '#include <begin_vertex>\n'+
+        'float g = smoothstep(0.0, 1.0, clamp((uGrow*1.3 - aRand*0.9)*6.0, 0.0, 1.0));\n'+
+        'transformed *= g;\n'+
+        (sway ? 'float w = sin(uTime*1.1 + aRand*31.0) * 0.5 + sin(uTime*2.3 + aRand*13.0) * 0.25;\ntransformed.x += w * 0.045 * transformed.y * transformed.y;\ntransformed.z += cos(uTime*0.9 + aRand*19.0) * 0.03 * transformed.y;\n' : ''));
+    };
+    return mat;
+  }
+  var q = new THREE.Quaternion(), roll = new THREE.Quaternion(), basis = new THREE.Matrix4(), bx = new THREE.Vector3(), by = new THREE.Vector3(), bz = new THREE.Vector3();
+  function instancedOriented(geo, mat, slots, sMin, sMax, colorFn, phototropic){
+    var m = new THREE.InstancedMesh(geo, mat, slots.length);
+    var dummy = new THREE.Object3D(), rand = new Float32Array(slots.length), col = new THREE.Color();
+    slots.forEach(function(sl,i){
+      dummy.position.copy(sl.p);
+      if(phototropic){
+        /* axe Y local = direction de la feuille (légèrement retombante) ; face (Z local) tournée vers le ciel + jitter */
+        by.copy(sl.d); by.y -= .18; by.normalize();
+        bz.copy(UP).addScaledVector(by, -UP.dot(by)).normalize(); bx.crossVectors(by, bz).normalize();
+        basis.makeBasis(bx, by, bz); dummy.quaternion.setFromRotationMatrix(basis);
+        roll.setFromAxisAngle(by, (Math.random()-.5)*1.1); dummy.quaternion.premultiply(roll);
+      }else{
+        q.setFromUnitVectors(UP, sl.d); roll.setFromAxisAngle(sl.d, Math.random()*Math.PI*2); dummy.quaternion.copy(roll.multiply(q));
+      }
+      var s = sMin + Math.random()*(sMax-sMin); dummy.scale.set(s,s,s);
+      dummy.updateMatrix(); m.setMatrixAt(i, dummy.matrix);
+      rand[i] = (sl.p.y - BASE_Y)/3.4 * .7 + Math.random()*.3;
+      if(colorFn){ colorFn(col, i, sl); m.setColorAt(i, col); }
+    });
+    geo.setAttribute('aRand', new THREE.InstancedBufferAttribute(rand, 1));
+    m.instanceMatrix.needsUpdate = true; if(m.instanceColor) m.instanceColor.needsUpdate = true;
+    group.add(m); return m;
+  }
+  function instancedPoints(geo, mat, points, sMin, sMax){
+    return instancedOriented(geo, mat, points.map(function(p){ return {p:p, d:new THREE.Vector3(Math.random()-.5,Math.random()-.5,Math.random()-.5).normalize()}; }), sMin, sMax, null);
+  }
+
+  /* feuilles : cartes photo (atlas LeafSet001, 6 feuilles réelles), base = pétiole sur la branche, légère courbure */
+  var CELLS = [{"u0":0.0605,"u1":0.2422,"v0":0.541,"v1":0.9678,"asp":0.426},{"u0":0.3809,"u1":0.5234,"v0":0.627,"v1":0.8652,"asp":0.598},{"u0":0.6855,"u1":0.8564,"v0":0.5381,"v1":0.9092,"asp":0.461},{"u0":0.0693,"u1":0.2383,"v0":0.0732,"v1":0.4434,"asp":0.456},{"u0":0.3965,"u1":0.5801,"v0":0.0479,"v1":0.4502,"asp":0.456},{"u0":0.7266,"u1":0.8857,"v0":0.0605,"v1":0.4365,"asp":0.423}];
+  function leafCard(cell){
+    var g = new THREE.PlaneGeometry(cell.asp, 1, 2, 4); g.translate(0, .5, 0);
+    var pos = g.attributes.position, uv = g.attributes.uv;
+    for(var i=0;i<pos.count;i++){
+      var x=pos.getX(i), y=pos.getY(i);
+      pos.setZ(i, -0.08*Math.sin(Math.PI*y) - 0.25*x*x/(cell.asp*cell.asp) + 0.05*y*y);
+      uv.setXY(i, cell.u0 + uv.getX(i)*(cell.u1-cell.u0), cell.v0 + uv.getY(i)*(cell.v1-cell.v0));
+    }
+    g.computeVertexNormals(); return g;
+  }
+  var leafC = tex('tex/leaf-color.webp', true), leafN = tex('tex/leaf-normal.webp', false);
+  var leafMat = growable(new THREE.MeshStandardMaterial({map:leafC, normalMap:leafN, normalScale:new THREE.Vector2(.5,.5), alphaTest:.2, alphaToCoverage:true, side:THREE.DoubleSide, roughness:.7, metalness:0, color:0xffffff, envMapIntensity:.35}), true);
+  var leafDepth = growable(new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking, map:leafC, alphaTest:.45}), true);
+  /* translucidité : une feuille entre la lumière et l’œil s’illumine (diffusion sous-surface approchée) */
+  var lightDirV = {value:new THREE.Vector3(0,1,0)};
+  (function(){
+    var prev = leafMat.onBeforeCompile;
+    leafMat.onBeforeCompile = function(sh){
+      prev(sh);
+      sh.uniforms.uLightDirV = lightDirV;
+      sh.fragmentShader = 'uniform vec3 uLightDirV;\n' + sh.fragmentShader.replace('#include <lights_fragment_end>',
+        '#include <lights_fragment_end>\n'+
+        'float backlit = pow(max(0.0, dot(-normal, normalize(uLightDirV))), 1.4);\n'+
+        'reflectedLight.directDiffuse += diffuseColor.rgb * vec3(1.0, 0.98, 0.72) * backlit * 0.9;\n');
+    };
+  })();
+  (function(){
+    /* occlusion au cœur de la canopée : plus la feuille est enfouie, plus elle est sombre */
+    var ctr = new THREE.Vector3(); leafSlots.forEach(function(sl){ ctr.add(sl.p); }); ctr.divideScalar(Math.max(1, leafSlots.length));
+    var maxR = 0; leafSlots.forEach(function(sl){ maxR = Math.max(maxR, sl.p.distanceTo(ctr)); });
+    var buckets = CELLS.map(function(){ return []; });
+    leafSlots.forEach(function(sl){ buckets[Math.floor(Math.random()*CELLS.length)].push(sl); });
+    CELLS.forEach(function(cell, i){
+      if(!buckets[i].length) return;
+      var m = instancedOriented(leafCard(cell), leafMat, buckets[i], mobile ? .17 : .18, mobile ? .30 : .34, function(c, k, sl){
+        var r = sl.p.distanceTo(ctr)/maxR;                     /* 0 = centre, 1 = périphérie */
+        var ao = .45 + .55*Math.pow(r, .8);
+        var old = Math.random() < .08;                          /* quelques feuilles plus jaunes */
+        c.setHSL(old ? .14 : .20 + Math.random()*.05, old ? .5 : .25 + Math.random()*.25, (.55 + Math.random()*.3) * ao);
+      }, true);
+      m.castShadow = true; m.receiveShadow = true; m.customDepthMaterial = leafDepth;
+    });
+  })();
+
+  /* fruits d’arganier : ovales vert-jaune pendus aux extrémités (comme sur les photos produits) */
+  function fruitTexture(){
+    var c = document.createElement('canvas'); c.width = 128; c.height = 128; var g = c.getContext('2d');
+    var grad = g.createLinearGradient(0,0,0,128); grad.addColorStop(0,'#7f8a3a'); grad.addColorStop(.55,'#a9ad48'); grad.addColorStop(1,'#c9bb55');
+    g.fillStyle = grad; g.fillRect(0,0,128,128);
+    for(var i=0;i<700;i++){ g.fillStyle = Math.random()<.5 ? 'rgba(70,80,30,'+(Math.random()*.25)+')' : 'rgba(230,220,150,'+(Math.random()*.18)+')'; g.beginPath(); g.arc(Math.random()*128, Math.random()*128, .6+Math.random()*1.6, 0, Math.PI*2); g.fill(); }
+    var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  }
+  var fruitGeo = new THREE.SphereGeometry(.05, 16, 14); fruitGeo.scale(1, 1.5, 1); fruitGeo.translate(0, .07, 0);
+  var fruitMat = growable(new THREE.MeshPhysicalMaterial({map:fruitTexture(), roughness:.42, metalness:0, clearcoat:.35, clearcoatRoughness:.4, envMapIntensity:.6}), false);
+  var fruits = instancedOriented(fruitGeo, fruitMat, budSlots, .85, 1.25, function(c){ c.setHSL(.16 + Math.random()*.05, .45, .78 + Math.random()*.2); });
+  fruits.castShadow = true; fruits.receiveShadow = true;
+  /* larmes de résine dorées */
+  var resinMat = growable(new THREE.MeshPhysicalMaterial({color:0xe6c77a, emissive:0xc9a24a, emissiveIntensity:.35, roughness:.08, metalness:.1, clearcoat:1, transmission:.2, thickness:.2}), false);
+  instancedPoints(new THREE.SphereGeometry(.05, 12, 10), resinMat, resinSlots, .7, 1.2);
+
+  /* sol : reçoit les ombres réelles */
+  var floor = new THREE.Mesh(new THREE.CircleGeometry(4, 48), new THREE.ShadowMaterial({opacity:.5, color:0x000000}));
+  floor.rotation.x = -Math.PI/2; floor.position.y = BASE_Y - .01; floor.receiveShadow = true; group.add(floor);
+  /* ombre de contact */
+  var shadow = new THREE.Mesh(new THREE.PlaneGeometry(4.6, 4.6), new THREE.MeshBasicMaterial({map:shadowTexture(), transparent:true, depthWrite:false, color:0x000000}));
+  shadow.rotation.x = -Math.PI/2; shadow.position.y = BASE_Y - .02; group.add(shadow);
+
+  /* pollen discret */
+  var N = mobile ? 220 : 420;
+  var pPos = new Float32Array(N*3), pR = new Float32Array(N);
+  for(var i=0;i<N;i++){ pPos[i*3]=(Math.random()-.5)*10; pPos[i*3+1]=(Math.random()-.5)*7; pPos[i*3+2]=(Math.random()-.5)*7; pR[i]=Math.random(); }
+  var pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+  pGeo.setAttribute('aRand', new THREE.BufferAttribute(pR,1));
+  var pMat = new THREE.ShaderMaterial({
+    uniforms:{ uTime:uniforms.uTime, uGrow:uniforms.uGrow, uPix:{value:renderer.getPixelRatio()} },
+    transparent:true, depthWrite:false, blending:THREE.NormalBlending,
+    vertexShader:
+      'attribute float aRand; uniform float uTime; uniform float uGrow; uniform float uPix; varying float vA;\n'+
+      'void main(){ vec3 p = position; p.y = mod(p.y + uTime*(0.06+aRand*0.14) + 3.5, 7.0) - 3.5; p.x += sin(uTime*0.4 + aRand*30.0)*0.3;\n'+
+      ' vec4 mv = modelViewMatrix * vec4(p,1.0); gl_Position = projectionMatrix * mv;\n'+
+      ' float near = clamp(1.0 - abs(-mv.z - 10.5)/6.0, 0.0, 1.0);\n'+
+      ' gl_PointSize = (2.0 + aRand*5.0 + (1.0-near)*6.0) * uPix * (10.0 / -mv.z) * uGrow; vA = (0.12 + aRand*0.3) * (0.4 + near*0.6) * uGrow; }',
+    fragmentShader:
+      'varying float vA; void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.12, d) * vA; gl_FragColor = vec4(0.62,0.46,0.16, a*0.9); }'
+  });
+  scene.add(new THREE.Points(pGeo, pMat));
+
+  /* ---- rayons de lumière à travers le feuillage ---- */
+  function shaftTexture(){
+    var c = document.createElement('canvas'); c.width = 64; c.height = 512; var g = c.getContext('2d');
+    var v = g.createLinearGradient(0,0,0,512); v.addColorStop(0,'rgba(255,236,190,0)'); v.addColorStop(.35,'rgba(255,236,190,.55)'); v.addColorStop(.75,'rgba(255,236,190,.25)'); v.addColorStop(1,'rgba(255,236,190,0)');
+    g.fillStyle = v; g.fillRect(0,0,64,512);
+    var h = g.createLinearGradient(0,0,64,0); h.addColorStop(0,'rgba(0,0,0,1)'); h.addColorStop(.5,'rgba(0,0,0,0)'); h.addColorStop(1,'rgba(0,0,0,1)');
+    g.globalCompositeOperation = 'destination-out'; g.fillStyle = h; g.fillRect(0,0,64,512);
+    var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  }
+
+  /* ---- anneaux dorés en 3D autour de l’arbuste ---- */
+  var rings = new THREE.Group(); scene.add(rings);
+  (function(){
+    function circle(r, color, op, dashed){
+      var pts = [], n = dashed ? 180 : 120;
+      for(var i=0;i<=n;i++){ var a = i/n*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*r, Math.sin(a)*r, 0)); }
+      var g = new THREE.BufferGeometry().setFromPoints(pts);
+      var mat = dashed ? new THREE.LineDashedMaterial({color:color, transparent:true, opacity:op, dashSize:.05, gapSize:.16}) : new THREE.LineBasicMaterial({color:color, transparent:true, opacity:op});
+      var l = new THREE.Line(g, mat); if(dashed) l.computeLineDistances(); return l;
+    }
+    rings.add(circle(2.35, 0xa67c2e, .6, true));
+    rings.add(circle(1.95, 0xa67c2e, .4, false));
+    var arc = circle(1.5, 0xb9657f, .55, false); arc.geometry.setDrawRange(0, 30); rings.add(arc); rings.userData.arc = arc;
+    var dot = new THREE.Mesh(new THREE.SphereGeometry(.035, 8, 8), new THREE.MeshBasicMaterial({color:0xa67c2e})); dot.position.set(0, 2.35, 0); rings.add(dot);
+  })();
+
+  /* ---- mouvement de grue piloté par le scroll : une seule orbite continue autour d’un arbuste fixe ---- */
+  var KP   = [0,   .12,  .30,  .52,  .80,  1  ];
+  var TH   = [0,   0,    .95,  2.2,  3.7,  5.1 ]; /* angle d’orbite (rad), monotone => jamais de retour en arrière */
+  var RAD  = [10.5,10.5, 5.8,  9.5,  6.4,  8.6 ]; /* distance au centre de l’arbuste */
+  var HGT  = [0,   0,    1.4,  6.2,  1.2,  -.6 ]; /* hauteur caméra au-dessus du centre */
+  var LKY  = [0,   0,    .2,   -.6,  .1,   1.6 ]; /* hauteur visée (au-dessus du centre) */
+  var EXPO = [1.05,1.05, .9,   .75,  .8,   .98 ];
+  var FOG  = [.03, .03,  .034, .05,  .04,  .032];
+  function keyAt(arr, p){ /* interpolation lissée (smoothstep) entre clés => pas de cassure de vitesse */
+    for(var i=1;i<KP.length;i++){ if(p <= KP[i]){ var k = (p-KP[i-1])/(KP[i]-KP[i-1]); k = k*k*(3-2*k); return arr[i-1] + (arr[i]-arr[i-1])*k; } }
+    return arr[arr.length-1];
+  }
+  var camPos = new THREE.Vector3(0,.6,10.5), camLook = new THREE.Vector3(0,.3,0), tmpC = new THREE.Vector3(), tmpL = new THREE.Vector3(), rightV = new THREE.Vector3(), dirV = new THREE.Vector3();
+  var pS = 0, syS = 0; /* scroll lissé : un seul paramètre amorti, tout en découle */
+
+  /* layout + ancrage : l’arbuste se cale sur un rectangle DOM (anneau desktop / bloc réservé mobile) */
+  var baseY = 0, baseX = 0, ring = hero.querySelector('.hero-ring'), stage = document.getElementById('hero-stage');
+  var CAM0 = new THREE.Vector3(0, .6, 10.5), SHRUB_H = 3.4;
+  function anchor(offsetY){
+    /* renvoie {x,y,s} : position monde du groupe pour que l’arbuste remplisse le rectangle d’ancrage (rect mesuré maintenant, décalé de offsetY px) */
+    var w = window.innerWidth, h = window.innerHeight;
+    var halfH = Math.tan(THREE.MathUtils.degToRad(camera.fov/2)) * CAM0.z, halfW = halfH * (w/h), wpp = 2*halfH/h;
+    var el = mobile ? stage : ring, r = el.getBoundingClientRect();
+    var cx = r.left + r.width/2, cy = r.top + r.height/2 + offsetY;
+    var s = mobile ? Math.min(.6, (r.height*wpp*.86)/SHRUB_H, (2*halfW*.8)/SHRUB_H) : .86;
+    var wx = (cx/w - .5) * 2 * halfW, wy = CAM0.y + (.5 - cy/h) * 2 * halfH;
+    return {x: wx, y: wy - (BASE_Y + SHRUB_H/2) * s, s: s};
+  }
+  function layout(){
+    var w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+    mobile = w < 820;
+    var a = anchor(window.scrollY || 0); /* position à scroll 0 = référence du voyage */
+    group.scale.setScalar(a.s);
+    baseX = a.x; baseY = a.y;
+    group.position.set(baseX, baseY, 0);
+  }
+  layout();
+  window.addEventListener('resize', layout);
+  if('ResizeObserver' in window) new ResizeObserver(layout).observe(hero);
+
+  /* interaction */
+  var mx=0,my=0,tx=0,ty=0;
+  window.addEventListener('pointermove', function(e){ tx = e.clientX/window.innerWidth*2-1; ty = e.clientY/window.innerHeight*2-1; },{passive:true});
+  var visible = true, running = false;
+  document.addEventListener('visibilitychange', function(){ visible = !document.hidden; if(visible && !running) tick(); });
+
+  var clock = new THREE.Clock(), t0 = -1;
+  function easeOut(x){ return 1 - Math.pow(1-x, 3); }
+  /* garde-fou qualité : si le GPU peine (moyenne > 24 ms/frame après la croissance), on dégrade par paliers */
+  var qLevel = 0, qLast = -1, qAcc = 0, qN = 0, Q_THRESH = /slowtest/.test(location.search) ? 1 : 24; /* ?slowtest force la dégradation (test) */
+  function adapt(t){
+    if(reduced || qLevel >= 2 || t < 4.5) { qLast = t; return; }
+    if(qLast >= 0){ qAcc += (t - qLast)*1000; qN++; }
+    qLast = t;
+    if(qN < 90) return;
+    var avg = qAcc/qN; qAcc = 0; qN = 0;
+    if(avg <= Q_THRESH) return;
+    qLevel++;
+    if(qLevel === 1){ renderer.setPixelRatio(1); key.shadow.mapSize.set(768, 768); key.shadow.map && key.shadow.map.dispose(); key.shadow.map = null; layout(); }
+    else { renderer.shadowMap.enabled = false; group.traverse(function(o){ if(o.isInstancedMesh){ o.count = Math.floor(o.count*.55); } if(o.material){ o.material.needsUpdate = true; } }); }
+    if(window.console) console.info('[chojairate] qualité 3D réduite, palier', qLevel, '(', avg.toFixed(1), 'ms/frame )');
+  }
+  function tick(){
+    if(!visible){ running = false; return; }
+    running = true;
+    requestAnimationFrame(tick);
+    var t = clock.getElapsedTime();
+    if(t0 < 0) t0 = t;
+    if(!reduced) uniforms.uGrow.value = easeOut(Math.min(1, (t - t0)/3.6));
+    uniforms.uTime.value = t;
+    adapt(t);
+    mx += (tx-mx)*.03; my += (ty-my)*.03;
+    var sy = window.scrollY || 0, maxS = document.documentElement.scrollHeight - window.innerHeight;
+    var p = maxS > 0 ? Math.max(0, Math.min(1, sy/maxS)) : 0;
+    var DAMP = LERP === 1 ? 1 : .085;
+    pS += (p - pS)*DAMP; syS += (sy - syS)*Math.max(DAMP, .3);
+    group.rotation.y = t*.03 + mx*.15;   /* l’arbuste ne tourne plus avec le scroll : seule la caméra orbite */
+    group.rotation.x = my*.03;
+    group.position.y = baseY + Math.sin(t*.4)*.02;
+    /* centre de l’arbuste */
+    var sc = group.scale.x, C = tmpL.set(group.position.x, group.position.y + (BASE_Y + SHRUB_H/2)*sc, 0);
+    /* phase hero : caméra fixe qui descend avec la page (l’arbuste s’en va avec le hero) */
+    var halfH = Math.tan(THREE.MathUtils.degToRad(camera.fov/2)) * CAM0.z, wpp = 2*halfH/window.innerHeight;
+    var pan = syS*wpp;
+    var heroCam = tmpC.set(0, .6 - pan, 10.5), heroLookY = .3 - pan;
+    /* orbite */
+    var th = keyAt(TH, pS), r = keyAt(RAD, pS)*Math.max(sc, .7), h = keyAt(HGT, pS)*Math.max(sc, .7);
+    var ox = C.x + Math.sin(th)*r, oz = Math.cos(th)*r, oy = C.y + h, ly = C.y + keyAt(LKY, pS)*sc;
+    /* décalage latéral : sur desktop l’arbuste reste dans le tiers droit (on décale caméra + cible vers la gauche de la vue) */
+    var lat = mobile ? 0 : 2.0 * (1 - THREE.MathUtils.smoothstep(pS, .85, 1));
+    dirV.set(C.x - ox, 0, -oz).normalize(); rightV.set(-dirV.z, 0, dirV.x); /* droite de la vue, horizontale */
+    ox -= rightV.x*lat; oz -= rightV.z*lat; var lx = C.x - rightV.x*lat, lz = -rightV.z*lat;
+    /* fondu hero -> orbite (une seule transition, douce) */
+    var k = THREE.MathUtils.smoothstep(pS, .06, .22);
+    camPos.set(heroCam.x + (ox - heroCam.x)*k, heroCam.y + (oy - heroCam.y)*k, heroCam.z + (oz - heroCam.z)*k);
+    camLook.set(0 + (lx - 0)*k, heroLookY + (ly - heroLookY)*k, 0 + (lz - 0)*k);
+    camera.position.copy(camPos); camera.lookAt(camLook);
+    renderer.toneMappingExposure = keyAt(EXPO, pS);
+    scene.fog.density = keyAt(FOG, pS);
+    key.position.set(group.position.x - 4, group.position.y + 7, 5); key.target.position.copy(group.position);
+    rings.position.set(group.position.x, group.position.y + .2, 0); rings.rotation.z = t*.02; rings.rotation.y = mx*.15; rings.userData.arc.rotation.z = -t*.05;
+    rings.scale.setScalar(group.scale.x*1.05);
+    rim.position.x = group.position.x + 3.5 + Math.sin(t*.3)*1.0;
+    lightDirV.value.copy(key.position).sub(key.target.position).normalize().transformDirection(camera.matrixWorldInverse);
+    renderer.render(scene, camera);
+  }
+  tick();
+})();
+})();
+</script>
+
+</body>
+</html>
