@@ -511,7 +511,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La gamme" data-ar="المجموعة">La gamme</p>
-      <h2 id="gamme-title" data-html-fr="Seize soins, <em>suspendus.</em>" data-html-ar="ستة عشر عناية، <em>معلّقة.</em>">Seize soins, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Vingt-et-un soins, <em>suspendus.</em>" data-html-ar="واحد وعشرون منتجاً <em>معلّقاً.</em>">Vingt-et-un soins, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -625,7 +625,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 (function(){
 'use strict';
 /* ====================== CONFIG ====================== */
-var WHATSAPP = '212600000000'; // numéro de la cliente, format international sans +
+var WHATSAPP = '212640004144'; // numéro imprimé sur les étiquettes Chojairate (+212 640 004 144)
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var root = document.documentElement;
 root.classList.add('js');
@@ -637,6 +637,7 @@ var CATS = {
   hv:    {fr:'Huiles végétales',    ar:'زيوت نباتية'},
   visage:{fr:'Visage',              ar:'الوجه'},
   corps: {fr:'Corps',               ar:'الجسم'},
+  cheveux:{fr:'Cheveux',            ar:'الشعر'},
   eaux:  {fr:'Eaux & extraits',     ar:'مياه ومستخلصات'}
 };
 var P = [
@@ -664,6 +665,26 @@ var P = [
   dfr:'Coques d’argan finement broyées et huile d’argan. Exfolie en douceur, révèle l’éclat.',
   dar:'قشور الأركان المطحونة بدقة مع زيت الأركان. يقشر بلطف ويكشف الإشراق.',
   ufr:'Une fois par semaine, sur peau humide, en cercles.',uar:'مرة في الأسبوع على بشرة رطبة، بحركات دائرية.'},
+ {id:'serum-visage-encens',cat:'visage',fr:'Sérum visage à l’encens',ar:'سيروم البشرة باللبان الذكر',
+  dfr:'Encens mâle concentré. Raffermit, atténue les taches et lisse le grain de peau.',
+  dar:'خلاصة اللبان الذكر المركزة. تشد البشرة وتخفف البقع وتنعم ملمسها.',
+  ufr:'3 à 4 gouttes le soir, sur peau propre, avant la crème.',uar:'3 إلى 4 قطرات مساءً على بشرة نظيفة قبل الكريم.'},
+ {id:'masque-nila-bleu',cat:'visage',fr:'Masque Nila bleu',ar:'ماسك النيلة الزرقاء',
+  dfr:'Nila bleue du Sahara. Éclaircit le teint, resserre les pores et apaise les rougeurs.',
+  dar:'النيلة الزرقاء الصحراوية. تفتح البشرة وتضيق المسام وتهدئ الاحمرار.',
+  ufr:'Une fois par semaine, 10 à 15 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، من 10 إلى 15 دقيقة، ثم يُشطف بماء فاتر.'},
+ {id:'gommage-cafe',cat:'corps',fr:'Gommage au café',ar:'مقشر القهوة',
+  dfr:'Café moulu, sucre et vitamine E. Exfolie, relance la circulation et affine le grain.',
+  dar:'قهوة مطحونة وسكر وفيتامين E. يقشر وينشط الدورة الدموية وينعم البشرة.',
+  ufr:'Une à deux fois par semaine, sur peau humide, en mouvements circulaires.',uar:'مرة إلى مرتين أسبوعياً على بشرة رطبة بحركات دائرية.'},
+ {id:'savon-liquide-reglisse',cat:'corps',fr:'Savon liquide à la réglisse',ar:'صابون سائل بعرق السوس',
+  dfr:'Mousse douce à l’extrait de réglisse. Nettoie visage et corps sans dessécher.',
+  dar:'رغوة لطيفة بخلاصة عرق السوس. ينظف الوجه والجسم دون جفاف.',
+  ufr:'Matin et soir, sur peau humide, puis rincer à l’eau claire.',uar:'صباحاً ومساءً على بشرة رطبة، ثم يُشطف بالماء.'},
+ {id:'coloration-cheveux-marron',cat:'cheveux',fr:'Coloration végétale marron',ar:'صبغة الشعر البنية',
+  dfr:'Henné et plantes, sans ammoniaque. Colore en brun et fortifie la fibre.',
+  dar:'حناء وأعشاب طبيعية بدون أمونيا. تصبغ الشعر باللون البني وتقويه.',
+  ufr:'Mélanger à l’eau tiède, poser 1 à 2 heures, rincer sans shampoing.',uar:'تُمزج بماء فاتر، تُترك من ساعة إلى ساعتين، ثم تُشطف دون شامبو.'},
  {id:'lait-pour-le-corps',cat:'corps',fr:'Lait pour le corps',ar:'حليب الجسم',
   dfr:'Texture légère, hydratation longue durée. Peau douce, parfum de rose et d’encens.',
   dar:'قوام خفيف وترطيب طويل الأمد. بشرة ناعمة وعطر الورد واللبان.',
