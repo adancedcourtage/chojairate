@@ -365,6 +365,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 :root[lang="ar"] .modal .ar-name{font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ivory-70);font-size:1rem}
 .modal .desc{color:var(--ivory-70)}
 .modal .specs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal .specs:has(.spec[hidden]){grid-template-columns:1fr}
 .modal .spec{display:grid;gap:8px;align-content:start;padding:16px 18px;border:1px solid var(--line);border-radius:14px;font-size:.95rem;background:rgba(227,216,195,.35)}
 .modal .spec b{display:flex;align-items:center;gap:8px;color:var(--gold-2);font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 .modal .spec b svg{width:17px;height:17px;flex:none}
@@ -517,7 +518,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La gamme" data-ar="المجموعة">La gamme</p>
-      <h2 id="gamme-title" data-html-fr="Vingt-et-un soins, <em>suspendus.</em>" data-html-ar="واحد وعشرون منتجاً <em>معلّقاً.</em>">Vingt-et-un soins, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Vingt-cinq soins, <em>suspendus.</em>" data-html-ar="خمسة وعشرون منتجاً <em>معلّقاً.</em>">Vingt-cinq soins, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -619,7 +620,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
       <p class="ar-name" id="modal-ar"></p>
       <p class="desc" id="modal-desc"></p>
       <div class="specs">
-        <div class="spec">
+        <div class="spec" id="spec-comp">
           <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-7 4-12 14-13 0 8-5 13-12 13H5Z"/><path d="M5 20c2-4 5-6 9-7"/></svg><span data-fr="Composition" data-ar="المكونات">Composition</span></b>
           <span id="modal-comp"></span>
         </div>
@@ -654,6 +655,7 @@ var CATS = {
   visage:{fr:'Visage',              ar:'الوجه'},
   corps: {fr:'Corps',               ar:'الجسم'},
   cheveux:{fr:'Cheveux',            ar:'الشعر'},
+  hygiene:{fr:'Hygiène',            ar:'النظافة'},
   eaux:  {fr:'Eaux & extraits',     ar:'مياه ومستخلصات'}
 };
 var P = [
@@ -702,7 +704,7 @@ var P = [
   dar:'قهوة مطحونة وسكر وفيتامين E. يقشر وينشط الدورة الدموية وينعم البشرة.',
   cfr:'Café moulu, sucre, huile végétale, vitamine E.',car:'قهوة مطحونة، سكر، زيت نباتي، فيتامين E.',
   ufr:'Une à deux fois par semaine, sur peau humide, en mouvements circulaires.',uar:'مرة إلى مرتين أسبوعياً على بشرة رطبة بحركات دائرية.'},
- {id:'savon-liquide-reglisse',cat:'corps',fr:'Savon liquide à la réglisse',ar:'صابون سائل بعرق السوس',
+ {id:'savon-liquide-reglisse',cat:'hygiene',fr:'Savon liquide à la réglisse',ar:'صابون سائل بعرق السوس',
   dfr:'Mousse douce à l’extrait de réglisse. Nettoie visage et corps sans dessécher.',
   dar:'رغوة لطيفة بخلاصة عرق السوس. ينظف الوجه والجسم دون جفاف.',
   cfr:'Extrait de racine de réglisse, glycérine, huile de coco, vitamine C.',car:'خلاصة عرق السوس، جليسرين، زيت جوز الهند، فيتامين C.',fmt:'200 ml',
@@ -712,6 +714,25 @@ var P = [
   dar:'حناء وأعشاب طبيعية بدون أمونيا. تصبغ الشعر باللون البني وتقويه.',
   cfr:'Henné, katam et poudres de plantes. Sans ammoniaque ni PPD.',car:'حناء، كتم ومساحيق أعشاب. بدون أمونيا ولا PPD.',
   ufr:'Mélanger à l’eau tiède, poser 1 à 2 heures, rincer sans shampoing.',uar:'تُمزج بماء فاتر، تُترك من ساعة إلى ساعتين، ثم تُشطف دون شامبو.'},
+ {id:'masque-reglisse',cat:'visage',fr:'Masque à la réglisse',ar:'ماسك بعرق السوس',
+  dfr:'Réglisse pour une peau éclatante, au toucher naturel.',
+  dar:'عرق السوس لبشرة مشرقة بلمسة طبيعية.',
+  ufr:'Une fois par semaine, 10 à 15 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، من 10 إلى 15 دقيقة، ثم يُشطف بماء فاتر.'},
+ {id:'creme-solaire',cat:'visage',fr:'Crème solaire',ar:'واقي الشمس',
+  dfr:'Protection solaire naturelle, pour tous les types de peau.',
+  dar:'حماية طبيعية من الشمس، لجميع أنواع البشرة.',fmt:'50 ml',
+  ufr:'Appliquer avant l’exposition, renouveler après la baignade.',uar:'يوضع قبل التعرض للشمس، ويُعاد بعد السباحة.'},
+ {id:'parfum-mkhemriya',cat:'corps',fr:'Mkhemriya fruits rouges',ar:'مخمرية برائحة الفواكه الحمراء',
+  dfr:'Parfum tenace et hydratation du corps, aux fruits rouges.',
+  dar:'عطر يدوم طويلاً مع ترطيب الجسم، برائحة الفواكه الحمراء.',fmt:'50 g',
+  ufr:'Sur le corps et les cheveux, jamais sur le visage.',uar:'على الجسم والشعر، ماعدا الوجه.'},
+ {id:'dentifrice-charbon',cat:'hygiene',fr:'Dentifrice au charbon actif',ar:'معجون الأسنان بالفحم النشط',
+  dfr:'Charbon actif et poudre de calcium. Nettoie en profondeur, efface les taches de surface et rafraîchit l’haleine. Sans aluminium ni parabène.',
+  dar:'فحم نشط وبودرة الكالسيوم. ينظف الأسنان بعمق، يزيل البقع السطحية وينعش النفس. بدون ألمنيوم ولا بارابين.',
+  cfr:'Charbon actif naturel, extraits de plantes, zinc, huiles naturelles, poudre de calcium.',
+  car:'فحم نشط طبيعي، مقطرات الأعشاب، زنك، زيوت طبيعية، بودرة الكالسيوم.',fmt:'100 ml',
+  ufr:'Mouiller la brosse, appliquer une petite quantité, brosser soigneusement puis rincer. Trois fois par jour.',
+  uar:'بللي الفرشاة بالماء، ضعي كمية قليلة من المعجون ونظفي الأسنان بعناية ثم اشطفي بالماء. ثلاث مرات في اليوم.'},
  {id:'lait-pour-le-corps',cat:'corps',fr:'Lait pour le corps',ar:'حليب الجسم',
   dfr:'Texture légère, hydratation longue durée. Peau douce, parfum de rose et d’encens.',
   dar:'قوام خفيف وترطيب طويل الأمد. بشرة ناعمة وعطر الورد واللبان.',
@@ -873,7 +894,9 @@ function openModal(p){
   var arEl = document.getElementById('modal-ar');
   arEl.textContent = lang==='ar'?p.fr:p.ar; arEl.setAttribute('dir', lang==='ar'?'ltr':'rtl');
   document.getElementById('modal-desc').textContent = lang==='ar'?p.dar:p.dfr;
-  document.getElementById('modal-comp').textContent = lang==='ar'?(p.car||''):(p.cfr||'');
+  var comp = lang==='ar'?(p.car||''):(p.cfr||'');
+  document.getElementById('modal-comp').textContent = comp;
+  document.getElementById('spec-comp').hidden = !comp;
   document.getElementById('modal-usage').textContent = lang==='ar'?p.uar:p.ufr;
   var fmtEl = document.getElementById('modal-fmt'); fmtEl.textContent = p.fmt || ''; fmtEl.hidden = !p.fmt;
   document.getElementById('modal-wa').href = wa(UI.waHello[lang] + (lang==='ar'?p.ar:p.fr) + ' ('+(lang==='ar'?p.fr:p.ar)+')');
