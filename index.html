@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
 
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chojairate Naturel</title>
@@ -62,7 +61,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.05;margin
 p{margin:0}
 :focus-visible{outline:2px solid var(--gold-2);outline-offset:3px;border-radius:6px}
 .wrap{width:min(1180px,100%);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
-
 /* ---------- ambient ---------- */
 .glow{
   position:fixed;inset:0;pointer-events:none;z-index:0;
@@ -75,7 +73,6 @@ p{margin:0}
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 main,header,footer{position:relative;z-index:2}
-
 /* ---------- nav ---------- */
 .nav{
   position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
@@ -120,7 +117,6 @@ main,header,footer{position:relative;z-index:2}
   .nav-links a{display:flex;align-items:center;min-height:48px;padding-inline:14px;border-radius:12px;font-size:1rem;color:var(--ivory)}
   .nav-links a:active{background:var(--glass)}
 }
-
 /* ---------- hero ---------- */
 .hero{
   position:relative;
@@ -214,7 +210,6 @@ main,header,footer{position:relative;z-index:2}
   .hero-strip{gap:4px 18px}
   .mini .arch{width:40px;height:50px}
 }
-
 /* ---------- marquee ---------- */
 .marquee{
   border-block:1px solid var(--line);
@@ -229,7 +224,6 @@ main,header,footer{position:relative;z-index:2}
 @keyframes slide-rtl{to{transform:translateX(50%)}}
 .marquee span{padding-inline:22px}
 .marquee span::after{content:"·";color:var(--gold);margin-inline-start:22px}
-
 /* ---------- sections ---------- */
 .section{padding-block:clamp(72px,11vh,140px)}
 .manifeste,.rituel{background:linear-gradient(to bottom,transparent,rgba(227,216,195,.45) 18%,rgba(227,216,195,.45) 82%,transparent)}
@@ -241,7 +235,6 @@ main,header,footer{position:relative;z-index:2}
 .section h2{font-size:clamp(2rem,4.6vw,3.6rem);font-variation-settings:"opsz" 96,"SOFT" 40}
 .section h2 em{font-style:italic;color:var(--gold-2);font-weight:300}
 .lead{color:var(--ivory-70);font-size:1.08rem;max-width:58ch}
-
 /* manifeste */
 .manifeste{position:relative;overflow:hidden}
 .ghost{
@@ -261,7 +254,6 @@ main,header,footer{position:relative;z-index:2}
 .root h3 span + span{font-family:var(--font-ar);color:var(--gold-2);font-size:1.15rem;margin-top:2px}
 :root[lang="ar"] .root h3 span + span{font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ivory-70);font-size:1.05rem}
 .root p{color:var(--ivory-70);font-size:.98rem}
-
 /* gamme */
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
 /* un rayon = un titre de categorie + sa grille */
@@ -278,7 +270,6 @@ main,header,footer{position:relative;z-index:2}
   font-size:.78rem;color:var(--gold-2);letter-spacing:.08em;
   border:1px solid var(--line);border-radius:999px;padding:3px 10px;line-height:1.4;
 }
-
 /* a propos : engagements en quatre reperes */
 .engagements{display:grid;grid-template-columns:1fr;gap:clamp(14px,2vw,22px);list-style:none}
 @media (min-width:560px){.engagements{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -291,7 +282,6 @@ main,header,footer{position:relative;z-index:2}
 .engagements svg{width:26px;height:26px;color:var(--gold-2)}
 .engagements b{font-family:var(--font-display);font-size:1.08rem;font-weight:500;line-height:1.3}
 .engagements span{color:var(--ivory-70);font-size:.92rem;line-height:1.55}
-
 /* contact : trois portes d'entree */
 .contact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(14px,2vw,22px);list-style:none}
 .contact-card{
@@ -364,9 +354,7 @@ main,header,footer{position:relative;z-index:2}
   .card-cta{font-size:.72rem;margin-top:4px}
 }
 .empty{color:var(--ivory-45);padding:40px 0;text-align:center}
-
 /* rituel */
-
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,40px);counter-reset:step}
 .step{
   position:relative;padding:32px 28px 30px;border-radius:var(--radius);
@@ -387,7 +375,6 @@ main,header,footer{position:relative;z-index:2}
 .step ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--ivory-70)}
 .step li{display:flex;gap:10px;align-items:baseline}
 .step li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none;transform:translateY(-2px)}
-
 /* commande */
 .commande .panel{
   display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,72px);
@@ -407,12 +394,10 @@ main,header,footer{position:relative;z-index:2}
 .commande .cta{display:grid;gap:14px;align-content:center}
 .note{font-size:.82rem;color:var(--ivory-45)}
 @media (max-width:820px){.commande .panel{grid-template-columns:1fr}}
-
 /* footer */
 footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ivory-45);font-size:.85rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
 footer .brand .latin{font-size:1.1rem}
-
 /* modal */
 dialog{
   border:1px solid var(--line);border-radius:28px;padding:0;
@@ -451,7 +436,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 .modal-close svg{width:18px;height:18px}
 @media (max-width:720px){.modal{grid-template-columns:1fr}.modal .arch{min-height:260px;max-height:46dvh}}
 
-
 /* ---------- motion layer ---------- */
 .sap{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,var(--gold-soft),var(--gold));transform-origin:0 50%;transform:scaleX(0)}
 :root[lang="ar"] .sap{transform-origin:100% 50%}
@@ -469,12 +453,10 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   .split .w>span{transform:none;transition:none}
   .card .arch img{--py:0px}
 }
-
 /* reveal */
 .js .reveal{transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .reveal:not(.in){opacity:0;transform:translateY(22px)}
 .js .reveal.d1{transition-delay:.08s}.js .reveal.d2{transition-delay:.16s}.js .reveal.d3{transition-delay:.24s}
-
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .marquee-track,.hero-scroll i{animation:none}
@@ -482,7 +464,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   .card,.btn,.step{transition:none}
 }
 </style>
-
 </head>
 <body>
 </head>
@@ -490,7 +471,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 <div class="glow" id="glow" aria-hidden="true"></div>
 <canvas id="scene" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
-
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Chojairate Naturel">
@@ -515,9 +495,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   </div>
   <div class="sap" id="sap" aria-hidden="true"></div>
 </header>
-
 <main id="top">
-
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-fallback" aria-hidden="true"></div>
   <div class="hero-ring" aria-hidden="true">
@@ -557,11 +535,9 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   </div>
   <div class="hero-scroll" aria-hidden="true"><i></i><span data-fr="Laissez pousser" data-ar="دعيها تنمو">Laissez pousser</span></div>
 </section>
-
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track" id="marquee"></div>
 </div>
-
 <section class="section manifeste" id="manifeste" aria-labelledby="manifeste-title">
   <div class="ghost" aria-hidden="true">شجيرات</div>
   <div class="wrap">
@@ -589,7 +565,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     </div>
   </div>
 </section>
-
 <section class="section" id="boutique" aria-labelledby="gamme-title">
   <div class="wrap">
     <div class="section-head reveal">
@@ -601,7 +576,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     <div id="grid"></div>
   </div>
 </section>
-
 
 <section class="section apropos" id="apropos" aria-labelledby="apropos-title">
   <div class="wrap">
@@ -634,7 +608,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     </ul>
   </div>
 </section>
-
 <section class="section rituel" id="rituel" aria-labelledby="rituel-title">
   <div class="wrap">
     <div class="section-head reveal">
@@ -673,7 +646,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     </div>
   </div>
 </section>
-
 <section class="section commande" id="commande" aria-labelledby="commande-title">
   <div class="wrap">
     <div class="panel reveal">
@@ -706,7 +678,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     </div>
   </div>
 </section>
-
 <section class="section contact" id="contact" aria-labelledby="contact-title">
   <div class="wrap">
     <div class="section-head reveal">
@@ -736,16 +707,13 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     </ul>
   </div>
 </section>
-
 </main>
-
 <footer>
   <div class="wrap">
     <a class="brand" href="#top"><span class="latin">Chojairate Naturel</span><span class="arab" dir="rtl">شجيرات</span></a>
     <p data-fr="© 2026 Chojairate Naturel · Cosmétique naturelle · Maroc" data-ar="© 2026 شجيرات الطبيعية · مستحضرات طبيعية · المغرب">© 2026 Chojairate Naturel · Cosmétique naturelle · Maroc</p>
   </div>
 </footer>
-
 <dialog id="modal" aria-labelledby="modal-title">
   <button class="modal-close" id="modal-close" type="button" aria-label="Fermer">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -781,7 +749,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     </div>
   </div>
 </dialog>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
 <script>
 (function(){
@@ -791,7 +758,6 @@ var WHATSAPP = '212640004144'; // numéro imprimé sur les étiquettes Chojairat
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var root = document.documentElement;
 root.classList.add('js');
-
 /* ====================== DATA ====================== */
 var CATS = {
   all:   {fr:'Tout',                ar:'الكل'},
@@ -807,12 +773,11 @@ var P = [
  {id:'creme-argan',cat:'visage',fr:'Crème d’argan',ar:'كريم أركان',
   dfr:'Crème riche à l’huile d’argan pressée à froid. Nourrit, apaise et redonne souplesse aux peaux sèches.',
   dar:'كريم غني بزيت الأركان المعصور على البارد. يغذي ويهدئ ويعيد المرونة للبشرة الجافة.',
-  cfr:'Huile d’argan pressée à froid, beurre de karité, cire d’abeille, glycérine végétale, vitamine E.',car:'زيت أركان معصور على البارد، زبدة الشيا، شمع العسل، جليسرين نباتي، فيتامين E.',fmt:'100 g',
+  fmt:'100 g',
   ufr:'Matin et soir, sur peau propre, en massage léger.',uar:'صباحاً ومساءً على بشرة نظيفة، بتدليك خفيف.'},
  {id:'creme-encens',cat:'visage',fr:'Crème à l’encens',ar:'كريم اللبان',
   dfr:'Résine d’encens et beurres végétaux. Raffermit, lisse les ridules et unifie le teint.',
   dar:'راتنج اللبان وزبدات نباتية. يشد البشرة ويخفف التجاعيد الدقيقة ويوحد لون البشرة.',
-  cfr:'Résine d’encens, huile d’argan, beurre de karité, eau de rose, vitamine E.',car:'راتنج اللبان، زيت الأركان، زبدة الشيا، ماء الورد، فيتامين E.',
   ufr:'Le soir, après le sérum, sur visage et cou.',uar:'مساءً بعد السيروم، على الوجه والعنق.',
   fmt:'130 ml'},
  {id:'serum-cutane-a-l-encens-et-argan',cat:'visage',fr:'Sérum encens & argan',ar:'سيروم اللبان والأركان',
@@ -821,9 +786,9 @@ var P = [
   cfr:'Encens (AKBA), huile d’argan et autres huiles végétales, acides de fruits (AHA), vitamines.',car:'اللبان (AKBA)، زيت الأركان وزيوت نباتية أخرى، أحماض الفواكه (AHA)، فيتامينات.',
   ufr:'3 gouttes, matin et soir, avant la crème.',uar:'3 قطرات صباحاً ومساءً قبل الكريم.',fmt:'30 ml'},
  {id:'masque-argan-rose',cat:'visage',fr:'Masque argan & rose',ar:'قناع الأركان والورد',
-  dfr:'Argile, huile d’argan et pétales de rose. Dix minutes pour un teint reposé.',
-  dar:'طين وزيت أركان وبتلات الورد. عشر دقائق لبشرة مرتاحة.',
-  cfr:'Argile, poudre de pétales de rose, huile d’argan, eau de rose.',car:'طين، مسحوق بتلات الورد، زيت الأركان، ماء الورد.',
+  dfr:'Argile, huile d’argan et eau de rose. Dix minutes pour un teint reposé.',
+  dar:'طين وزيت أركان وماء الورد. عشر دقائق لبشرة مرتاحة.',
+  cfr:'Huile d’argan, eau de rose, argile naturelle, vitamine E.',car:'زيت الأركان، ماء الورد، الطين الطبيعي، فيتامين E.',
   ufr:'Une fois par semaine, 10 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، 10 دقائق، ثم يُشطف بماء فاتر.',
   fmt:'100 g'},
  {id:'lait-demaquillant',cat:'visage',fr:'Lait démaquillant',ar:'حليب مزيل المكياج',
@@ -834,7 +799,6 @@ var P = [
  {id:'gommage-a-l-argan-chojairate',cat:'visage',fr:'Gommage à l’argan',ar:'مقشر الأركان',
   dfr:'Produit cosmétique naturel pour exfolier, hydrater la peau et renouveler ses cellules.',
   dar:'منتج تجميلي طبيعي يقشر ويرطب البشرة ويجدد خلاياها.',
-  cfr:'Coques d’argan finement broyées, sucre, huile d’argan, vitamine E.',car:'قشور الأركان المطحونة، سكر، زيت الأركان، فيتامين E.',
   ufr:'Une fois par semaine, sur peau humide, en cercles.',uar:'مرة في الأسبوع على بشرة رطبة، بحركات دائرية.',
   fmt:'100 g'},
  {id:'serum-visage-encens',cat:'visage',fr:'Sérum visage à l’encens',ar:'سيروم البشرة باللبان الذكر',
@@ -845,13 +809,12 @@ var P = [
  {id:'masque-nila-bleu',cat:'visage',fr:'Masque Nila bleu',ar:'ماسك النيلة الزرقاء',
   dfr:'Nila bleue du Sahara. Éclaircit le teint, resserre les pores et apaise les rougeurs.',
   dar:'النيلة الزرقاء الصحراوية. تفتح البشرة وتضيق المسام وتهدئ الاحمرار.',
-  cfr:'Nila bleue naturelle, argile, poudre de rose, eau de rose.',car:'النيلة الزرقاء الطبيعية، طين، مسحوق الورد، ماء الورد.',
   ufr:'Une fois par semaine, 10 à 15 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، من 10 إلى 15 دقيقة، ثم يُشطف بماء فاتر.'},
  {id:'gommage-cafe',cat:'corps',fr:'Gommage au café',ar:'مقشر القهوة',
   dfr:'Café moulu, sucre et vitamine E. Exfolie, relance la circulation et affine le grain.',
   dar:'قهوة مطحونة وسكر وفيتامين E. يقشر وينشط الدورة الدموية وينعم البشرة.',
-  cfr:'Café moulu, sucre, huile végétale, vitamine E.',car:'قهوة مطحونة، سكر، زيت نباتي، فيتامين E.',
-  ufr:'Une à deux fois par semaine, sur peau humide, en mouvements circulaires.',uar:'مرة إلى مرتين أسبوعياً على بشرة رطبة بحركات دائرية.'},
+  cfr:'Café moulu, vitamine E.',car:'قهوة مطحونة، فيتامين E.',
+  ufr:'Une à deux fois par semaine, sur peau humide, en mouvements circulaires.',uar:'مرة إلى مرتين أسبوعياً على بشرة رطبة بحركات دائرية.',fmt:'200 g'},
  {id:'savon-liquide-reglisse',cat:'hygiene',fr:'Savon liquide à la réglisse',ar:'صابون سائل بعرق السوس',
   dfr:'Mousse douce à l’extrait de réglisse. Nettoie visage et corps sans dessécher.',
   dar:'رغوة لطيفة بخلاصة عرق السوس. ينظف الوجه والجسم دون جفاف.',
@@ -908,79 +871,75 @@ var P = [
  {id:'huile-de-rose',cat:'hv',fr:'Huile de rose',ar:'زيت الورد',
   dfr:'Pétales de rose macérés dans une huile végétale. Adoucit, illumine, parfume délicatement.',
   dar:'بتلات الورد منقوعة في زيت نباتي. ينعم ويضيء ويعطر بلطف.',
-  cfr:'Pétales de rose macérés dans une huile végétale.',car:'بتلات الورد منقوعة في زيت نباتي.',
   ufr:'Quelques gouttes le soir, visage ou décolleté.',uar:'بضع قطرات مساءً على الوجه أو الصدر.'},
  {id:'huile-de-graine-noire',cat:'hv',fr:'Huile de graine noire',ar:'زيت الحبة السوداء',
   dfr:'Nigelle pressée à froid. Apaise rougeurs et eczéma, fortifie cheveux et ongles.',
   dar:'حبة سوداء معصورة على البارد. تهدئ الاحمرار والأكزيما وتقوي الشعر والأظافر.',
-  cfr:'100 % huile de nigelle pressée à froid.',car:'100٪ زيت حبة البركة معصور على البارد.',
   ufr:'Sur les zones sèches, ou en bain d’huile capillaire.',uar:'على المناطق الجافة، أو كحمام زيت للشعر.'},
  {id:'huile-essentiele-de-rose',cat:'he',fr:'Huile essentielle de rose',ar:'زيت الورد العطري',
   dfr:'Précieuse et régénérante. Quelques gouttes dans votre crème pour les peaux matures.',
   dar:'ثمين ومجدد. بضع قطرات في كريمك للبشرة الناضجة.',
-  cfr:'100 % huile essentielle de rose (Rosa damascena).',car:'100٪ زيت الورد العطري (الورد الدمشقي).',
+  cfr:'100 % huile essentielle de rose.',car:'100٪ زيت الورد العطري (الورد الدمشقي).',
   ufr:'2 gouttes diluées dans une crème ou une huile végétale. Jamais pure.',uar:'قطرتان مخففتان في كريم أو زيت نباتي. لا يُستعمل نقياً.',fmt:'10 ml'},
  {id:'huile-essentielle-de-lavande',cat:'he',fr:'Huile essentielle de lavande',ar:'زيت اللافندر',
   dfr:'Apaise, aide la peau à cicatriser, favorise le sommeil.',
   dar:'يهدئ ويساعد البشرة على الالتئام ويحسن النوم.',
-  cfr:'100 % huile essentielle de lavande (Lavandula angustifolia).',car:'100٪ زيت اللافندر العطري.',
+  cfr:'100 % huile essentielle de lavande.',car:'100٪ زيت اللافندر العطري.',
   ufr:'2 gouttes sur l’oreiller, ou diluée dans le bain.',uar:'قطرتان على الوسادة، أو مخففاً في الحمام.',fmt:'10 ml'},
  {id:'huile-menthe',cat:'he',fr:'Huile essentielle de menthe',ar:'زيت النعناع',
   dfr:'Fraîcheur immédiate. Soulage tensions et maux de tête, rafraîchit le cuir chevelu.',
   dar:'انتعاش فوري. يخفف التوتر والصداع وينعش فروة الرأس.',
-  cfr:'100 % huile essentielle de menthe poivrée (Mentha piperita).',car:'100٪ زيت النعناع الفلفلي العطري.',
+  cfr:'100 % huile essentielle de menthe.',car:'100٪ زيت النعناع الفلفلي العطري.',
   ufr:'1 goutte diluée sur les tempes. Éviter le contour des yeux.',uar:'قطرة مخففة على الصدغين. يُتجنب محيط العينين.',fmt:'10 ml'},
  {id:'huile-d-arbre-a-the',cat:'he',fr:'Huile essentielle d’arbre à thé',ar:'زيت شجرة الشاي',
   dfr:'Purifiante et assainissante. Cible imperfections et boutons.',
   dar:'منقٍّ ومطهر. يستهدف الشوائب والبثور.',
-  cfr:'100 % huile essentielle d’arbre à thé (Melaleuca alternifolia).',car:'100٪ زيت شجرة الشاي العطري.',
+  cfr:'100 % huile essentielle d’arbre à thé.',car:'100٪ زيت شجرة الشاي العطري.',
   ufr:'1 goutte localement, sur coton-tige, matin et soir.',uar:'قطرة موضعياً بعود قطن، صباحاً ومساءً.',fmt:'10 ml'},
  {id:'huile-de-romarain',cat:'he',fr:'Huile essentielle de romarin',ar:'زيت إكليل الجبل',
   dfr:'Améliore la concentration, soulage les douleurs et stimule la croissance des cheveux.',
   dar:'يحسن التركيز ويخفف الآلام ويحفز نمو الشعر.',
-  cfr:'100 % huile essentielle de romarin (Rosmarinus officinalis).',car:'100٪ زيت إكليل الجبل العطري.',
+  cfr:'100 % huile essentielle de romarin.',car:'100٪ زيت إكليل الجبل العطري.',
   ufr:'5 gouttes dans une huile végétale, en massage du cuir chevelu.',uar:'5 قطرات في زيت نباتي، بتدليك فروة الرأس.',fmt:'10 ml'},
  {id:'brume-fruits-rouges',cat:'corps',fr:'Brume corporelle fruits rouges',ar:'معطر للجسم فواكه حمراء',
   dfr:'Parfum naturel pour le corps et les cheveux, aux fruits rouges. Sans alcool.',
   dar:'معطر طبيعي للشعر والجسم بالفواكه الحمراء، خالٍ من الكحول.',
-  cfr:'Extraits naturels de fruits rouges, huile de jojoba, vitamine E. Formule végane, sans alcool.',
+  cfr:'Extraits naturels de fruits rouges, huile de jojoba, vitamine E. Sans alcool.',
   car:'مستخلصات طبيعية من الفواكه الحمراء، زيت الجوجوبا، فيتامين E. تركيبة نباتية خالية من الكحول.',
   ufr:'Vaporiser sur le corps et les cheveux, à distance de 20 cm.',uar:'يُرش على الجسم والشعر من مسافة 20 سم.',fmt:'60 ml'},
  {id:'colorant-levres-joues',cat:'visage',fr:'Colorant lèvres et joues — Aker Fassi',ar:'ملمع الخدود والشفاه — العكر الفاسي',
   dfr:'Teinte naturellement les lèvres et les joues, tout en les hydratant.',
   dar:'يمنح الشفاه والخدود لوناً طبيعياً مع ترطيبها.',
-  cfr:'Aker Fassi (coquelicot et grenade), base hydratante naturelle. 100 % naturel.',
-  car:'العكر الفاسي (شقائق النعمان والرمان)، أساس مرطب طبيعي. 100٪ طبيعي.',
   ufr:'Appliquer une touche sur les lèvres et les pommettes, estomper du doigt.',uar:'يوضع قليلاً على الشفاه والوجنتين ويُمزج بالإصبع.'},
  {id:'hydrolat-girofle',cat:'eaux',fr:'Hydrolat de girofle',ar:'مقطر القرنفل',
   dfr:'Soulage les douleurs dentaires, apaise les gencives et soutient la digestion.',
   dar:'يخفف آلام الأسنان، مضاد لالتهاب اللثة، ويحسن عملية الهضم.',
-  cfr:'100 % hydrolat de girofle (Syzygium aromaticum).',car:'100٪ ماء القرنفل المقطر.',
+  cfr:'100 % hydrolat de girofle.',car:'100٪ ماء القرنفل المقطر.',
   ufr:'En bain de bouche dilué, ou en brume. Usage externe.',uar:'مضمضة بعد التخفيف، أو رذاذاً. للاستعمال الخارجي.'},
  {id:'savon-encens',cat:'hygiene',fr:'Savon à l’encens mâle',ar:'صابون اللبان الذكر',
   dfr:'Traitement naturel de l’acné, riche en collagène, réduit les signes de l’âge.',
   dar:'معالج لحب الشباب يحتوي على الكولاجين، يقلل من ظهور علامات الشيخوخة.',
-  cfr:'Encens mâle (oliban), base de savon naturelle, collagène.',car:'اللبان الذكر، قاعدة صابون طبيعية، كولاجين.',
+  cfr:'Encens mâle, collagène.',car:'اللبان الذكر، قاعدة صابون طبيعية، كولاجين.',
   ufr:'Faire mousser sur peau humide, masser, rincer. Matin et soir.',uar:'يُرغى على بشرة رطبة، يُدلك ثم يُشطف. صباحاً ومساءً.',fmt:'55 g'},
  {id:'savon-nila-bleu',cat:'hygiene',fr:'Savon blanc au Nila bleu',ar:'صابونة مبيضة بالنيلة الزرقاء',
   dfr:'Unifie le teint et lui donne fraîcheur et éclat.',
   dar:'توحد لون البشرة وتعطيها نضارة وبياضاً.',
-  cfr:'Nila bleue naturelle, base de savon végétale.',car:'النيلة الزرقاء الطبيعية، قاعدة صابون نباتية.',
+  cfr:'Nila bleue naturelle.',car:'النيلة الزرقاء الطبيعية، قاعدة صابون نباتية.',
   ufr:'Faire mousser sur peau humide, laisser poser une minute, rincer.',uar:'يُرغى على بشرة رطبة، يُترك دقيقة ثم يُشطف.',fmt:'64 g'},
  {id:'savon-cafe',cat:'hygiene',fr:'Savon au café et vitamine E',ar:'صابون القهوة بفيتامين E',
   dfr:'Élimine les cellules mortes, réduit les taches brunes et les impuretés.',
   dar:'يزيل خلايا الجلد الميتة، يقلل البقع الداكنة والأوساخ، ويقلل من التهاب الجلد.',
-  cfr:'Café moulu, vitamine E, base de savon végétale.',car:'القهوة المطحونة، فيتامين E، قاعدة صابون نباتية.',
+  cfr:'Café moulu, vitamine E.',car:'القهوة المطحونة، فيتامين E، قاعدة صابون نباتية.',
   ufr:'Masser en mouvements circulaires sur peau humide, puis rincer.',uar:'يُدلك بحركات دائرية على بشرة رطبة، ثم يُشطف.',fmt:'55 g'},
  {id:'savon-reglisse',cat:'hygiene',fr:'Savon à la réglisse',ar:'صابونة عرق السوس',
   dfr:'Apaise et hydrate la peau, atténue les taches brunes et soulage les coups de soleil.',
   dar:'تهدئة وترطيب البشرة، إخفاء البقع الداكنة وتخفيف حروق الشمس.',
-  cfr:'Extrait de racine de réglisse, base de savon végétale.',car:'خلاصة عرق السوس، قاعدة صابون نباتية.',
+  cfr:'Extrait de racine de réglisse.',car:'خلاصة عرق السوس، قاعدة صابون نباتية.',
   ufr:'Faire mousser sur peau humide, masser, rincer à l’eau claire.',uar:'يُرغى على بشرة رطبة، يُدلك ثم يُشطف بالماء.',fmt:'55 g'},
  {id:'huile-amande-douce',cat:'hv',fr:'Huile d’amande douce',ar:'زيت اللوز الحلو',
   dfr:'Nourrit et assouplit la peau, apaise les tiraillements et les vergetures.',
   dar:'يغذي البشرة ويليّنها، ويخفف من الشد وعلامات التمدد.',
-  cfr:'100 % huile d’amande douce (Prunus dulcis), pressée à froid.',car:'100٪ زيت اللوز الحلو المعصور على البارد.',
+  cfr:'100 % huile d’amande douce.',car:'100٪ زيت اللوز الحلو المعصور على البارد.',
   ufr:'En massage sur peau propre, matin ou soir.',uar:'بالتدليك على بشرة نظيفة، صباحاً أو مساءً.'}
 ];
 var UI = {
@@ -992,14 +951,11 @@ var UI = {
   marquee:{fr:['Argan','Rose','Encens','Lavande','Nigelle','Menthe','Romarin','Arbre à thé','Kelaat M’Gouna','Atlas'],
            ar:['أركان','ورد','لبان','لافندر','حبة سوداء','نعناع','إكليل الجبل','شجرة الشاي','قلعة مكونة','الأطلس']}
 };
-
 /* ====================== I18N ====================== */
 var lang = 'fr';
 try{ var saved = localStorage.getItem('chj-lang'); if(saved==='ar'||saved==='fr') lang = saved; }catch(e){}
 var filter = 'all';
-
 function wa(text){ return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(text); }
-
 function applyLang(){
   root.setAttribute('lang', lang);
   root.setAttribute('dir', lang==='ar' ? 'rtl' : 'ltr');
@@ -1012,7 +968,6 @@ function applyLang(){
   if(window.splitHeadings) window.splitHeadings();
   try{ localStorage.setItem('chj-lang', lang); }catch(e){}
 }
-
 /* 3 soins vedettes dans le hero */
 var FEATURED = ['creme-argan','huile-de-rose','serum-cutane-a-l-encens-et-argan'];
 function renderStrip(){
@@ -1029,13 +984,11 @@ function renderStrip(){
   });
 }
 document.getElementById('lang').addEventListener('click', function(){ lang = lang==='fr'?'ar':'fr'; applyLang(); });
-
 function renderMarquee(){
   var words = UI.marquee[lang], html='';
   for(var r=0;r<2;r++) words.forEach(function(w){ html += '<span>'+w+'</span>'; });
   document.getElementById('marquee').innerHTML = html;
 }
-
 /* ====================== GAMME ====================== */
 function renderFilters(){
   var box = document.getElementById('filters'); box.innerHTML='';
@@ -1089,7 +1042,6 @@ function renderGrid(){
     observeReveal(head);
   });
 }
-
 /* tilt */
 var canHover = window.matchMedia('(hover:hover)').matches && !reduced;
 var canTilt = canHover && window.matchMedia('(min-width:1024px)').matches;
@@ -1102,7 +1054,6 @@ function attachTilt(card){
   });
   card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
 }
-
 /* modal */
 var modal = document.getElementById('modal');
 function openModal(p){
@@ -1131,7 +1082,6 @@ function openModal(p){
 }
 document.getElementById('modal-close').addEventListener('click', function(){ modal.close(); });
 modal.addEventListener('click', function(e){ if(e.target===modal) modal.close(); });
-
 /* reveal */
 var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
   entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
@@ -1152,8 +1102,12 @@ function revealVisible(){
 }
 window.addEventListener('hashchange', function(){ setTimeout(revealVisible,60); });
 window.addEventListener('load', function(){ setTimeout(revealVisible,60); });
+var revealTick = false;
+window.addEventListener('scroll', function(){
+  if(revealTick) return; revealTick = true;
+  requestAnimationFrame(function(){ revealTick = false; revealVisible(); });
+}, {passive:true});
 setTimeout(revealVisible, 400);
-
 /* menu mobile */
 (function(){
   var nav = document.querySelector('.nav'), tgl = document.getElementById('nav-toggle');
@@ -1166,16 +1120,13 @@ setTimeout(revealVisible, 400);
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
   document.addEventListener('click', function(e){ if(!nav.contains(e.target)) setOpen(false); });
 })();
-
 /* cursor glow */
 if(canHover){
   var glow = document.getElementById('glow'), gx=70, gy=20, tx=70, ty=20;
   window.addEventListener('pointermove', function(e){ tx = e.clientX/window.innerWidth*100; ty = e.clientY/window.innerHeight*100; },{passive:true});
   (function loopGlow(){ gx += (tx-gx)*.06; gy += (ty-gy)*.06; glow.style.setProperty('--gx',gx+'%'); glow.style.setProperty('--gy',gy+'%'); requestAnimationFrame(loopGlow); })();
 }
-
 applyLang();
-
 
 /* ====================== MOTION : titres, progression, parallaxes ====================== */
 (function motion(){
@@ -1183,7 +1134,6 @@ applyLang();
   var sap = document.getElementById('sap');
   var ghost = document.querySelector('.ghost'), manif = document.getElementById('manifeste');
   var hoverable = window.matchMedia('(hover:hover)').matches;
-
   /* --- mots qui montent --- */
   var splitIO = ('IntersectionObserver' in window) ? new IntersectionObserver(function(en){
     en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); splitIO.unobserve(e.target); } });
@@ -1216,7 +1166,6 @@ applyLang();
     });
   };
   window.splitHeadings();
-
   /* --- boutons magnétiques --- */
   var magnets = Array.prototype.slice.call(document.querySelectorAll('.magnet'));
   var px = -1, py = -1;
@@ -1230,7 +1179,6 @@ applyLang();
       else if(b.classList.contains('on')){ b.classList.remove('on'); b.style.transform = ''; }
     });
   }
-
   var running = false;
   function loop(){
     if(!running) return;
@@ -1249,7 +1197,6 @@ applyLang();
   if(reduced){ var upd = function(){ var m = document.documentElement.scrollHeight - winH; sap.style.transform='scaleX('+(m>0?window.scrollY/m:0)+')'; }; upd(); window.addEventListener('scroll', upd, {passive:true}); }
   else start();
 })();
-
 /* ====================== THREE.JS : L’ARBUSTE ====================== */
 (function shrub(){
   if(!window.THREE) return;
@@ -1263,12 +1210,10 @@ applyLang();
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.12;
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
   var scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0xe4d9c4, 0.03);
   var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
   camera.position.set(0, 0.6, 10.5);
-
   /* éclairage photo : ciel chaud, key haut-gauche, fill froid, rim rose, rebond or */
   scene.add(new THREE.HemisphereLight(0xfff4dc, 0xcdbf9f, 0.75));
   var key = new THREE.DirectionalLight(0xffe2b0, 3.2); key.position.set(-4, 7, 5); scene.add(key); scene.add(key.target);
@@ -1288,13 +1233,11 @@ applyLang();
   var fill = new THREE.DirectionalLight(0x8fb09a, 0.55); fill.position.set(5, 2, -2); scene.add(fill);
   var rim = new THREE.PointLight(0xe8a0b4, 30, 16, 2); rim.position.set(3.5, 3.5, -3); scene.add(rim);
   var bounce = new THREE.PointLight(0xc9a24a, 7, 7, 2); bounce.position.set(0, -1.4, 2.2); scene.add(bounce);
-
   var group = new THREE.Group(); scene.add(group);
   var mobile = window.innerWidth < 820;
   window.__chj = {renderer:renderer, scene:scene, camera:camera, group:group};
   var LERP = /instant/.test(location.search) ? 1 : .07; /* ?instant = audit des positions clés sans lissage */
   var BASE_Y = -1.75;
-
   /* ---- textures procédurales ---- */
   function leafTexture(){
     /* feuille d’arganier : spatulée (étroite à la base, large aux 2/3), vert olive mat, marbrures fines */
@@ -1337,7 +1280,6 @@ applyLang();
     var r = g.createRadialGradient(128,128,10,128,128,128); r.addColorStop(0,'rgba(0,0,0,.75)'); r.addColorStop(.5,'rgba(0,0,0,.28)'); r.addColorStop(1,'rgba(0,0,0,0)');
     g.fillStyle = r; g.fillRect(0,0,256,256); return new THREE.CanvasTexture(c);
   }
-
   /* ---- branches : tubes coniques fusionnés en une seule géométrie ---- */
   /* textures photo CC0 (ambientCG Bark012 / LeafSet001) */
   var TL = new THREE.TextureLoader();
@@ -1421,7 +1363,6 @@ applyLang();
     merged.setAttribute('uv', new THREE.BufferAttribute(U2,2));
     var bm = new THREE.Mesh(merged, branchMat); bm.castShadow = true; bm.receiveShadow = true; group.add(bm);
   })();
-
   /* ---- croissance + vent (hook shader) ---- */
   var uniforms = { uTime:{value:0}, uGrow:{value: reduced ? 1 : 0} };
   function growable(mat, sway){
@@ -1463,7 +1404,6 @@ applyLang();
   function instancedPoints(geo, mat, points, sMin, sMax){
     return instancedOriented(geo, mat, points.map(function(p){ return {p:p, d:new THREE.Vector3(Math.random()-.5,Math.random()-.5,Math.random()-.5).normalize()}; }), sMin, sMax, null);
   }
-
   /* feuilles : cartes photo (atlas LeafSet001, 6 feuilles réelles), base = pétiole sur la branche, légère courbure */
   var CELLS = [{"u0":0.0605,"u1":0.2422,"v0":0.541,"v1":0.9678,"asp":0.426},{"u0":0.3809,"u1":0.5234,"v0":0.627,"v1":0.8652,"asp":0.598},{"u0":0.6855,"u1":0.8564,"v0":0.5381,"v1":0.9092,"asp":0.461},{"u0":0.0693,"u1":0.2383,"v0":0.0732,"v1":0.4434,"asp":0.456},{"u0":0.3965,"u1":0.5801,"v0":0.0479,"v1":0.4502,"asp":0.456},{"u0":0.7266,"u1":0.8857,"v0":0.0605,"v1":0.4365,"asp":0.423}];
   function leafCard(cell){
@@ -1509,7 +1449,6 @@ applyLang();
       m.castShadow = true; m.receiveShadow = true; m.customDepthMaterial = leafDepth;
     });
   })();
-
   /* fruits d’arganier : ovales vert-jaune pendus aux extrémités (comme sur les photos produits) */
   function fruitTexture(){
     var c = document.createElement('canvas'); c.width = 128; c.height = 128; var g = c.getContext('2d');
@@ -1525,14 +1464,12 @@ applyLang();
   /* larmes de résine dorées */
   var resinMat = growable(new THREE.MeshPhysicalMaterial({color:0xe6c77a, emissive:0xc9a24a, emissiveIntensity:.35, roughness:.08, metalness:.1, clearcoat:1, transmission:.2, thickness:.2}), false);
   instancedPoints(new THREE.SphereGeometry(.05, 12, 10), resinMat, resinSlots, .7, 1.2);
-
   /* sol : reçoit les ombres réelles */
   var floor = new THREE.Mesh(new THREE.CircleGeometry(4, 48), new THREE.ShadowMaterial({opacity:.5, color:0x000000}));
   floor.rotation.x = -Math.PI/2; floor.position.y = BASE_Y - .01; floor.receiveShadow = true; group.add(floor);
   /* ombre de contact */
   var shadow = new THREE.Mesh(new THREE.PlaneGeometry(4.6, 4.6), new THREE.MeshBasicMaterial({map:shadowTexture(), transparent:true, depthWrite:false, color:0x000000}));
   shadow.rotation.x = -Math.PI/2; shadow.position.y = BASE_Y - .02; group.add(shadow);
-
   /* pollen discret */
   var N = mobile ? 220 : 420;
   var pPos = new Float32Array(N*3), pR = new Float32Array(N);
@@ -1553,7 +1490,6 @@ applyLang();
       'varying float vA; void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.12, d) * vA; gl_FragColor = vec4(0.62,0.46,0.16, a*0.9); }'
   });
   scene.add(new THREE.Points(pGeo, pMat));
-
   /* ---- rayons de lumière à travers le feuillage ---- */
   function shaftTexture(){
     var c = document.createElement('canvas'); c.width = 64; c.height = 512; var g = c.getContext('2d');
@@ -1563,7 +1499,6 @@ applyLang();
     g.globalCompositeOperation = 'destination-out'; g.fillStyle = h; g.fillRect(0,0,64,512);
     var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
   }
-
   /* ---- anneaux dorés en 3D autour de l’arbuste ---- */
   var rings = new THREE.Group(); scene.add(rings);
   (function(){
@@ -1579,7 +1514,6 @@ applyLang();
     var arc = circle(1.5, 0xb9657f, .55, false); arc.geometry.setDrawRange(0, 30); rings.add(arc); rings.userData.arc = arc;
     var dot = new THREE.Mesh(new THREE.SphereGeometry(.035, 8, 8), new THREE.MeshBasicMaterial({color:0xa67c2e})); dot.position.set(0, 2.35, 0); rings.add(dot);
   })();
-
   /* ---- mouvement de grue piloté par le scroll : une seule orbite continue autour d’un arbuste fixe ---- */
   var KP   = [0,   .12,  .30,  .52,  .80,  1  ];
   var TH   = [0,   0,    .95,  2.2,  3.7,  5.1 ]; /* angle d’orbite (rad), monotone => jamais de retour en arrière */
@@ -1594,7 +1528,6 @@ applyLang();
   }
   var camPos = new THREE.Vector3(0,.6,10.5), camLook = new THREE.Vector3(0,.3,0), tmpC = new THREE.Vector3(), tmpL = new THREE.Vector3(), rightV = new THREE.Vector3(), dirV = new THREE.Vector3();
   var pS = 0, syS = 0; /* scroll lissé : un seul paramètre amorti, tout en découle */
-
   /* layout + ancrage : l’arbuste se cale sur un rectangle DOM (anneau desktop / bloc réservé mobile) */
   var baseY = 0, baseX = 0, ring = hero.querySelector('.hero-ring'), stage = document.getElementById('hero-stage');
   var CAM0 = new THREE.Vector3(0, .6, 10.5), SHRUB_H = 3.4;
@@ -1621,13 +1554,11 @@ applyLang();
   layout();
   window.addEventListener('resize', layout);
   if('ResizeObserver' in window) new ResizeObserver(layout).observe(hero);
-
   /* interaction */
   var mx=0,my=0,tx=0,ty=0;
   window.addEventListener('pointermove', function(e){ tx = e.clientX/window.innerWidth*2-1; ty = e.clientY/window.innerHeight*2-1; },{passive:true});
   var visible = true, running = false;
   document.addEventListener('visibilitychange', function(){ visible = !document.hidden; if(visible && !running) tick(); });
-
   var clock = new THREE.Clock(), t0 = -1;
   function easeOut(x){ return 1 - Math.pow(1-x, 3); }
   /* garde-fou qualité : si le GPU peine (moyenne > 24 ms/frame après la croissance), on dégrade par paliers */
