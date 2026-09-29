@@ -359,6 +359,10 @@ dialog{
 dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 .modal{display:grid;grid-template-columns:1fr 1.1fr}
 .modal .arch{border-radius:0;border:0;aspect-ratio:auto;min-height:320px}
+.modal-media{display:grid;align-content:start}
+.modal-result{margin:12px 18px 18px;display:flex;align-items:center;gap:12px;color:var(--ivory-70);font-size:.85rem}
+.modal-result[hidden]{display:none}
+.modal-result img{width:72px;height:72px;object-fit:cover;border-radius:12px}
 .modal-body{padding:clamp(24px,4vw,48px);display:grid;gap:16px;align-content:start}
 .modal h3{font-size:clamp(1.7rem,3vw,2.4rem)}
 .modal .ar-name{font-family:var(--font-ar);color:var(--gold-2);font-size:1.3rem}
@@ -612,7 +616,13 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
   </button>
   <div class="modal">
-    <div class="arch"><img id="modal-img" src="" alt=""></div>
+    <div class="modal-media">
+      <div class="arch"><img id="modal-img" src="" alt=""></div>
+      <figure class="modal-result" id="modal-result" hidden>
+        <img id="modal-result-img" src="" alt="">
+        <figcaption data-fr="Aperçu de la couleur" data-ar="معاينة اللون">Aperçu de la couleur</figcaption>
+      </figure>
+    </div>
     <div class="modal-body">
       <p class="eyebrow" id="modal-cat"></p>
       <p class="fmt" id="modal-fmt" hidden></p>
@@ -713,6 +723,7 @@ var P = [
   cfr:'Extrait de racine de réglisse, glycérine, huile de coco, vitamine C.',car:'خلاصة عرق السوس، جليسرين، زيت جوز الهند، فيتامين C.',fmt:'200 ml',
   ufr:'Matin et soir, sur peau humide, puis rincer à l’eau claire.',uar:'صباحاً ومساءً على بشرة رطبة، ثم يُشطف بالماء.'},
  {id:'coloration-cheveux-marron',cat:'cheveux',fr:'Coloration végétale marron',ar:'صبغة الشعر البنية',
+  result:'img/coloration-cheveux-marron-resultat.webp',
   dfr:'Henné et plantes, sans ammoniaque. Colore en brun et fortifie la fibre.',
   dar:'حناء وأعشاب طبيعية بدون أمونيا. تصبغ الشعر باللون البني وتقويه.',
   cfr:'Henné, katam et poudres de plantes. Sans ammoniaque ni PPD.',car:'حناء، كتم ومساحيق أعشاب. بدون أمونيا ولا PPD.',
@@ -895,6 +906,13 @@ var modal = document.getElementById('modal');
 function openModal(p){
   var img = document.getElementById('modal-img');
   img.src = 'img/'+p.id+'.webp'; img.alt = lang==='ar'?p.ar:p.fr;
+  var result = document.getElementById('modal-result');
+  result.hidden = !p.result;
+  if(p.result){
+    var resultImg = document.getElementById('modal-result-img');
+    resultImg.src = p.result;
+    resultImg.alt = lang==='ar'?'معاينة اللون': 'Aperçu de la couleur';
+  }
   document.getElementById('modal-cat').textContent = CATS[p.cat][lang];
   document.getElementById('modal-title').textContent = lang==='ar'?p.ar:p.fr;
   var arEl = document.getElementById('modal-ar');
