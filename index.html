@@ -275,6 +275,7 @@ main,header,footer{position:relative;z-index:2}
   width:100%;height:100%;object-fit:cover;
   transform:scale(1.04);transition:transform .7s var(--ease);
 }
+.arch.original-photo img{object-fit:contain;transform:none;background:#e9dfcf}
 .card-body{display:grid;grid-template-rows:auto auto 1fr auto;gap:6px;padding-inline:4px}
 .card-meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 10px;min-height:20px}
 .card-meta .cat{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);white-space:nowrap}
@@ -372,6 +373,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 .modal .specs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .modal .specs:has(.spec[hidden]){grid-template-columns:1fr}
 .modal .spec{display:grid;gap:8px;align-content:start;padding:16px 18px;border:1px solid var(--line);border-radius:14px;font-size:.95rem;background:rgba(227,216,195,.35)}
+.modal .spec[hidden]{display:none}
 .modal .spec b{display:flex;align-items:center;gap:8px;color:var(--gold-2);font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 .modal .spec b svg{width:17px;height:17px;flex:none}
 .modal .spec span{color:var(--ivory-70);line-height:1.55}
@@ -398,6 +400,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 /* parallaxe image dans l’arche */
 .card .arch img{transform:translateY(var(--py,0px)) scale(var(--s,1.08))}
 .card:hover .arch img{--s:1.14}
+.card .arch.original-photo img,.card:hover .arch.original-photo img{transform:none}
 .magnet{transition:transform .5s var(--ease)}
 .magnet.on{transition:transform .12s linear}
 @media (prefers-reduced-motion:reduce){
@@ -418,8 +421,6 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 }
 </style>
 
-</head>
-<body>
 </head>
 <body>
 <div class="glow" id="glow" aria-hidden="true"></div>
@@ -525,7 +526,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La gamme" data-ar="المجموعة">La gamme</p>
-      <h2 id="gamme-title" data-html-fr="Vingt-cinq soins, <em>suspendus.</em>" data-html-ar="خمسة وعشرون منتجاً <em>معلّقاً.</em>">Vingt-cinq soins, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Trente-quatre produits, <em>suspendus.</em>" data-html-ar="أربعة وثلاثون منتجاً <em>معلّقاً.</em>">Trente-quatre produits, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -726,11 +727,15 @@ var P = [
   cfr:'Extrait de racine de réglisse, glycérine, huile de coco, vitamine C.',car:'خلاصة عرق السوس، جليسرين، زيت جوز الهند، فيتامين C.',fmt:'200 ml',
   ufr:'Matin et soir, sur peau humide, puis rincer à l’eau claire.',uar:'صباحاً ومساءً على بشرة رطبة، ثم يُشطف بالماء.'},
  {id:'coloration-cheveux-marron',cat:'cheveux',fr:'Coloration végétale marron',ar:'صبغة الشعر البنية',
+  cardPhoto:'img/coloration-cheveux-marron-resultat.webp',sourcePhoto:true,
   result:'img/coloration-cheveux-marron-resultat.webp',
   dfr:'Henné et plantes, sans ammoniaque. Colore en brun et fortifie la fibre.',
   dar:'حناء وأعشاب طبيعية بدون أمونيا. تصبغ الشعر باللون البني وتقويه.',
   cfr:'Henné, katam et poudres de plantes. Sans ammoniaque ni PPD.',car:'حناء، كتم ومساحيق أعشاب. بدون أمونيا ولا PPD.',
   ufr:'Mélanger à l’eau tiède, poser 1 à 2 heures, rincer sans shampoing.',uar:'تُمزج بماء فاتر، تُترك من ساعة إلى ساعتين، ثم تُشطف دون شامبو.'},
+ {id:'coloration-cheveux-rouge',cat:'cheveux',fr:'Coloration cheveux rouge',ar:'صبغة الشعر الحمراء',sourcePhoto:true,
+  dfr:'Une teinte rouge profonde pour les cheveux.',dar:'لون أحمر عميق للشعر.',
+  ufr:'Suivre les indications figurant sur l’emballage.',uar:'اتّبعي التعليمات الموجودة على العبوة.'},
  {id:'masque-reglisse',cat:'visage',fr:'Masque à la réglisse',ar:'ماسك بعرق السوس',
   dfr:'Réglisse pour une peau éclatante, au toucher naturel.',
   dar:'عرق السوس لبشرة مشرقة بلمسة طبيعية.',
@@ -920,7 +925,7 @@ function renderGrid(){
     var b = document.createElement('button');
     b.type='button'; b.className='card reveal'; b.setAttribute('data-id', p.id);
     b.innerHTML =
-      '<div class="arch"><img loading="lazy" width="900" height="900" src="img/'+p.id+'.webp" alt="'+(lang==='ar'?p.ar:p.fr)+'"></div>'+
+      '<div class="arch'+(p.sourcePhoto?' original-photo':'')+'"><img loading="lazy" width="900" height="900" src="'+(p.cardPhoto||'img/'+p.id+'.webp')+'" alt="'+(lang==='ar'?p.ar:p.fr)+'"></div>'+
       '<div class="card-body">'+
       '<div class="card-meta"><span class="cat">'+CATS[p.cat][lang]+'</span><bdi class="ar-name">'+(lang==='ar'?p.fr:p.ar)+'</bdi></div>'+
       '<h3>'+(lang==='ar'?p.ar:p.fr)+'</h3>'+
@@ -952,6 +957,7 @@ var modal = document.getElementById('modal');
 function openModal(p){
   var img = document.getElementById('modal-img');
   img.src = 'img/'+p.id+'.webp'; img.alt = lang==='ar'?p.ar:p.fr;
+  img.parentElement.classList.toggle('original-photo', !!p.sourcePhoto);
   var result = document.getElementById('modal-result');
   result.hidden = !p.result;
   if(p.result){
