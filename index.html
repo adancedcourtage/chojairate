@@ -575,7 +575,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La boutique" data-ar="المتجر">La boutique</p>
-      <h2 id="gamme-title" data-html-fr="Trente-quatre produits, <em>suspendus.</em>" data-html-ar="أربعة وثلاثون منتجاً <em>معلّقاً.</em>">Trente-quatre produits, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Quarante produits, <em>suspendus.</em>" data-html-ar="أربعون منتجاً <em>معلّقاً.</em>">Quarante produits, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -946,7 +946,32 @@ var P = [
   dfr:'Nourrit et assouplit la peau, apaise les tiraillements et les vergetures.',
   dar:'يغذي البشرة ويليّنها، ويخفف من الشد وعلامات التمدد.',
   cfr:'100 % huile d’amande douce.',car:'100٪ زيت اللوز الحلو المعصور على البارد.',
-  ufr:'En massage sur peau propre, matin ou soir.',uar:'بالتدليك على بشرة نظيفة، صباحاً أو مساءً.'}
+  ufr:'En massage sur peau propre, matin ou soir.',uar:'بالتدليك على بشرة نظيفة، صباحاً أو مساءً.'},
+ {id:'brume-fruits-tropicaux',cat:'corps',fr:'Brume corporelle fruits tropicaux',ar:'معطر للجسم برائحة الفواكه الاستوائية',
+  dfr:'Parfum léger et rafraîchissant aux notes tropicales. Hydrate et apaise la peau.',
+  dar:'عطر خفيف ومنعش برائحة الفواكه الاستوائية يرطب البشرة ويهدئها.',
+  ufr:'Vaporiser sur le corps après la douche.',uar:'يُرش على الجسم بعد الاستحمام.'},
+ {id:'mascara-naturel',cat:'visage',fr:'Mascara naturel',ar:'ماسكارا طبيعية',
+  dfr:'Soin des cils et des sourcils aux huiles végétales.',
+  dar:'عناية بالرموش والحواجب بالزيوت النباتية.',
+  cfr:'Huiles de ricin et d’olive mentionnées sur l’étiquette.',car:'زيت الخروع وزيت الزيتون المذكوران على العبوة.',fmt:'10 ml',
+  ufr:'Appliquer délicatement sur les cils et les sourcils.',uar:'يوضع بلطف على الرموش والحواجب.'},
+ {id:'shampooing-rose-cheveux-gras',cat:'cheveux',fr:'Shampoing à la rose pour cheveux gras',ar:'شامبو الورد للشعر الدهني',
+  dfr:'Shampoing à la rose conçu pour les cheveux gras.',dar:'شامبو بالورد مخصص للشعر الدهني.',
+  cfr:'Rose naturelle mentionnée sur l’étiquette.',car:'ورد طبيعي مذكور على العبوة.',fmt:'200 ml',
+  ufr:'Appliquer sur cheveux mouillés, masser le cuir chevelu puis rincer.',uar:'يوضع على الشعر المبلل، تُدلّك فروة الرأس ثم يُشطف.'},
+ {id:'masque-cheveux-coco',cat:'cheveux',fr:'Masque capillaire au coco',ar:'ماسك الشعر بجوز الهند',
+  dfr:'Soin nourrissant pour les pointes fourchues et les cheveux secs.',dar:'عناية مغذية للأطراف المتقصفة والشعر الجاف.',
+  cfr:'Beurre et huile de coco mentionnés sur l’étiquette.',car:'زبدة وزيت جوز الهند المذكوران على العبوة.',
+  ufr:'Appliquer sur les longueurs et les pointes, laisser poser 30 à 60 minutes puis laver.',uar:'يوضع على أطوال الشعر وأطرافه لمدة 30 إلى 60 دقيقة ثم يُغسل.'},
+ {id:'tbrima-sahraoui',cat:'corps',fr:'Tbrima Sahraoui',ar:'تبريمة صحراوية بالنيلة',
+  dfr:'Poudre traditionnelle pour le soin et l’exfoliation du corps.',dar:'بودرة تقليدية للعناية بالجسم وتقشيره.',
+  ufr:'Masser doucement sur peau humide puis rincer.',uar:'تُدلّك بلطف على بشرة رطبة ثم تُشطف.'},
+ {id:'serum-capillaire-vitamine-e',cat:'cheveux',fr:'Sérum capillaire à la vitamine E',ar:'سيروم الشعر بالفيتامين E',
+  dfr:'Sérum en huiles pour les cheveux secs et abîmés.',dar:'سيروم زيتي للشعر الجاف والمتضرر.',
+  cfr:'Huiles de coco, de lin, de jojoba et d’argan, glycérine et vitamine E, selon l’étiquette.',
+  car:'زيوت جوز الهند والكتان والجوجوبا والأركان، الجلسرين وفيتامين E، حسب العبوة.',fmt:'50 ml',
+  ufr:'Appliquer une petite quantité sur les longueurs et les pointes.',uar:'توضع كمية صغيرة على أطوال الشعر وأطرافه.'}
 ];
 var UI = {
   order:{fr:'Voir la fiche',ar:'عرض البطاقة'},
