@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chojairate Naturel</title>
@@ -478,6 +479,8 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
 <body>
 </head>
 <body>
+</head>
+<body>
 <div class="glow" id="glow" aria-hidden="true"></div>
 <canvas id="scene" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
@@ -821,9 +824,9 @@ var P = [
   dar:'خلاصة اللبان الذكر المركزة. تشد البشرة وتخفف البقع وتنعم ملمسها.',
   cfr:'Encens mâle, huile de jojoba, huile de macadamia, vitamines.',car:'اللبان الذكر، زيت الجوجوبا، زيت المكاديميا، فيتامينات.',fmt:'50 ml',
   ufr:'3 à 4 gouttes le soir, sur peau propre, avant la crème.',uar:'3 إلى 4 قطرات مساءً على بشرة نظيفة قبل الكريم.'},
- {id:'masque-nila-bleu',cat:'visage',fr:'Masque Nila bleu',ar:'ماسك النيلة الزرقاء',sourcePhoto:true,
-  dfr:'Nila bleue du Sahara. Éclaircit le teint, resserre les pores et apaise les rougeurs.',
-  dar:'النيلة الزرقاء الصحراوية. تفتح البشرة وتضيق المسام وتهدئ الاحمرار.',
+ {id:'masque-nila-bleu',cat:'visage',fr:'Nila bleu',ar:'النيلة الزرقاء',sourcePhoto:true,
+  dfr:'Unifie le teint et lui donne fraîcheur et éclat.',
+  dar:'توحد لون البشرة وتعطيها نضارة وبياضاً.',
   ufr:'Une fois par semaine, 10 à 15 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، من 10 إلى 15 دقيقة، ثم يُشطف بماء فاتر.'},
  {id:'gommage-cafe',cat:'corps',fr:'Gommage au café',ar:'مقشر القهوة',
   dfr:'Café moulu, sucre et vitamine E. Exfolie, relance la circulation et affine le grain.',
@@ -846,9 +849,11 @@ var P = [
   dfr:'Une teinte rouge profonde pour les cheveux.',dar:'لون أحمر عميق للشعر.',
   ufr:'Suivre les indications figurant sur l’emballage.',uar:'اتّبعي التعليمات الموجودة على العبوة.'},
  {id:'masque-reglisse',cat:'visage',fr:'Masque à la réglisse',ar:'ماسك بعرق السوس',sourcePhoto:true,detailPhoto:'img/masque-reglisse-detail.webp',
-  dfr:'Réglisse pour une peau éclatante, au toucher naturel.',
-  dar:'عرق السوس لبشرة مشرقة بلمسة طبيعية.',
-  ufr:'Une fois par semaine, 10 à 15 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، من 10 إلى 15 دقيقة، ثم يُشطف بماء فاتر.'},
+  dfr:'Atténue les taches pigmentaires et aide à réduire rougeurs et irritations.',
+  dar:'يعالج التصبغات ويساعد على تقليل الاحمرار وتهيج البشرة.',
+  ufr:'Appliquer sur une peau propre.',uar:'يوضع على بشرة نظيفة.',
+  cfr:'Réglisse, ghassoul blanc et autres composants.',
+  car:'عرق السوس، غسول أبيض ومكونات أخرى.'},
  {id:'creme-solaire',cat:'visage',fr:'Crème solaire',ar:'واقي الشمس',
   dfr:'Protection solaire naturelle, pour tous les types de peau.',
   dar:'حماية طبيعية من الشمس، لجميع أنواع البشرة.',fmt:'50 ml',
@@ -987,15 +992,15 @@ var P = [
   cfr:'Parfum coco et vanille indiqué sur l’étiquette ; la formule complète n’est pas visible.',car:'رائحة الكوك والفاني مذكورة على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Appliquer une petite quantité sur le corps ; éviter le visage.',uar:'توضع كمية صغيرة على الجسم مع تجنب الوجه.',fmt:'50 g'},
  {id:'huile-lavande',cat:'hv',fr:'Huile de lavande',ar:'زيت اللافندر',sourcePhoto:true,detailPhoto:'img/huile-lavande-detail.webp',
-  dfr:'Huile de lavande en flacon.',dar:'زيت اللافندر في قارورة.',
+  dfr:'Apaise le stress, favorise la cicatrisation et la pousse des cheveux, aide contre les poux.',dar:'يخفف التوتر والقلق، يعزز التئام الجروح ونمو الشعر، ويساعد على التخلص من القمل.',
   cfr:'Lavande indiquée sur l’étiquette ; la composition complète n’est pas visible.',car:'اللافندر مذكور على الملصق؛ المكونات الكاملة غير ظاهرة.',
   ufr:'Appliquer selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'30 ml'},
  {id:'huile-noyau-abricot',cat:'hv',fr:'Huile de noyau d’abricot',ar:'زيت نواة المشمش',sourcePhoto:true,detailPhoto:'img/huile-noyau-abricot-detail.webp',
-  dfr:'Huile de noyau d’abricot en flacon.',dar:'زيت نواة المشمش في قارورة.',
+  dfr:'Riche en vitamines A, E et K et en acide oléique. Idéale pour les peaux sèches ou sensibles.',dar:'غني بالفيتامينات A وE وK وبالأحماض الدهنية. مثالي للبشرة الجافة أو الحساسة.',
   cfr:'Noyau d’abricot indiqué sur l’étiquette.',car:'نواة المشمش مذكورة على الملصق.',
   ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
  {id:'huile-sesame',cat:'hv',fr:'Huile de sésame',ar:'زيت الزنجلان',sourcePhoto:true,detailPhoto:'img/huile-sesame-detail.webp',
-  dfr:'Huile de sésame, appelée huile de zenjlan sur l’étiquette.',dar:'زيت الزنجلان في قارورة.',
+  dfr:'Équilibre le cuir chevelu, fait briller les cheveux, aide contre l’eczéma, la dermatite et l’acné.',dar:'يوازن زيوت فروة الرأس ويكسب الشعر لمعاناً، ويساعد على علاج الإكزيما والتهاب الجلد وحب الشباب.',
   cfr:'Sésame (zenjlan) indiqué sur l’étiquette.',car:'الزنجلان مذكور على الملصق.',
   ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
  {id:'huile-fenugrec',cat:'hv',fr:'Huile de fenugrec',ar:'زيت الحلبة',sourcePhoto:true,detailPhoto:'img/huile-fenugrec-detail.webp',
@@ -1011,24 +1016,24 @@ var P = [
   cfr:'Fleur d’oranger indiquée sur l’étiquette.',car:'زهر البرتقال مذكور على الملصق.',
   ufr:'Vaporiser légèrement sur la peau.',uar:'يرش برفق على البشرة.',fmt:'100 ml'},
  {id:'aker-fassi-poudre',cat:'visage',fr:'Aker Fassi en poudre',ar:'عكر الفاسي مسحوق',sourcePhoto:true,
-  dfr:'Aker Fassi sous forme de poudre, dans un petit pot transparent.',dar:'عكر الفاسي على شكل مسحوق في علبة شفافة.',
+  dfr:'Hydrate la peau, améliore son élasticité et unifie le teint.',dar:'يرطب البشرة ويحسن مرونتها ويوحد لونها.',
   cfr:'La liste détaillée des ingrédients n’est pas visible sur la photo.',car:'لائحة المكونات المفصلة غير ظاهرة في الصورة.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
  {id:'khol-poudre',cat:'visage',fr:'Khôl en poudre',ar:'الكحل مسحوق',sourcePhoto:true,
   dfr:'Khôl en poudre, avec applicateur en bois.',dar:'كحل مسحوق مع مرود خشبي.',
-  cfr:'La composition détaillée n’est pas visible sur la photo.',car:'التركيبة المفصلة غير ظاهرة في الصورة.',
+  cfr:'Noyaux d’olive, noyaux de datte, ail, clou de girofle, thym et autres composants.',car:'عظم الزيتون، عظم التمر، الثوم، القرنفل، الزعتر ومكونات أخرى.',
   ufr:'Appliquer avec l’accessoire fourni, selon les indications du produit.',uar:'يستعمل بالمرود المرفق حسب إرشادات المنتج.',fmt:'15 g'},
  {id:'huile-jojoba',cat:'hv',fr:'Huile de jojoba',ar:'زيت الجوجوبا',sourcePhoto:true,detailPhoto:'img/huile-jojoba-detail.webp',
-  dfr:'Huile de jojoba en flacon.',dar:'زيت الجوجوبا في قارورة.',
+  dfr:'Retarde les signes de l’âge, apaise eczéma, psoriasis, boutons et allergies.',dar:'تأخير علامات الشيخوخة، علاج الإكزيما والصدفية والحبوب، ومحاربة الحساسية.',
   cfr:'Jojoba indiqué sur l’étiquette.',car:'الجوجوبا مذكورة على الملصق.',
   ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
  {id:'huile-graines-lin',cat:'hv',fr:'Huile de graines de lin',ar:'زيت بذور الكتان',sourcePhoto:true,detailPhoto:'img/huile-graines-lin-detail.webp',
-  dfr:'Huile de graines de lin en flacon.',dar:'زيت بذور الكتان في قارورة.',
+  dfr:'Rend la peau plus éclatante, réduit sécheresse et rides, apaise irritations et rougeurs.',dar:'يجعل البشرة أكثر نضارة، يقلل الجفاف والتجاعيد، ويخفف التهيج والاحمرار.',
   cfr:'Graines de lin indiquées sur l’étiquette.',car:'بذور الكتان مذكورة على الملصق.',
   ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
  {id:'huile-ricin',cat:'hv',fr:'Huile de ricin',ar:'زيت الخروع',sourcePhoto:true,detailPhoto:'img/huile-ricin-detail.webp',
-  dfr:'Huile de ricin en flacon.',dar:'زيت الخروع في قارورة.',
-  cfr:'Ricin indiqué sur l’étiquette.',car:'الخروع مذكور على الملصق.',
+  dfr:'Hydrate les cheveux, stimule leur croissance, prévient la chute et la casse.',dar:'يرطب الشعر، يحفز نموه، ويمنع تساقطه وتقصفه.',
+  cfr:'Acides gras et vitamine E, selon l’étiquette.',car:'أحماض دهنية وفيتامين E حسب الملصق.',
   ufr:'Appliquer une petite quantité sur les cheveux ou les sourcils.',uar:'توضع كمية قليلة على الشعر أو الحواجب.',fmt:'30 ml'},
  {id:'encens-oliban',cat:'eaux',fr:'Encens oliban en résine',ar:'اللبان الحر',sourcePhoto:true,
   dfr:'Résine de luban al-hurr en grains, dans un petit pot transparent.',dar:'حبيبات اللبان الحر في علبة شفافة.',
@@ -1039,9 +1044,9 @@ var P = [
   cfr:'Camomille indiquée sur l’étiquette.',car:'البابونج مذكور على الملصق.',
   ufr:'Vaporiser légèrement sur la peau.',uar:'يرش برفق على البشرة.',fmt:'100 ml'},
  {id:'huile-souchet-odorant',cat:'hv',fr:'Huile de souchet odorant',ar:'زيت نبات السعد',sourcePhoto:true,
-  dfr:'Huile de souchet odorant en flacon pompe.',dar:'زيت نبات السعد في قارورة بمضخة.',
+  dfr:'Ralentit la repousse des poils indésirables, en usage régulier.',dar:'يبطئ نمو الشعر غير المرغوب فيه مع الاستعمال المنتظم.',
   cfr:'Souchet odorant (plante de saad) indiqué sur l’étiquette.',car:'نبات السعد مذكور على الملصق.',
-  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'100 ml'}
+  ufr:'Appliquer régulièrement sur les zones concernées.',uar:'يوضع بانتظام على المناطق المعنية.',fmt:'100 ml'}
 ];
 var STUDIO_PHOTOS = new Set([
   'mkhemriya-coco-vanille','masque-reglisse','huile-lavande','huile-noyau-abricot',
