@@ -334,6 +334,10 @@ main,header,footer{position:relative;z-index:2}
   transform:scale(1.04);transition:transform .7s var(--ease);
 }
 .arch.original-photo img{object-fit:contain;transform:none;background:#e9dfcf}
+.photo-views{display:flex;gap:.5rem;justify-content:center;margin:.75rem 0 0}
+.photo-views[hidden]{display:none}
+.photo-views button{border:1px solid #c9a24a;border-radius:2rem;background:transparent;color:#385244;padding:.45rem .75rem;font:inherit;font-size:.8rem;cursor:pointer}
+.photo-views button.selected{background:#385244;color:#fff;border-color:#385244}
 .card-body{display:grid;grid-template-rows:auto auto 1fr auto;gap:6px;padding-inline:4px}
 .card-meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 10px;min-height:20px}
 .card-meta .cat{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);white-space:nowrap}
@@ -575,7 +579,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La boutique" data-ar="المتجر">La boutique</p>
-      <h2 id="gamme-title" data-html-fr="Quarante produits, <em>suspendus.</em>" data-html-ar="أربعون منتجاً <em>معلّقاً.</em>">Quarante produits, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Cinquante-cinq produits, <em>suspendus.</em>" data-html-ar="خمسة وخمسون منتجاً <em>معلّقاً.</em>">Cinquante-cinq produits, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -727,6 +731,10 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="modal">
     <div class="modal-media">
       <div class="arch"><img id="modal-img" width="720" height="720" src="" alt=""></div>
+      <div class="photo-views" id="photo-views" hidden>
+        <button type="button" id="photo-front" class="selected" data-fr="Vue de face" data-ar="الصورة الأمامية">Vue de face</button>
+        <button type="button" id="photo-detail" data-fr="Autre vue / étiquette" data-ar="صورة أخرى / الملصق">Autre vue / étiquette</button>
+      </div>
       <figure class="modal-result" id="modal-result" hidden>
         <img id="modal-result-img" width="72" height="72" src="" alt="">
         <figcaption data-fr="Aperçu de la couleur" data-ar="معاينة اللون">Aperçu de la couleur</figcaption>
@@ -812,7 +820,7 @@ var P = [
   dar:'خلاصة اللبان الذكر المركزة. تشد البشرة وتخفف البقع وتنعم ملمسها.',
   cfr:'Encens mâle, huile de jojoba, huile de macadamia, vitamines.',car:'اللبان الذكر، زيت الجوجوبا، زيت المكاديميا، فيتامينات.',fmt:'50 ml',
   ufr:'3 à 4 gouttes le soir, sur peau propre, avant la crème.',uar:'3 إلى 4 قطرات مساءً على بشرة نظيفة قبل الكريم.'},
- {id:'masque-nila-bleu',cat:'visage',fr:'Masque Nila bleu',ar:'ماسك النيلة الزرقاء',
+ {id:'masque-nila-bleu',cat:'visage',fr:'Masque Nila bleu',ar:'ماسك النيلة الزرقاء',sourcePhoto:true,
   dfr:'Nila bleue du Sahara. Éclaircit le teint, resserre les pores et apaise les rougeurs.',
   dar:'النيلة الزرقاء الصحراوية. تفتح البشرة وتضيق المسام وتهدئ الاحمرار.',
   ufr:'Une fois par semaine, 10 à 15 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، من 10 إلى 15 دقيقة، ثم يُشطف بماء فاتر.'},
@@ -836,7 +844,7 @@ var P = [
  {id:'coloration-cheveux-rouge',cat:'cheveux',fr:'Coloration cheveux rouge',ar:'صبغة الشعر الحمراء',sourcePhoto:true,
   dfr:'Une teinte rouge profonde pour les cheveux.',dar:'لون أحمر عميق للشعر.',
   ufr:'Suivre les indications figurant sur l’emballage.',uar:'اتّبعي التعليمات الموجودة على العبوة.'},
- {id:'masque-reglisse',cat:'visage',fr:'Masque à la réglisse',ar:'ماسك بعرق السوس',
+ {id:'masque-reglisse',cat:'visage',fr:'Masque à la réglisse',ar:'ماسك بعرق السوس',sourcePhoto:true,detailPhoto:'img/masque-reglisse-detail.webp',
   dfr:'Réglisse pour une peau éclatante, au toucher naturel.',
   dar:'عرق السوس لبشرة مشرقة بلمسة طبيعية.',
   ufr:'Une fois par semaine, 10 à 15 minutes, puis rincer à l’eau tiède.',uar:'مرة في الأسبوع، من 10 إلى 15 دقيقة، ثم يُشطف بماء فاتر.'},
@@ -971,7 +979,68 @@ var P = [
   dfr:'Sérum en huiles pour les cheveux secs et abîmés.',dar:'سيروم زيتي للشعر الجاف والمتضرر.',
   cfr:'Huiles de coco, de lin, de jojoba et d’argan, glycérine et vitamine E, selon l’étiquette.',
   car:'زيوت جوز الهند والكتان والجوجوبا والأركان، الجلسرين وفيتامين E، حسب العبوة.',fmt:'50 ml',
-  ufr:'Appliquer une petite quantité sur les longueurs et les pointes.',uar:'توضع كمية صغيرة على أطوال الشعر وأطرافه.'}
+  ufr:'Appliquer une petite quantité sur les longueurs et les pointes.',uar:'توضع كمية صغيرة على أطوال الشعر وأطرافه.'},
+ {id:'mkhemriya-coco-vanille',cat:'corps',fr:'Mkhemriya coco & vanille',ar:'مخمرية برائحة الكوك والفاني',sourcePhoto:true,
+  dfr:'Parfum solide pour le corps au parfum coco et vanille, présenté dans son pot doré.',
+  dar:'مخمرية معطرة للجسم برائحة الكوك والفاني في عبوتها الذهبية.',
+  cfr:'Parfum coco et vanille indiqué sur l’étiquette ; la formule complète n’est pas visible.',car:'رائحة الكوك والفاني مذكورة على الملصق؛ التركيبة الكاملة غير ظاهرة.',
+  ufr:'Appliquer une petite quantité sur le corps ; éviter le visage.',uar:'توضع كمية صغيرة على الجسم مع تجنب الوجه.',fmt:'50 g'},
+ {id:'huile-lavande',cat:'hv',fr:'Huile de lavande',ar:'زيت اللافندر',sourcePhoto:true,detailPhoto:'img/huile-lavande-detail.webp',
+  dfr:'Huile de lavande en flacon compte-gouttes.',dar:'زيت اللافندر في قارورة بقطّارة.',
+  cfr:'Lavande indiquée sur l’étiquette ; la composition complète n’est pas visible.',car:'اللافندر مذكور على الملصق؛ المكونات الكاملة غير ظاهرة.',
+  ufr:'Appliquer selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'30 ml'},
+ {id:'huile-noyau-abricot',cat:'hv',fr:'Huile de noyau d’abricot',ar:'زيت نواة المشمش',sourcePhoto:true,detailPhoto:'img/huile-noyau-abricot-detail.webp',
+  dfr:'Huile de noyau d’abricot en flacon compte-gouttes.',dar:'زيت نواة المشمش في قارورة بقطّارة.',
+  cfr:'Noyau d’abricot indiqué sur l’étiquette.',car:'نواة المشمش مذكورة على الملصق.',
+  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
+ {id:'huile-sesame',cat:'hv',fr:'Huile de sésame',ar:'زيت الزنجلان',sourcePhoto:true,detailPhoto:'img/huile-sesame-detail.webp',
+  dfr:'Huile de sésame, appelée huile de zenjlan sur l’étiquette.',dar:'زيت الزنجلان في قارورة بقطّارة.',
+  cfr:'Sésame (zenjlan) indiqué sur l’étiquette.',car:'الزنجلان مذكور على الملصق.',
+  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
+ {id:'huile-fenugrec',cat:'hv',fr:'Huile de fenugrec',ar:'زيت الحلبة',sourcePhoto:true,detailPhoto:'img/huile-fenugrec-detail.webp',
+  dfr:'Huile de fenugrec en flacon compte-gouttes.',dar:'زيت الحلبة في قارورة بقطّارة.',
+  cfr:'Fenugrec indiqué sur l’étiquette.',car:'الحلبة مذكورة على الملصق.',
+  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
+ {id:'vinaigre-cidre-pomme',cat:'eaux',fr:'Vinaigre de cidre de pomme',ar:'خل التفاح',sourcePhoto:true,
+  dfr:'Vinaigre de cidre de pomme présenté dans son flacon d’origine.',dar:'خل التفاح في عبوته الأصلية.',
+  cfr:'Pomme indiquée sur l’étiquette ; la composition détaillée n’est pas visible.',car:'التفاح مذكور على الملصق؛ التركيبة التفصيلية غير ظاهرة.',
+  ufr:'Suivre les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'250 ml'},
+ {id:'eau-fleur-oranger',cat:'eaux',fr:'Eau de fleur d’oranger',ar:'ماء زهر البرتقال',sourcePhoto:true,
+  dfr:'Eau de fleur d’oranger en vaporisateur.',dar:'ماء زهر البرتقال في عبوة رش.',
+  cfr:'Fleur d’oranger indiquée sur l’étiquette.',car:'زهر البرتقال مذكور على الملصق.',
+  ufr:'Vaporiser légèrement sur la peau.',uar:'يرش برفق على البشرة.',fmt:'100 ml'},
+ {id:'aker-fassi-poudre',cat:'visage',fr:'Aker Fassi en poudre',ar:'عكر الفاسي مسحوق',sourcePhoto:true,
+  dfr:'Aker Fassi sous forme de poudre, dans un petit pot transparent.',dar:'عكر الفاسي على شكل مسحوق في علبة شفافة.',
+  cfr:'La liste détaillée des ingrédients n’est pas visible sur la photo.',car:'لائحة المكونات المفصلة غير ظاهرة في الصورة.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
+ {id:'khol-poudre',cat:'visage',fr:'Khôl en poudre',ar:'الكحل مسحوق',sourcePhoto:true,
+  dfr:'Khôl en poudre, avec applicateur en bois.',dar:'كحل مسحوق مع مرود خشبي.',
+  cfr:'La composition détaillée n’est pas visible sur la photo.',car:'التركيبة المفصلة غير ظاهرة في الصورة.',
+  ufr:'Appliquer avec l’accessoire fourni, selon les indications du produit.',uar:'يستعمل بالمرود المرفق حسب إرشادات المنتج.',fmt:'15 g'},
+ {id:'huile-jojoba',cat:'hv',fr:'Huile de jojoba',ar:'زيت الجوجوبا',sourcePhoto:true,detailPhoto:'img/huile-jojoba-detail.webp',
+  dfr:'Huile de jojoba en flacon compte-gouttes.',dar:'زيت الجوجوبا في قارورة بقطّارة.',
+  cfr:'Jojoba indiqué sur l’étiquette.',car:'الجوجوبا مذكورة على الملصق.',
+  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
+ {id:'huile-graines-lin',cat:'hv',fr:'Huile de graines de lin',ar:'زيت بذور الكتان',sourcePhoto:true,detailPhoto:'img/huile-graines-lin-detail.webp',
+  dfr:'Huile de graines de lin en flacon compte-gouttes.',dar:'زيت بذور الكتان في قارورة بقطّارة.',
+  cfr:'Graines de lin indiquées sur l’étiquette.',car:'بذور الكتان مذكورة على الملصق.',
+  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
+ {id:'huile-ricin',cat:'hv',fr:'Huile de ricin',ar:'زيت الخروع',sourcePhoto:true,detailPhoto:'img/huile-ricin-detail.webp',
+  dfr:'Huile de ricin en flacon compte-gouttes.',dar:'زيت الخروع في قارورة بقطّارة.',
+  cfr:'Ricin indiqué sur l’étiquette.',car:'الخروع مذكور على الملصق.',
+  ufr:'Appliquer une petite quantité sur les cheveux ou les sourcils.',uar:'توضع كمية قليلة على الشعر أو الحواجب.',fmt:'30 ml'},
+ {id:'encens-oliban',cat:'eaux',fr:'Encens oliban en résine',ar:'اللبان الحر',sourcePhoto:true,
+  dfr:'Résine de luban al-hurr en grains, dans un petit pot transparent.',dar:'حبيبات اللبان الحر في علبة شفافة.',
+  cfr:'Résine d’encens oliban indiquée sur l’étiquette.',car:'راتنج اللبان الحر مذكور على الملصق.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
+ {id:'hydrolat-camomille',cat:'eaux',fr:'Hydrolat de camomille',ar:'مقطر البابونج',sourcePhoto:true,
+  dfr:'Hydrolat de camomille en vaporisateur.',dar:'مقطر البابونج في عبوة رش.',
+  cfr:'Camomille indiquée sur l’étiquette.',car:'البابونج مذكور على الملصق.',
+  ufr:'Vaporiser légèrement sur la peau.',uar:'يرش برفق على البشرة.',fmt:'100 ml'},
+ {id:'huile-souchet-odorant',cat:'hv',fr:'Huile de souchet odorant',ar:'زيت نبات السعد',sourcePhoto:true,
+  dfr:'Huile de souchet odorant en flacon pompe.',dar:'زيت نبات السعد في قارورة بمضخة.',
+  cfr:'Souchet odorant (plante de saad) indiqué sur l’étiquette.',car:'نبات السعد مذكور على الملصق.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'100 ml'}
 ];
 var UI = {
   order:{fr:'Voir la fiche',ar:'عرض البطاقة'},
@@ -1091,6 +1160,22 @@ function openModal(p){
   var img = document.getElementById('modal-img');
   img.src = 'img/'+p.id+'.webp'; img.alt = lang==='ar'?p.ar:p.fr;
   img.parentElement.classList.toggle('original-photo', !!p.sourcePhoto);
+  var views = document.getElementById('photo-views');
+  views.hidden = !p.detailPhoto;
+  document.getElementById('photo-front').classList.add('selected');
+  document.getElementById('photo-detail').classList.remove('selected');
+  if(p.detailPhoto){
+    document.getElementById('photo-front').onclick = function(){
+      img.src = 'img/'+p.id+'.webp';
+      this.classList.add('selected');
+      document.getElementById('photo-detail').classList.remove('selected');
+    };
+    document.getElementById('photo-detail').onclick = function(){
+      img.src = p.detailPhoto;
+      this.classList.add('selected');
+      document.getElementById('photo-front').classList.remove('selected');
+    };
+  }
   var result = document.getElementById('modal-result');
   result.hidden = !p.result;
   if(p.result){
