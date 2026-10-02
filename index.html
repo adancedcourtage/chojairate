@@ -732,7 +732,8 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     <div class="modal-media">
       <div class="arch"><img id="modal-img" width="720" height="720" src="" alt=""></div>
       <div class="photo-views" id="photo-views" hidden>
-        <button type="button" id="photo-front" class="selected" data-fr="Vue de face" data-ar="الصورة الأمامية">Vue de face</button>
+        <button type="button" id="photo-front" class="selected" data-fr="Visuel retouché" data-ar="الصورة المعدلة">Visuel retouché</button>
+        <button type="button" id="photo-original" data-fr="Photo originale" data-ar="الصورة الأصلية">Photo originale</button>
         <button type="button" id="photo-detail" data-fr="Autre vue / étiquette" data-ar="صورة أخرى / الملصق">Autre vue / étiquette</button>
       </div>
       <figure class="modal-result" id="modal-result" hidden>
@@ -1042,6 +1043,14 @@ var P = [
   cfr:'Souchet odorant (plante de saad) indiqué sur l’étiquette.',car:'نبات السعد مذكور على الملصق.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'100 ml'}
 ];
+var STUDIO_PHOTOS = new Set([
+  'mkhemriya-coco-vanille','masque-reglisse','huile-lavande','huile-noyau-abricot',
+  'huile-sesame','huile-fenugrec','vinaigre-cidre-pomme','eau-fleur-oranger',
+  'aker-fassi-poudre','khol-poudre','huile-jojoba','huile-graines-lin',
+  'huile-ricin','masque-nila-bleu','encens-oliban','hydrolat-camomille',
+  'huile-souchet-odorant'
+]);
+P.forEach(function(p){ if(STUDIO_PHOTOS.has(p.id)) p.studioPhoto = 'img/'+p.id+'-studio.webp'; });
 var UI = {
   order:{fr:'Voir la fiche',ar:'عرض البطاقة'},
   empty:{fr:'Aucun soin dans cette catégorie.',ar:'لا توجد منتجات في هذه الفئة.'},
@@ -1105,7 +1114,7 @@ function buildCard(p,i){
     var b = document.createElement('button');
     b.type='button'; b.className='card reveal'; b.setAttribute('data-id', p.id);
     b.innerHTML =
-      '<div class="arch'+(p.sourcePhoto?' original-photo':'')+'"><img loading="lazy" decoding="async" fetchpriority="low" width="720" height="720" src="'+(p.cardPhoto||'img/'+p.id+'.webp')+'" alt="'+(lang==='ar'?p.ar:p.fr)+'"></div>'+
+      '<div class="arch'+(p.sourcePhoto?' original-photo':'')+'"><img loading="lazy" decoding="async" fetchpriority="low" width="720" height="720" src="'+(p.cardPhoto||p.studioPhoto||'img/'+p.id+'.webp')+'" alt="'+(lang==='ar'?p.ar:p.fr)+'"></div>'+
       '<div class="card-body">'+
       '<div class="card-meta"><span class="cat">'+CATS[p.cat][lang]+'</span><bdi class="ar-name">'+(lang==='ar'?p.fr:p.ar)+'</bdi></div>'+
       '<h3>'+(lang==='ar'?p.ar:p.fr)+'</h3>'+
@@ -1158,24 +1167,25 @@ function attachTilt(card){
 var modal = document.getElementById('modal');
 function openModal(p){
   var img = document.getElementById('modal-img');
-  img.src = 'img/'+p.id+'.webp'; img.alt = lang==='ar'?p.ar:p.fr;
+  img.src = p.studioPhoto||'img/'+p.id+'.webp'; img.alt = lang==='ar'?p.ar:p.fr;
   img.parentElement.classList.toggle('original-photo', !!p.sourcePhoto);
   var views = document.getElementById('photo-views');
-  views.hidden = !p.detailPhoto;
-  document.getElementById('photo-front').classList.add('selected');
-  document.getElementById('photo-detail').classList.remove('selected');
-  if(p.detailPhoto){
-    document.getElementById('photo-front').onclick = function(){
-      img.src = 'img/'+p.id+'.webp';
-      this.classList.add('selected');
-      document.getElementById('photo-detail').classList.remove('selected');
-    };
-    document.getElementById('photo-detail').onclick = function(){
-      img.src = p.detailPhoto;
-      this.classList.add('selected');
-      document.getElementById('photo-front').classList.remove('selected');
-    };
+  views.hidden = !p.studioPhoto && !p.detailPhoto;
+  var studioButton = document.getElementById('photo-front');
+  var originalButton = document.getElementById('photo-original');
+  var detailButton = document.getElementById('photo-detail');
+  studioButton.hidden = !p.studioPhoto;
+  originalButton.hidden = !p.studioPhoto;
+  detailButton.hidden = !p.detailPhoto;
+  function choosePhoto(src, button){
+    img.src = src;
+    [studioButton, originalButton, detailButton].forEach(function(b){ b.classList.toggle('selected', b===button); });
   }
+  studioButton.onclick = function(){ choosePhoto(p.studioPhoto, studioButton); };
+  originalButton.onclick = function(){ choosePhoto('img/'+p.id+'.webp', originalButton); };
+  detailButton.onclick = function(){ choosePhoto(p.detailPhoto, detailButton); };
+  [studioButton, originalButton, detailButton].forEach(function(b){ b.classList.remove('selected'); });
+  (p.studioPhoto ? studioButton : originalButton).classList.add('selected');
   var result = document.getElementById('modal-result');
   result.hidden = !p.result;
   if(p.result){
