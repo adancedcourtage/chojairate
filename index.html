@@ -578,7 +578,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La boutique" data-ar="المتجر">La boutique</p>
-      <h2 id="gamme-title" data-html-fr="Soixante-quatre produits, <em>suspendus.</em>" data-html-ar="أربعة وستون منتجاً <em>معلّقاً.</em>">Soixante-quatre produits, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Soixante-cinq produits, <em>suspendus.</em>" data-html-ar="خمسة وستون منتجاً <em>معلّقاً.</em>">Soixante-cinq produits, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -1079,7 +1079,11 @@ var P = [
  {id:'ghassoul-naturel',price:30,cat:'cheveux',fr:'Ghassoul naturel',ar:'غسول طبيعي بالأعشاب',
   dfr:'Nettoie le cuir chevelu, aide à réduire les pellicules, renforce les cheveux et leur apporte brillance et douceur. Sur la peau, aide à atténuer les boutons et leurs traces tout en laissant la peau douce.',dar:'ينظف فروة الرأس، ويساعد على تقليل القشرة وتقوية الشعر ويمنحه اللمعان والنعومة. وللبشرة، يساعد على تخفيف الحبوب وآثارها ويمنحها النعومة.',
   cfr:'Ghassoul naturel à base de plantes naturelles ; composition détaillée non visible.',car:'غسول طبيعي بالأعشاب؛ التركيبة المفصلة غير ظاهرة على الملصق.',
-  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'200 g'}
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'200 g'},
+ {id:'baume-levres',cat:'visage',fr:'Baume à lèvres',ar:'مرطب للشفاه',
+  dfr:'Baume à lèvres Chojairate Naturel dans un petit pot rose. Aide à garder les lèvres souples et confortables.',dar:'مرطب للشفاه من شجيرات ناتوريل في علبة وردية صغيرة. يساعد على إبقاء الشفاه ناعمة ومريحة.',
+  cfr:'La composition détaillée n’est pas visible sur la photo du pot.',car:'التركيبة المفصلة غير ظاهرة في صورة العبوة.',
+  ufr:'Appliquer une petite quantité sur les lèvres selon les besoins.',uar:'توضع كمية صغيرة على الشفاه عند الحاجة.'}
 ];
 var STUDIO_PHOTOS = new Set([]);
 P.forEach(function(p){ if(STUDIO_PHOTOS.has(p.id)) p.studioPhoto = 'img/'+p.id+'-studio.webp'; });
