@@ -344,6 +344,8 @@ main,header,footer{position:relative;z-index:2}
 .card-meta .ar-name{font-family:var(--font-ar);color:var(--ivory-45);font-size:1rem;line-height:1;text-align:end}
 :root[lang="ar"] .card-meta .ar-name{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.85rem}
 .card h3{font-size:1.15rem;line-height:1.25}
+.card-price{font-family:var(--font-display);font-size:1.05rem;color:var(--gold-2);font-variant-numeric:tabular-nums}
+.modal-price{font-family:var(--font-display);font-size:1.5rem;color:var(--gold-2);font-variant-numeric:tabular-nums;order:0}
 .card .desc{
   color:var(--ivory-70);font-size:.9rem;line-height:1.5;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
@@ -741,6 +743,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
     <div class="modal-body">
       <p class="eyebrow" id="modal-cat"></p>
       <p class="fmt" id="modal-fmt" hidden></p>
+      <p class="modal-price" id="modal-price" hidden></p>
       <h3 id="modal-title"></h3>
       <p class="ar-name" id="modal-ar"></p>
       <p class="desc" id="modal-desc"></p>
@@ -882,35 +885,35 @@ var P = [
   cfr:'Macérat d’herbes parfumées.',car:'أعشاب معطرة.',
   ufr:'Vaporiser sur cheveux propres.',uar:'يُرش على شعر نظيف.',
   fmt:'150 ml'},
- {id:'huile-de-rose',cat:'hv',fr:'Huile de rose',ar:'زيت الورد',
+ {id:'huile-de-rose',price:30,cat:'hv',fr:'Huile de rose',ar:'زيت الورد',
   dfr:'Pétales de rose macérés dans une huile végétale. Adoucit, illumine, parfume délicatement.',
   dar:'بتلات الورد منقوعة في زيت نباتي. ينعم ويضيء ويعطر بلطف.',
   ufr:'Quelques gouttes le soir, visage ou décolleté.',uar:'بضع قطرات مساءً على الوجه أو الصدر.'},
- {id:'huile-de-graine-noire',cat:'hv',fr:'Huile de graine noire',ar:'زيت الحبة السوداء',
+ {id:'huile-de-graine-noire',price:40,cat:'hv',fr:'Huile de graine noire',ar:'زيت الحبة السوداء',
   dfr:'Nigelle pressée à froid. Apaise rougeurs et eczéma, fortifie cheveux et ongles.',
   dar:'حبة سوداء معصورة على البارد. تهدئ الاحمرار والأكزيما وتقوي الشعر والأظافر.',
   ufr:'Sur les zones sèches, ou en bain d’huile capillaire.',uar:'على المناطق الجافة، أو كحمام زيت للشعر.'},
- {id:'huile-essentiele-de-rose',cat:'he',fr:'Huile essentielle de rose',ar:'زيت الورد العطري',
+ {id:'huile-essentiele-de-rose',price:45,cat:'he',fr:'Huile essentielle de rose',ar:'زيت الورد العطري',
   dfr:'Précieuse et régénérante. Quelques gouttes dans votre crème pour les peaux matures.',
   dar:'ثمين ومجدد. بضع قطرات في كريمك للبشرة الناضجة.',
   cfr:'100 % huile essentielle de rose.',car:'100٪ زيت الورد العطري (الورد الدمشقي).',
   ufr:'2 gouttes diluées dans une crème ou une huile végétale. Jamais pure.',uar:'قطرتان مخففتان في كريم أو زيت نباتي. لا يُستعمل نقياً.',fmt:'10 ml'},
- {id:'huile-essentielle-de-lavande',cat:'he',fr:'Huile essentielle de lavande',ar:'زيت اللافندر',
+ {id:'huile-essentielle-de-lavande',price:45,cat:'he',fr:'Huile essentielle de lavande',ar:'زيت اللافندر',
   dfr:'Apaise, aide la peau à cicatriser, favorise le sommeil.',
   dar:'يهدئ ويساعد البشرة على الالتئام ويحسن النوم.',
   cfr:'100 % huile essentielle de lavande.',car:'100٪ زيت اللافندر العطري.',
   ufr:'2 gouttes sur l’oreiller, ou diluée dans le bain.',uar:'قطرتان على الوسادة، أو مخففاً في الحمام.',fmt:'10 ml'},
- {id:'huile-menthe',cat:'he',fr:'Huile essentielle de menthe',ar:'زيت النعناع',
+ {id:'huile-menthe',price:45,cat:'he',fr:'Huile essentielle de menthe',ar:'زيت النعناع',
   dfr:'Fraîcheur immédiate. Soulage tensions et maux de tête, rafraîchit le cuir chevelu.',
   dar:'انتعاش فوري. يخفف التوتر والصداع وينعش فروة الرأس.',
   cfr:'100 % huile essentielle de menthe.',car:'100٪ زيت النعناع الفلفلي العطري.',
   ufr:'1 goutte diluée sur les tempes. Éviter le contour des yeux.',uar:'قطرة مخففة على الصدغين. يُتجنب محيط العينين.',fmt:'10 ml'},
- {id:'huile-d-arbre-a-the',cat:'he',fr:'Huile essentielle d’arbre à thé',ar:'زيت شجرة الشاي',
+ {id:'huile-d-arbre-a-the',price:45,cat:'he',fr:'Huile essentielle d’arbre à thé',ar:'زيت شجرة الشاي',
   dfr:'Purifiante et assainissante. Cible imperfections et boutons.',
   dar:'منقٍّ ومطهر. يستهدف الشوائب والبثور.',
   cfr:'100 % huile essentielle d’arbre à thé.',car:'100٪ زيت شجرة الشاي العطري.',
   ufr:'1 goutte localement, sur coton-tige, matin et soir.',uar:'قطرة موضعياً بعود قطن، صباحاً ومساءً.',fmt:'10 ml'},
- {id:'huile-de-romarain',cat:'he',fr:'Huile essentielle de romarin',ar:'زيت إكليل الجبل',
+ {id:'huile-de-romarain',price:45,cat:'he',fr:'Huile essentielle de romarin',ar:'زيت إكليل الجبل',
   dfr:'Améliore la concentration, soulage les douleurs et stimule la croissance des cheveux.',
   dar:'يحسن التركيز ويخفف الآلام ويحفز نمو الشعر.',
   cfr:'100 % huile essentielle de romarin.',car:'100٪ زيت إكليل الجبل العطري.',
@@ -930,27 +933,27 @@ var P = [
   dar:'يخفف آلام الأسنان، مضاد لالتهاب اللثة، ويحسن عملية الهضم.',
   cfr:'100 % hydrolat de girofle.',car:'100٪ ماء القرنفل المقطر.',
   ufr:'En bain de bouche dilué, ou en brume. Usage externe.',uar:'مضمضة بعد التخفيف، أو رذاذاً. للاستعمال الخارجي.'},
- {id:'savon-encens',cat:'hygiene',fr:'Savon à l’encens mâle',ar:'صابون اللبان الذكر',
+ {id:'savon-encens',price:20,cat:'hygiene',fr:'Savon à l’encens mâle',ar:'صابون اللبان الذكر',
   dfr:'Traitement naturel de l’acné, riche en collagène, réduit les signes de l’âge.',
   dar:'معالج لحب الشباب يحتوي على الكولاجين، يقلل من ظهور علامات الشيخوخة.',
   cfr:'Encens mâle, collagène.',car:'اللبان الذكر، قاعدة صابون طبيعية، كولاجين.',
   ufr:'Faire mousser sur peau humide, masser, rincer. Matin et soir.',uar:'يُرغى على بشرة رطبة، يُدلك ثم يُشطف. صباحاً ومساءً.',fmt:'55 g'},
- {id:'savon-nila-bleu',cat:'hygiene',fr:'Savon blanc au Nila bleu',ar:'صابونة مبيضة بالنيلة الزرقاء',
+ {id:'savon-nila-bleu',price:20,cat:'hygiene',fr:'Savon blanc au Nila bleu',ar:'صابونة مبيضة بالنيلة الزرقاء',
   dfr:'Unifie le teint et lui donne fraîcheur et éclat.',
   dar:'توحد لون البشرة وتعطيها نضارة وبياضاً.',
   cfr:'Nila bleue naturelle.',car:'النيلة الزرقاء الطبيعية، قاعدة صابون نباتية.',
   ufr:'Faire mousser sur peau humide, laisser poser une minute, rincer.',uar:'يُرغى على بشرة رطبة، يُترك دقيقة ثم يُشطف.',fmt:'64 g'},
- {id:'savon-cafe',cat:'hygiene',fr:'Savon au café et vitamine E',ar:'صابون القهوة بفيتامين E',
+ {id:'savon-cafe',price:20,cat:'hygiene',fr:'Savon au café et vitamine E',ar:'صابون القهوة بفيتامين E',
   dfr:'Élimine les cellules mortes, réduit les taches brunes et les impuretés.',
   dar:'يزيل خلايا الجلد الميتة، يقلل البقع الداكنة والأوساخ، ويقلل من التهاب الجلد.',
   cfr:'Café moulu, vitamine E.',car:'القهوة المطحونة، فيتامين E، قاعدة صابون نباتية.',
   ufr:'Masser en mouvements circulaires sur peau humide, puis rincer.',uar:'يُدلك بحركات دائرية على بشرة رطبة، ثم يُشطف.',fmt:'55 g'},
- {id:'savon-reglisse',cat:'hygiene',fr:'Savon à la réglisse',ar:'صابونة عرق السوس',
+ {id:'savon-reglisse',price:20,cat:'hygiene',fr:'Savon à la réglisse',ar:'صابونة عرق السوس',
   dfr:'Apaise et hydrate la peau, atténue les taches brunes et soulage les coups de soleil.',
   dar:'تهدئة وترطيب البشرة، إخفاء البقع الداكنة وتخفيف حروق الشمس.',
   cfr:'Extrait de racine de réglisse.',car:'خلاصة عرق السوس، قاعدة صابون نباتية.',
   ufr:'Faire mousser sur peau humide, masser, rincer à l’eau claire.',uar:'يُرغى على بشرة رطبة، يُدلك ثم يُشطف بالماء.',fmt:'55 g'},
- {id:'huile-amande-douce',cat:'hv',fr:'Huile d’amande douce',ar:'زيت اللوز الحلو',
+ {id:'huile-amande-douce',price:30,cat:'hv',fr:'Huile d’amande douce',ar:'زيت اللوز الحلو',
   dfr:'Nourrit et assouplit la peau, apaise les tiraillements et les vergetures.',
   dar:'يغذي البشرة ويليّنها، ويخفف من الشد وعلامات التمدد.',
   cfr:'100 % huile d’amande douce.',car:'100٪ زيت اللوز الحلو المعصور على البارد.',
@@ -985,11 +988,11 @@ var P = [
   dar:'مخمرية معطرة للجسم برائحة الكوك والفاني في عبوتها الذهبية.',
   cfr:'Parfum coco et vanille indiqué sur l’étiquette ; la formule complète n’est pas visible.',car:'رائحة الكوك والفاني مذكورة على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Appliquer une petite quantité sur le corps ; éviter le visage.',uar:'توضع كمية صغيرة على الجسم مع تجنب الوجه.',fmt:'50 g'},
- {id:'huile-lavande',cat:'hv',fr:'Huile de lavande',ar:'زيت اللافندر',
+ {id:'huile-lavande',price:30,cat:'hv',fr:'Huile de lavande',ar:'زيت اللافندر',
   dfr:'Apaise le stress, favorise la cicatrisation et la pousse des cheveux, aide contre les poux.',dar:'يخفف التوتر والقلق، يعزز التئام الجروح ونمو الشعر، ويساعد على التخلص من القمل.',
   cfr:'Lavande indiquée sur l’étiquette ; la composition complète n’est pas visible.',car:'اللافندر مذكور على الملصق؛ المكونات الكاملة غير ظاهرة.',
   ufr:'Appliquer selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'30 ml'},
- {id:'huile-noyau-abricot',cat:'hv',fr:'Huile de noyau d’abricot',ar:'زيت نواة المشمش',
+ {id:'huile-noyau-abricot',price:40,cat:'hv',fr:'Huile de noyau d’abricot',ar:'زيت نواة المشمش',
   dfr:'Riche en vitamines A, E et K et en acide oléique. Idéale pour les peaux sèches ou sensibles.',dar:'غني بالفيتامينات A وE وK وبالأحماض الدهنية. مثالي للبشرة الجافة أو الحساسة.',
   cfr:'Noyau d’abricot indiqué sur l’étiquette.',car:'نواة المشمش مذكورة على الملصق.',
   ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
@@ -1001,7 +1004,7 @@ var P = [
   dfr:'Huile de fenugrec en flacon.',dar:'زيت الحلبة في قارورة.',
   cfr:'Fenugrec indiqué sur l’étiquette.',car:'الحلبة مذكورة على الملصق.',
   ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
- {id:'vinaigre-cidre-pomme',cat:'eaux',fr:'Vinaigre de cidre de pomme',ar:'خل التفاح',
+ {id:'vinaigre-cidre-pomme',price:30,cat:'eaux',fr:'Vinaigre de cidre de pomme',ar:'خل التفاح',
   dfr:'Vinaigre de cidre de pomme présenté dans son flacon d’origine.',dar:'خل التفاح في عبوته الأصلية.',
   cfr:'Pomme indiquée sur l’étiquette ; la composition détaillée n’est pas visible.',car:'التفاح مذكور على الملصق؛ التركيبة التفصيلية غير ظاهرة.',
   ufr:'Suivre les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'250 ml'},
@@ -1013,11 +1016,11 @@ var P = [
   dfr:'Hydrate la peau, améliore son élasticité et unifie le teint.',dar:'يرطب البشرة ويحسن مرونتها ويوحد لونها.',
   cfr:'La liste détaillée des ingrédients n’est pas visible sur la photo.',car:'لائحة المكونات المفصلة غير ظاهرة في الصورة.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
- {id:'khol-poudre',cat:'visage',fr:'Khôl en poudre',ar:'الكحل مسحوق',
+ {id:'khol-poudre',price:15,cat:'visage',fr:'Khôl en poudre',ar:'الكحل مسحوق',
   dfr:'Khôl en poudre, avec applicateur en bois.',dar:'كحل مسحوق مع مرود خشبي.',
   cfr:'Noyaux d’olive, noyaux de datte, ail, clou de girofle, thym et autres composants.',car:'عظم الزيتون، عظم التمر، الثوم، القرنفل، الزعتر ومكونات أخرى.',
   ufr:'Appliquer avec l’accessoire fourni, selon les indications du produit.',uar:'يستعمل بالمرود المرفق حسب إرشادات المنتج.',fmt:'15 g'},
- {id:'huile-jojoba',cat:'hv',fr:'Huile de jojoba',ar:'زيت الجوجوبا',
+ {id:'huile-jojoba',price:40,cat:'hv',fr:'Huile de jojoba',ar:'زيت الجوجوبا',
   dfr:'Retarde les signes de l’âge, apaise eczéma, psoriasis, boutons et allergies.',dar:'تأخير علامات الشيخوخة، علاج الإكزيما والصدفية والحبوب، ومحاربة الحساسية.',
   cfr:'Jojoba indiqué sur l’étiquette.',car:'الجوجوبا مذكورة على الملصق.',
   ufr:'Appliquer quelques gouttes sur la peau ou les cheveux.',uar:'توضع بضع قطرات على البشرة أو الشعر.',fmt:'30 ml'},
@@ -1041,23 +1044,23 @@ var P = [
   dfr:'Ralentit la repousse des poils indésirables, en usage régulier.',dar:'يبطئ نمو الشعر غير المرغوب فيه مع الاستعمال المنتظم.',
   cfr:'Souchet odorant (plante de saad) indiqué sur l’étiquette.',car:'نبات السعد مذكور على الملصق.',
   ufr:'Appliquer régulièrement sur les zones concernées.',uar:'يوضع بانتظام على المناطق المعنية.',fmt:'100 ml'},
- {id:'savon-rose',cat:'hygiene',fr:'Savon à la rose',ar:'صابون الورد',
+ {id:'savon-rose',price:20,cat:'hygiene',fr:'Savon à la rose',ar:'صابون الورد',
   dfr:'Savon rond à la rose Chojairate Naturel.',dar:'صابون الورد الدائري من شجيرات ناتوريل.',
   cfr:'Rose mise en avant sur l’étiquette ; formule complète non visible.',car:'الورد مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Faire mousser sur peau humide, puis rincer.',uar:'يرغى على بشرة مبللة ثم يشطف.',fmt:'64 g'},
- {id:'savon-curcuma',cat:'hygiene',fr:'Savon au curcuma',ar:'صابون الكركم',
+ {id:'savon-curcuma',price:20,cat:'hygiene',fr:'Savon au curcuma',ar:'صابون الكركم',
   dfr:'Savon rond au curcuma Chojairate Naturel.',dar:'صابون الكركم الدائري من شجيرات ناتوريل.',
   cfr:'Curcuma mis en avant sur l’étiquette ; formule complète non visible.',car:'الكركم مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Faire mousser sur peau humide, puis rincer.',uar:'يرغى على بشرة مبللة ثم يشطف.'},
- {id:'khol-beldi-flacon',cat:'visage',fr:'Khôl beldi en flacon',ar:'الكحل البلدي في قارورة',
+ {id:'khol-beldi-flacon',price:15,cat:'visage',fr:'Khôl beldi en flacon',ar:'الكحل البلدي في قارورة',
   dfr:'Khôl beldi noir dans un flacon transparent fermé par un bouchon en liège.',dar:'كحل بلدي أسود في قارورة شفافة بسدادة من الفلين.',
   cfr:'Composition complète non lisible sur la photo fournie.',car:'التركيبة الكاملة غير مقروءة في الصورة المقدمة.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
- {id:'huile-essentielle-citron',cat:'he',fr:'Huile essentielle de citron',ar:'زيت الليمون الأساسي',
+ {id:'huile-essentielle-citron',price:45,cat:'he',fr:'Huile essentielle de citron',ar:'زيت الليمون الأساسي',
   dfr:'Huile essentielle de citron en petit flacon brun.',dar:'زيت الليمون الأساسي في قارورة بنية صغيرة.',
   cfr:'Citron indiqué sur l’étiquette ; formule complète non visible.',car:'الليمون مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
- {id:'huile-essentielle-cannelle',cat:'he',fr:'Huile essentielle de cannelle',ar:'زيت القرفة الأساسي',
+ {id:'huile-essentielle-cannelle',price:45,cat:'he',fr:'Huile essentielle de cannelle',ar:'زيت القرفة الأساسي',
   dfr:'Huile essentielle de cannelle en petit flacon brun.',dar:'زيت القرفة الأساسي في قارورة بنية صغيرة.',
   cfr:'Cannelle indiquée sur l’étiquette ; formule complète non visible.',car:'القرفة مذكورة على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
@@ -1065,15 +1068,15 @@ var P = [
   dfr:'Huile de coco Chojairate Naturel en flacon pompe.',dar:'زيت جوز الهند من شجيرات ناتوريل في قارورة بمضخة.',
   cfr:'Coco indiqué sur l’étiquette ; formule complète non visible.',car:'جوز الهند مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
- {id:'huile-amande-amere',cat:'hv',fr:'Huile d’amande amère',ar:'زيت اللوز المر',
+ {id:'huile-amande-amere',price:40,cat:'hv',fr:'Huile d’amande amère',ar:'زيت اللوز المر',
   dfr:'Soin pour la peau qui aide à atténuer l’apparence des cernes, du mélasma et des taches brunes, tout en apaisant la peau.',dar:'يساعد على تخفيف مظهر الهالات السوداء والكلف والبقع الداكنة، ويهدئ البشرة.',
   cfr:'Amande amère indiquée sur l’étiquette ; formule complète non visible.',car:'اللوز المر مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
- {id:'traitement-anti-poux',cat:'cheveux',fr:'Traitement anti-poux',ar:'علاج مضاد للقمل والصيبان',
+ {id:'traitement-anti-poux',price:55,cat:'cheveux',fr:'Traitement anti-poux',ar:'علاج مضاد للقمل والصيبان',
   dfr:'Soin capillaire qui aide à éliminer les poux et les lentes.',dar:'علاج للشعر يساعد على التخلص من القمل والصيبان.',
   cfr:'Huiles de sésame, d’olive et de coco, ainsi que d’autres huiles.',car:'يتكون من زيت السمسم وزيت الزيتون وزيت جوز الهند وزيوت أخرى.',
   ufr:'Suivre les indications figurant sur le flacon.',uar:'يستعمل حسب الإرشادات الموجودة على القارورة.'},
- {id:'ghassoul-naturel',cat:'cheveux',fr:'Ghassoul naturel',ar:'غسول طبيعي بالأعشاب',
+ {id:'ghassoul-naturel',price:30,cat:'cheveux',fr:'Ghassoul naturel',ar:'غسول طبيعي بالأعشاب',
   dfr:'Nettoie le cuir chevelu, aide à réduire les pellicules, renforce les cheveux et leur apporte brillance et douceur. Sur la peau, aide à atténuer les boutons et leurs traces tout en laissant la peau douce.',dar:'ينظف فروة الرأس، ويساعد على تقليل القشرة وتقوية الشعر ويمنحه اللمعان والنعومة. وللبشرة، يساعد على تخفيف الحبوب وآثارها ويمنحها النعومة.',
   cfr:'Ghassoul naturel à base de plantes naturelles ; composition détaillée non visible.',car:'غسول طبيعي بالأعشاب؛ التركيبة المفصلة غير ظاهرة على الملصق.',
   ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'200 g'}
@@ -1139,6 +1142,7 @@ function renderFilters(){
   });
 }
 var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+function fmtPrice(n){ return lang==='ar' ? n+' درهم' : n+' DH'; }
 function buildCard(p,i){
     var b = document.createElement('button');
     b.type='button'; b.className='card reveal'; b.setAttribute('data-id', p.id);
@@ -1148,6 +1152,7 @@ function buildCard(p,i){
       '<div class="card-meta"><span class="cat">'+CATS[p.cat][lang]+'</span><bdi class="ar-name">'+(lang==='ar'?p.fr:p.ar)+'</bdi></div>'+
       '<h3>'+(lang==='ar'?p.ar:p.fr)+'</h3>'+
       '<p class="desc">'+(lang==='ar'?p.dar:p.dfr)+'</p>'+
+      (p.price?'<p class="card-price">'+fmtPrice(p.price)+'</p>':'')+
       '<span class="card-cta">'+UI.order[lang]+arrow+'</span></div>';
   b.style.transitionDelay = ((i%8)*40)+'ms'; /* entrée décalée */
   b.addEventListener('click', function(){ openModal(p); });
@@ -1232,7 +1237,8 @@ function openModal(p){
   document.getElementById('spec-comp').hidden = !comp;
   document.getElementById('modal-usage').textContent = lang==='ar'?p.uar:p.ufr;
   var fmtEl = document.getElementById('modal-fmt'); fmtEl.textContent = p.fmt || ''; fmtEl.hidden = !p.fmt;
-  document.getElementById('modal-wa').href = wa(UI.waHello[lang] + (lang==='ar'?p.ar:p.fr) + ' ('+(lang==='ar'?p.fr:p.ar)+')');
+  var priceEl = document.getElementById('modal-price'); priceEl.textContent = p.price ? fmtPrice(p.price) : ''; priceEl.hidden = !p.price;
+  document.getElementById('modal-wa').href = wa(UI.waHello[lang] + (lang==='ar'?p.ar:p.fr) + ' ('+(lang==='ar'?p.fr:p.ar)+')' + (p.price ? ' — '+fmtPrice(p.price) : ''));
   if(typeof modal.showModal==='function') modal.showModal(); else modal.setAttribute('open','');
 }
 document.getElementById('modal-close').addEventListener('click', function(){ modal.close(); });
