@@ -582,7 +582,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La boutique" data-ar="المتجر">La boutique</p>
-      <h2 id="gamme-title" data-html-fr="Soixante-deux produits, <em>suspendus.</em>" data-html-ar="اثنان وستون منتجاً <em>معلّقاً.</em>">Soixante-deux produits, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Soixante-quatre produits, <em>suspendus.</em>" data-html-ar="أربعة وستون منتجاً <em>معلّقاً.</em>">Soixante-quatre produits, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -1074,7 +1074,15 @@ var P = [
  {id:'huile-amande-amere',cat:'hv',fr:'Huile d’amande amère',ar:'زيت اللوز المر',
   dfr:'Soin pour la peau qui aide à atténuer l’apparence des cernes, du mélasma et des taches brunes, tout en apaisant la peau.',dar:'يساعد على تخفيف مظهر الهالات السوداء والكلف والبقع الداكنة، ويهدئ البشرة.',
   cfr:'Amande amère indiquée sur l’étiquette ; formule complète non visible.',car:'اللوز المر مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
-  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'}
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
+ {id:'traitement-anti-poux',cat:'cheveux',fr:'Traitement anti-poux',ar:'علاج مضاد للقمل والصيبان',
+  dfr:'Soin capillaire qui aide à éliminer les poux et les lentes.',dar:'علاج للشعر يساعد على التخلص من القمل والصيبان.',
+  cfr:'Huiles de sésame, d’olive et de coco, ainsi que d’autres huiles.',car:'يتكون من زيت السمسم وزيت الزيتون وزيت جوز الهند وزيوت أخرى.',
+  ufr:'Suivre les indications figurant sur le flacon.',uar:'يستعمل حسب الإرشادات الموجودة على القارورة.'},
+ {id:'ghassoul-naturel',cat:'cheveux',fr:'Ghassoul naturel',ar:'غسول طبيعي بالأعشاب',
+  dfr:'Nettoie le cuir chevelu, aide à réduire les pellicules, renforce les cheveux et leur apporte brillance et douceur. Sur la peau, aide à atténuer les boutons et leurs traces tout en laissant la peau douce.',dar:'ينظف فروة الرأس، ويساعد على تقليل القشرة وتقوية الشعر ويمنحه اللمعان والنعومة. وللبشرة، يساعد على تخفيف الحبوب وآثارها ويمنحها النعومة.',
+  cfr:'Ghassoul naturel à base de plantes naturelles ; composition détaillée non visible.',car:'غسول طبيعي بالأعشاب؛ التركيبة المفصلة غير ظاهرة على الملصق.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.',fmt:'200 g'}
 ];
 var STUDIO_PHOTOS = new Set([]);
 P.forEach(function(p){ if(STUDIO_PHOTOS.has(p.id)) p.studioPhoto = 'img/'+p.id+'-studio.webp'; });
