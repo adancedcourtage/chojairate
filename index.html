@@ -582,7 +582,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La boutique" data-ar="المتجر">La boutique</p>
-      <h2 id="gamme-title" data-html-fr="Cinquante-cinq produits, <em>suspendus.</em>" data-html-ar="خمسة وخمسون منتجاً <em>معلّقاً.</em>">Cinquante-cinq produits, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Soixante-deux produits, <em>suspendus.</em>" data-html-ar="اثنان وستون منتجاً <em>معلّقاً.</em>">Soixante-deux produits, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -1046,7 +1046,35 @@ var P = [
  {id:'huile-souchet-odorant',cat:'hv',fr:'Huile de souchet odorant',ar:'زيت نبات السعد',
   dfr:'Ralentit la repousse des poils indésirables, en usage régulier.',dar:'يبطئ نمو الشعر غير المرغوب فيه مع الاستعمال المنتظم.',
   cfr:'Souchet odorant (plante de saad) indiqué sur l’étiquette.',car:'نبات السعد مذكور على الملصق.',
-  ufr:'Appliquer régulièrement sur les zones concernées.',uar:'يوضع بانتظام على المناطق المعنية.',fmt:'100 ml'}
+  ufr:'Appliquer régulièrement sur les zones concernées.',uar:'يوضع بانتظام على المناطق المعنية.',fmt:'100 ml'},
+ {id:'savon-rose',cat:'hygiene',fr:'Savon à la rose',ar:'صابون الورد',
+  dfr:'Savon rond à la rose Chojairate Naturel.',dar:'صابون الورد الدائري من شجيرات ناتوريل.',
+  cfr:'Rose mise en avant sur l’étiquette ; formule complète non visible.',car:'الورد مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
+  ufr:'Faire mousser sur peau humide, puis rincer.',uar:'يرغى على بشرة مبللة ثم يشطف.',fmt:'64 g'},
+ {id:'savon-curcuma',cat:'hygiene',fr:'Savon au curcuma',ar:'صابون الكركم',
+  dfr:'Savon rond au curcuma Chojairate Naturel.',dar:'صابون الكركم الدائري من شجيرات ناتوريل.',
+  cfr:'Curcuma mis en avant sur l’étiquette ; formule complète non visible.',car:'الكركم مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
+  ufr:'Faire mousser sur peau humide, puis rincer.',uar:'يرغى على بشرة مبللة ثم يشطف.'},
+ {id:'khol-beldi-flacon',cat:'visage',fr:'Khôl beldi en flacon',ar:'الكحل البلدي في قارورة',
+  dfr:'Khôl beldi noir dans un flacon transparent fermé par un bouchon en liège.',dar:'كحل بلدي أسود في قارورة شفافة بسدادة من الفلين.',
+  cfr:'Composition complète non lisible sur la photo fournie.',car:'التركيبة الكاملة غير مقروءة في الصورة المقدمة.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
+ {id:'huile-essentielle-citron',cat:'he',fr:'Huile essentielle de citron',ar:'زيت الليمون الأساسي',
+  dfr:'Huile essentielle de citron en petit flacon brun.',dar:'زيت الليمون الأساسي في قارورة بنية صغيرة.',
+  cfr:'Citron indiqué sur l’étiquette ; formule complète non visible.',car:'الليمون مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
+ {id:'huile-essentielle-cannelle',cat:'he',fr:'Huile essentielle de cannelle',ar:'زيت القرفة الأساسي',
+  dfr:'Huile essentielle de cannelle en petit flacon brun.',dar:'زيت القرفة الأساسي في قارورة بنية صغيرة.',
+  cfr:'Cannelle indiquée sur l’étiquette ; formule complète non visible.',car:'القرفة مذكورة على الملصق؛ التركيبة الكاملة غير ظاهرة.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
+ {id:'huile-coco',cat:'hv',fr:'Huile de coco',ar:'زيت جوز الهند',
+  dfr:'Huile de coco Chojairate Naturel en flacon pompe.',dar:'زيت جوز الهند من شجيرات ناتوريل في قارورة بمضخة.',
+  cfr:'Coco indiqué sur l’étiquette ; formule complète non visible.',car:'جوز الهند مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'},
+ {id:'huile-amande-amere',cat:'hv',fr:'Huile d’amande amère',ar:'زيت اللوز المر',
+  dfr:'Huile d’amande amère Chojairate Naturel en flacon à capuchon doré.',dar:'زيت اللوز المر من شجيرات ناتوريل في قارورة بغطاء ذهبي.',
+  cfr:'Amande amère indiquée sur l’étiquette ; formule complète non visible.',car:'اللوز المر مذكور على الملصق؛ التركيبة الكاملة غير ظاهرة.',
+  ufr:'Utiliser selon les indications de l’emballage.',uar:'يستعمل حسب الإرشادات الموجودة على العبوة.'}
 ];
 var STUDIO_PHOTOS = new Set([]);
 P.forEach(function(p){ if(STUDIO_PHOTOS.has(p.id)) p.studioPhoto = 'img/'+p.id+'-studio.webp'; });
