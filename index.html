@@ -581,7 +581,7 @@ dialog::backdrop{background:rgba(23,53,42,.5);backdrop-filter:blur(8px)}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow" data-fr="La boutique" data-ar="المتجر">La boutique</p>
-      <h2 id="gamme-title" data-html-fr="Soixante-cinq produits, <em>suspendus.</em>" data-html-ar="خمسة وستون منتجاً <em>معلّقاً.</em>">Soixante-cinq produits, <em>suspendus.</em></h2>
+      <h2 id="gamme-title" data-html-fr="Soixante-huit produits, <em>suspendus.</em>" data-html-ar="ثمانية وستون منتجاً <em>معلّقاً.</em>">Soixante-huit produits, <em>suspendus.</em></h2>
       <p class="lead" data-fr="Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche." data-ar="زيوت عطرية، زيوت نباتية، عناية بالوجه والجسم، مياه زهرية. المسي قوساً لفتح البطاقة.">Huiles essentielles, huiles végétales, soins du visage et du corps, eaux florales. Touchez une arche pour ouvrir la fiche.</p>
     </div>
     <div class="filters reveal" id="filters" role="group" aria-label="Filtrer la gamme"></div>
@@ -1095,7 +1095,12 @@ var P = [
  {id:'creme-deodorant',price:55,cat:'hygiene',fr:'Crème déodorante naturelle',ar:'كريم مزيل عرق طبيعي',
   dfr:'Confiance et fraîcheur naturelle toute la journée. Hydrate et apaise.',
   dar:'ثقة وانتعاش طبيعي يدوم طوال اليوم. يرطب ويهدئ.',
-  ufr:'Appliquer une petite quantité sur les aisselles propres et sèches.',uar:'توضع كمية صغيرة على الإبطين نظيفين وجافين.'}
+  ufr:'Appliquer une petite quantité sur les aisselles propres et sèches.',uar:'توضع كمية صغيرة على الإبطين نظيفين وجافين.'},
+ {id:'huile-argan',price:40,cat:'hv',fr:'Huile d’argan',ar:'زيت الأركان',
+  dfr:'Hydrate intensément la peau, aide à atténuer l’apparence des rides et des imperfections liées à l’acné. Favorise la pousse des cheveux et aide à les protéger de la chaleur des appareils coiffants.',
+  dar:'يرطب البشرة بعمق، ويساعد على تقليل مظهر التجاعيد وحب الشباب. يعزز نمو الشعر ويساعد على حمايته من حرارة أدوات التصفيف.',
+  cfr:'Argan indiqué sur l’étiquette ; composition détaillée non visible.',car:'الأركان مذكور على الملصق؛ التركيبة المفصلة غير ظاهرة.',
+  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux selon les besoins.',uar:'توضع بضع قطرات على البشرة أو الشعر حسب الحاجة.'}
 ];
 var STUDIO_PHOTOS = new Set([]);
 P.forEach(function(p){ if(STUDIO_PHOTOS.has(p.id)) p.studioPhoto = 'img/'+p.id+'-studio.webp'; });
