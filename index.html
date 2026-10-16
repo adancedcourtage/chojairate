@@ -848,6 +848,7 @@ var P = [
   ufr:'Mélanger à l’eau tiède, poser 1 à 2 heures, rincer sans shampoing.',uar:'تُمزج بماء فاتر، تُترك من ساعة إلى ساعتين، ثم تُشطف دون شامبو.',fmt:'90 g'},
  {id:'coloration-cheveux-rouge',price:50,cat:'cheveux',fr:'Coloration cheveux rouge',ar:'صبغة الشعر الحمراء',
   cardPhoto:'img/coloration-cheveux-rouge-resultat.webp',sourcePhoto:true,
+  studioPhoto:'img/coloration-cheveux-rouge.webp',originalPhoto:'img/coloration-cheveux-rouge-photo.webp',
   result:'img/coloration-cheveux-rouge-resultat.webp',
   dfr:'Une teinte rouge profonde pour les cheveux.',dar:'لون أحمر عميق للشعر.',
   ufr:'Suivre les indications figurant sur l’emballage.',uar:'اتّبعي التعليمات الموجودة على العبوة.',fmt:'90 g'},
@@ -1239,7 +1240,7 @@ function openModal(p){
     [studioButton, originalButton, detailButton].forEach(function(b){ b.classList.toggle('selected', b===button); });
   }
   studioButton.onclick = function(){ choosePhoto(p.studioPhoto, studioButton); };
-  originalButton.onclick = function(){ choosePhoto('img/'+p.id+'.webp', originalButton); };
+  originalButton.onclick = function(){ choosePhoto(p.originalPhoto||'img/'+p.id+'.webp', originalButton); };
   detailButton.onclick = function(){ choosePhoto(p.detailPhoto, detailButton); };
   [studioButton, originalButton, detailButton].forEach(function(b){ b.classList.remove('selected'); });
   (p.studioPhoto ? studioButton : originalButton).classList.add('selected');
