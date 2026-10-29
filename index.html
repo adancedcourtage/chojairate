@@ -1103,7 +1103,17 @@ var P = [
   dfr:'Hydrate intensément la peau, aide à atténuer l’apparence des rides et des imperfections liées à l’acné. Favorise la pousse des cheveux et aide à les protéger de la chaleur des appareils coiffants.',
   dar:'يرطب البشرة بعمق، ويساعد على تقليل مظهر التجاعيد وحب الشباب. يعزز نمو الشعر ويساعد على حمايته من حرارة أدوات التصفيف.',
   cfr:'Argan indiqué sur l’étiquette ; composition détaillée non visible.',car:'الأركان مذكور على الملصق؛ التركيبة المفصلة غير ظاهرة.',
-  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux selon les besoins.',uar:'توضع بضع قطرات على البشرة أو الشعر حسب الحاجة.'}
+  ufr:'Appliquer quelques gouttes sur la peau ou les cheveux selon les besoins.',uar:'توضع بضع قطرات على البشرة أو الشعر حسب الحاجة.'},
+ {id:'traitement-perte-cheveux',price:90,cat:'cheveux',fr:'Traitement de perte de cheveux',ar:'الخلطة المعالجة لتساقط الشعر',
+  dfr:'Protège les cheveux de la chute et de la casse, et les aide à pousser plus vite.',
+  dar:'الخلطة المعالجة للشعر تحميه من التساقط والتقصف وتساعده على اكتساب الطول بسرعة.',
+  cfr:'Huiles de jojoba, d’olive, de lavande, d’amande, de nigelle, d’herbes (hchich) et plusieurs autres huiles, avec des herbes qui traitent et fortifient les cheveux.',
+  car:'زيت الجوجوبا، زيت الزيتون، زيت الخزامى، زيت اللوز، زيت الحبة السوداء، زيت الحشيش وعدة زيوت أخرى، بالإضافة إلى الأعشاب المعالجة والمقوية للشعر.',
+  ufr:'Masser quelques gouttes sur le cuir chevelu, laisser agir puis laver les cheveux.',uar:'تُدلك بضع قطرات على فروة الرأس، تُترك ثم يُغسل الشعر.',fmt:'100 ml'},
+ {id:'masque-nila-bleu-pot',price:65,cat:'visage',fr:'Masque Nila bleu',ar:'ماسك النيلة الزرقاء',detailPhoto:'img/masque-nila-bleu-pot-dessus.webp',
+  dfr:'Aide à éclaircir et unifier le teint, et à atténuer les taches dues au soleil ou à l’âge.',
+  dar:'يساعد في تفتيح لون البشرة وتوحيد مظهرها وإزالة التصبغات الناتجة عن الشمس أو التقدم في العمر.',
+  ufr:'Appliquer en couche fine sur le visage propre, laisser poser puis rincer à l’eau tiède.',uar:'يوضع طبقة رقيقة على وجه نظيف، يُترك ثم يُشطف بماء فاتر.',fmt:'100 g'}
 ];
 var STUDIO_PHOTOS = new Set([]);
 P.forEach(function(p){ if(STUDIO_PHOTOS.has(p.id)) p.studioPhoto = 'img/'+p.id+'-studio.webp'; });
